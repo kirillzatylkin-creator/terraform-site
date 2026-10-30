@@ -1,0 +1,5 @@
+node_modules/
+.env
+*.log
+Thumbs.db
+README1.backup*.md
