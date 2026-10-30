@@ -3,13 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nous contacter</title>
+    <title>Nous contacter - Terraform</title>
+
+    <meta
+      name="description"
+      content="Contactez l'équipe de Terraform pour toute question, suggestion ou support." />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 
     <style>
       /* Styles propres à la page de contact */
+      .page-header {
+        background:
+          linear-gradient(0deg, rgba(13, 11, 8, 0.5), rgba(13, 11, 8, 0.2)),
+          url('images/07-banniere-voyage.png') center / cover;
+        height: 50vh;
+      }
       .contact-main {
         max-width: 1200px;
         margin: auto;
@@ -220,7 +230,7 @@
           </div>
         </div>
 
-        <div class="contact-form">
+        <form class="contact-form" id="contact-form">
           <h2>Ecrivez-nous</h2>
           <p class="sub">On vous repondra dans les 2 à 5 jours ouvrables</p>
 
@@ -228,6 +238,8 @@
             <div class="form-group">
               <label for="name">Nom</label>
               <input
+                required
+                maxlength="100"
                 type="text"
                 id="name"
                 name="name"
@@ -237,6 +249,8 @@
             <div class="form-group">
               <label for="email">Email</label>
               <input
+                required
+                maxlength="254"
                 type="email"
                 id="email"
                 name="email"
@@ -247,7 +261,7 @@
 
           <div class="form-group">
             <label for="subject">Choisissez un sujet</label>
-            <select id="subject">
+            <select id="subject" name="subject" required>
               <option value="">Choisissez un sujet...</option>
               <option>Question générale</option>
               <option>Signaler un bug</option>
@@ -260,13 +274,21 @@
           <div class="form-group">
             <label for="message">Message</label>
             <textarea
+              required
+              minlength="10"
+              maxlength="5000"
               id="message"
               name="message"
               placeholder="Dites-nous tout ce que vous souhaitez..."></textarea>
           </div>
 
-          <button class="form-submit">Envoyer le message</button>
-        </div>
+          <button class="form-submit" type="submit">Envoyer le message</button>
+        </form>
+<p id="contact-status" role="status"></p> 
+
+
+
+
       </div>
     </section>
 

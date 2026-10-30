@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Le Monde de Terraform</title>
+    <meta
+      name="description"
+      content="Explorez le monde de Terraform, son histoire, ses territoires et ses mystères."
+    >
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    >
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+      .map-section,
+      .lore-section,
+      .timeline-section,
+      .studio-section,
+      .awards {
+        padding: 5rem 0;
+      }
+
+      .page-header {
+        height: 100vh;
+        text-align: center;
+        background:
+          linear-gradient(0deg, rgba(13, 11, 8, 0.35), rgba(13, 11, 8, 0.12)),
+          url("images/07-banniere-voyage.png") center / cover no-repeat;
+      }
+
+      .map-placeholder {
+        min-height: 360px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 2rem;
+        border: 1px solid var(--gold);
+        border-radius: 8px;
+        color: var(--gold-light);
+        background: radial-gradient(ellipse at center, var(--mid), var(--dark-2));
+        font-size: 0.9rem;
+        letter-spacing: 0.12em;
+        text-align: center;
+      }
+
+      .map-placeholder img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .lore-section,
+      .studio-section {
+        background: var(--light-2);
+      }
+
+      .lore-block {
+        max-width: 800px;
+        margin: 2rem auto 0;
+      }
+
+      .lore-block p + p,
+      .studio-info p + p {
+        margin-top: 1.3rem;
+      }
+
+      .timeline-section h2 {
+        text-align: center;
+      }
+
+      .timeline {
+        max-width: 800px;
+        margin: 3rem auto 0;
+        padding-left: 2rem;
+        border-left: 1px solid var(--gold);
+      }
+
+      .timeline-item {
+        position: relative;
+        padding: 0 0 2.5rem 1rem;
+      }
+
+      .timeline-item:last-child {
+        padding-bottom: 0;
+      }
+
+      .timeline-dot {
+        position: absolute;
+        top: 0.55rem;
+        left: -2.4rem;
+        width: 0.75rem;
+        height: 0.75rem;
+        border-radius: 50%;
+        background: var(--gold);
+        box-shadow: 0 0 0 5px var(--light);
+      }
+
+      .timeline-year {
+        margin-bottom: 0.5rem;
+        color: var(--dark);
+        font-size: 1rem;
+        font-weight: bold;
+      }
+
+      .timeline-item h3 {
+        margin-bottom: 0.8rem;
+      }
+
+      .timeline-item p,
+      .studio-info p {
+        font-size: 1rem;
+      }
+
+      .studio-inner {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .studio-logo-box {
+        min-height: 280px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        border: 1px solid var(--gold);
+        border-radius: 8px;
+        background: var(--dark-2);
+        color: var(--gold-light);
+        font-family: var(--font-head);
+        text-align: center;
+      }
+
+      .studio-logo-box img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .studio-info h2 {
+        margin-bottom: 1.5rem;
+      }
+
+      .award-card {
+        padding: 1.5rem;
+        text-align: center;
+      }
+
+      .award-icon {
+        margin-bottom: 1rem;
+        font-size: 2.5rem;
+      }
+
+      .award-name {
+        margin-bottom: 0.75rem;
+        font-family: var(--font-head);
+        font-size: 1.15rem;
+        line-height: 1.4;
+      }
+
+      .award-body {
+        color: var(--text-muted);
+        font-size: 0.85rem;
+      }
+    </style>
+
+    <script src="script.js" defer></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+    <nav>
+      <a class="nav-logo" href="Index.html">Terraform</a>
+
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Ouvrir le menu"
+        aria-controls="navigation-links"
+        aria-expanded="false"
+      >
+        <span class="burger-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
+      <ul class="nav-links" id="navigation-links">
+        <li><a href="Index.html">Terraform</a></li>
+        <li>
+          <a href="About.html" class="active" aria-current="page">
+            Le monde de Terraform
+          </a>
+        </li>
+        <li><a href="Gameplay.html">Gameplay</a></li>
+        <li><a href="Configuration requise.html">Configuration requise</a></li>
+        <li><a href="media.html">Galerie</a></li>
+        <li><a href="Boutique.html">Boutique</a></li>
+        <li><a href="Nous Contacter.html">Nous contacter</a></li>
+      </ul>
+    </nav>
+
+    <main id="main-content">
+      <header class="page-header">
+        <div class="tag">Le continent et ses mystères</div>
+        <h1>Le monde de Terraform</h1>
+        <p>Chaque coin a une histoire. Chaque forêt porte un nom.</p>
+        <p>
+          Explorez les terres mystérieuses et découvrez les secrets cachés de
+          Terraform.
+        </p>
+      </header>
+
+      <section class="map-section">
+        <div class="container">
+          <h2 class="section-title">La carte du continent</h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">
+            La carte interactive est disponible dans le jeu
+          </p>
+
+          <div class="map-placeholder">
+            <img
+              src="images/02-carte-du-monde.png"
+              alt="Carte du continent"
+            >
+            <span>LA CARTE DE TERRAFORM · ÉCHELLE 1:500 000</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="lore-section">
+        <div class="container">
+          <h2 class="section-title">Les origines</h2>
+          <div class="divider"></div>
+
+          <div class="lore-block">
+            <p>
+              Il y a mille ans, les mages fondateurs créèrent le Voile — un
+              bouclier invisible séparant le monde des vivants du Néant. Le
+              Voile repose sur cinq Pierres-Cœurs, dispersées à travers les
+              terres de Terraform. Mais les pierres commencent à s’éteindre.
+            </p>
+            <p>
+              Trois des cinq sont déjà silencieuses. Là où les Cœurs se sont
+              tus, l’espace est devenu fragile : des créatures du Néant
+              s’infiltrent à travers les fissures, tandis que le temps s’écoule
+              différemment. De vieilles cités s’enfoncent dans un brouillard
+              dont personne ne revient.
+            </p>
+            <p>
+              Les Gardiens du Voile — l’Ordre des Cinq Doigts — se sont
+              désintégrés après une hérésie interne. Les derniers membres de
+              l’ordre recherchent les derniers porteurs de l’Étincelle — des
+              êtres capables de réveiller les Pierres une nouvelle fois.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="timeline-section">
+        <div class="container">
+          <h2>Chronologie du monde</h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">
+            Les événements clés de l'histoire de Terraform
+          </p>
+
+          <div class="timeline">
+            <article class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">Année zéro</div>
+              <h3>La création du Voile</h3>
+              <p>
+                Cinq mages fondateurs refermèrent la faille et placèrent les
+                Pierres du Cœur en des lieux sacrés à travers le continent.
+              </p>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">345e année</div>
+              <h3>L'apogée de l'Âge d'Argent</h3>
+              <p>
+                Les grandes cités de Terraform atteignent le sommet de leur
+                puissance. La magie est accessible à tous ceux qui possèdent le
+                talent.
+              </p>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">612e année</div>
+              <h3>La fracture de l'Ordre des Cinq Doigts</h3>
+              <p>
+                L'hérésie du Mage Sans-Nom divise l'ordre. La première Pierre
+                du Cœur s'éteint. Le Néant commence à s'infiltrer.
+              </p>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">899e année</div>
+              <h3>Le Déluge des Ténèbres</h3>
+              <p>
+                Deux pierres s'éteignent en une seule nuit. Un tiers des terres
+                septentrionales est englouti par le Néant. Un grand exode des
+                peuples commence.
+              </p>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">1000e année — aujourd'hui</div>
+              <h3>Le début de votre histoire</h3>
+              <p>
+                Vous vous réveillez dans les ruines du château ancestral. Le
+                monde est au bord de son dernier crépuscule. Tout est entre vos
+                mains.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="studio-section">
+        <div class="container">
+          <div class="studio-inner">
+            <div class="studio-logo-box">
+              <img
+                src="images/13-ornement-exploration.png"
+                alt=""
+                aria-hidden="true"
+              >
+              <span>Ironveil Studios</span>
+            </div>
+
+            <div class="studio-info">
+              <h2>Développeur</h2>
+              <p>
+                Ironveil Studios est une équipe indépendante de 38 personnes,
+                fondée en 2019. Nous croyons que les jeux vidéo sont un
+                véritable art. Terraform est notre premier projet d'envergure,
+                sur lequel nous travaillons depuis déjà cinq ans.
+              </p>
+              <p>
+                Nous puisons notre inspiration dans la littérature classique,
+                l’architecture médiévale et la mythologie scandinave. Notre
+                objectif est de créer un monde qui continue de vivre même après
+                que vous avez éteint votre écran.
+              </p>
+              <p>
+                Le studio est basé à Paris, en France. Une partie de
+                l'équipe travaille à distance depuis différents pays.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="awards">
+        <div class="container">
+          <h2 class="section-title">Distinctions</h2>
+          <div class="divider"></div>
+
+          <div class="grid-4">
+            <article class="award-card card">
+              
+              <div class="award-name">Meilleur jeu indépendant</div>
+              <div class="award-body">GameDev  Awards 2025</div>
+            </article>
+
+            <article class="award-card card">
+         
+              <div class="award-name">Meilleure direction artistique</div>
+              <div class="award-body">FantasyExpo 2025</div>
+            </article>
+
+            <article class="award-card card">
+          
+              <div class="award-name">Meilleur scénario</div>
+              <div class="award-body">RPG Critics Circle 2025</div>
+            </article>
+
+            <article class="award-card card">
+             
+              <div class="award-name">Meilleure bande-son</div>
+              <div class="award-body">Indie Sound Awards 2025</div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2026 Terraform. Tous droits réservés.</p>
+        <ul class="social-links">
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="Nous Contacter.html">Contact</a></li>
+          <li><a href="#">Politique de confidentialité</a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

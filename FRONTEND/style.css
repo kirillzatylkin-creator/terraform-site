@@ -10,7 +10,7 @@
 
 :root {
   --gold: #7f7229;
-  --gold-light: #c9b56e;
+  --gold-light: #b9a35a;
   --dark: #0d0b08;
   --dark-2: #1a1710;
   --dark-3: #2e2a23;
@@ -18,7 +18,7 @@
   --light-2: #e6dfd5;
   --mid: #3d3826;
   --text-dark: #1a1710;
-  --text-muted: #6b6044;
+  --text-muted: #302816;
   --accent: #7c3d2e;
   --accent-2: #757150;
   --accent-dark: #5a2a1f;
@@ -33,7 +33,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  font-size: 20px;
+  font-size: 25px;
   line-height: 1.7;
   color: var(--text-dark);
   background-color: var(--light);
@@ -61,7 +61,7 @@ nav {
 
 .nav-logo {
   font-family: var(--font-head);
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   color: var(--gold-light);
   text-decoration: none;
   display: inline-block;
@@ -73,14 +73,14 @@ nav {
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 0.5rem 1.25rem;
+  gap: 1rem 2rem;
   flex-wrap: wrap;
   justify-content: flex-end;
 }
 
 .nav-links a {
   font-family: var(--font-body);
-  font-size: 0.75rem;
+  font-size: 0.90rem;
   color: var(--light-2);
   text-decoration: none;
   transition: color 0.3s ease;
@@ -97,6 +97,9 @@ nav {
   color: var(--gold-light);
   opacity: 0.8;
 }
+
+
+
 
 /* Section Styles */
 
@@ -270,7 +273,7 @@ footer a:hover {
 .page-header {
   text-align: center;
   background-color: var(--dark-2);
-  padding: 70px 1.25rem 60px;
+  padding: 100px 1.25rem 60px;
   border-bottom: 1px solid rgba(200, 169, 110, 0.25);
 }
 
@@ -282,7 +285,7 @@ footer a:hover {
 
 .page-header p {
   color: rgba(245, 240, 232, 0.8);
-  font-size: 1.1rem;
+  font-size: 2.3rem;
   margin-bottom: 0;
 }
 
@@ -482,6 +485,165 @@ section.store-grid,
   overflow-wrap: anywhere;
 }
 
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 1000;
+  padding: 0.75rem 1rem;
+  background: var(--light);
+  color: var(--dark);
+  border: 2px solid var(--gold);
+  border-radius: 4px;
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+
+.contact-status {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: var(--text-dark);
+}
+
+.contact-status:empty {
+  display: none;
+}
+
+.gallery-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Pages inscription / connexion */
+.auth-main {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 4rem 1.25rem 5rem;
+}
+.auth-form {
+  padding: 2rem;
+  border: 1px solid var(--gold-light);
+  border-radius: 8px;
+  background: #fffaf1;
+  box-shadow: 0 8px 30px #1a17100a;
+}
+.auth-form h2 {
+  margin-bottom: 1.5rem;
+}
+.auth-form .form-group {
+  margin-bottom: 1.25rem;
+}
+.auth-form label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+.auth-form input {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #a99c7c;
+  border-radius: 4px;
+  background: var(--light);
+  color: var(--text-dark);
+  font-size: 1rem;
+}
+.auth-form .form-submit {
+  width: 100%;
+  padding: 0.9rem;
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  background: var(--dark-2);
+  color: var(--gold-light);
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.auth-form .form-submit:hover {
+  background: var(--mid);
+}
+.auth-status {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+.auth-status:empty {
+  display: none;
+}
+.auth-status.error {
+  color: var(--accent);
+}
+.auth-link {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+}
+.auth-link a {
+  color: var(--accent);
+}
+
+.cart-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.25rem 5rem;
+}
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.cart-table th {
+  background: var(--dark-2);
+  color: var(--gold-light);
+  text-align: left;
+  padding: 0.8rem;
+}
+.cart-table td {
+  padding: 0.8rem;
+  border-bottom: 1px solid #cfc4a5;
+}
+.qty-btn {
+  min-width: 36px;
+  min-height: 36px;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text-dark);
+  cursor: pointer;
+}
+.qty-btn:hover {
+  background: var(--dark-2);
+  color: var(--gold-light);
+}
+.qty-value {
+  display: inline-block;
+  min-width: 2rem;
+  text-align: center;
+}
+.cart-total {
+  margin-top: 1.5rem;
+  text-align: right;
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  color: var(--gold);
+}
+.cart-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+
+
 /* RESPONSIVE : largeur du navigateur, pas taille de l'écran en pouces.
    PC : styles de base. Tablettes : 1100px. Mobile : 768px. Petit mobile : 480px.
    À petite largeur, les règles ci-dessous se cumulent dans cet ordre. */
@@ -668,3 +830,6 @@ section.store-grid,
     transition: none !important;
   }
 }
+
+
+

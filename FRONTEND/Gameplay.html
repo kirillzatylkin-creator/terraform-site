@@ -3,13 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Terraform</title>
+    <title>Gameplay - Terraform</title>
+
+    <meta
+      name="description"
+      content="Découvrez le gameplay de Terraform, ses mécaniques, ses classes et son système de progression." />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 
     <style>
       /* Styles propres au gameplay */
+
+
+
+      .page-header {
+        background:
+          linear-gradient(0deg, rgba(13, 11, 8, 0.5), rgba(13, 11, 8, 0.2)),
+          url('images/03-fond-chateau.png') center / cover;
+        height: 100vh;
+       
+      }
       .mechanics {
         max-width: 1200px;
         margin: auto;
@@ -29,8 +43,9 @@
         order: 2;
       }
       .mechanic-image,
-      .mechanic-visual {
-        min-height: 320px;
+      .mechanic-visual,
+      .mechanic-visual1 {
+        min-height: 380px;
         display: grid;
         place-items: center;
         font-size: 5rem;
@@ -38,11 +53,28 @@
         border-radius: 8px;
         background: radial-gradient(ellipse, var(--mid), var(--dark-2));
       }
+
       .mechanic-image {
         background:
           linear-gradient(0deg, rgba(13, 11, 8, 0.5), rgba(13, 11, 8, 0.2)),
-          url('images/castle.png') center / cover;
+          url('images/08-fond-mage.png') center / cover;
       }
+
+
+
+      .mechanic-visual {
+        background:
+          linear-gradient(0deg, rgba(13, 11, 8, 0.5), rgba(13, 11, 8, 0.2)),
+          url('images/04-hautes-brumes.png') center / cover;
+      }
+
+
+      .mechanic-visual1 {
+        background:
+          linear-gradient(0deg, rgba(13, 11, 8, 0.5), rgba(13, 11, 8, 0.2)),
+          url('images/06-cite-oubliee.png') center / cover;
+      }
+    
       .mechanic-image .material-symbols-outlined {
         font-size: 5rem;
         color: var(--gold-light);
@@ -76,6 +108,26 @@
       .class-card {
         padding: 2rem;
       }
+
+      .card.class-card-chevalier-du-voile {
+        background:
+        
+          linear-gradient(0deg, rgba(195, 144, 85, 0.759), rgba(235, 194, 137, 0.682)),
+          url('images/09-personnage-gardien.png') center / cover;
+      }
+
+      .card.class-card-sorciere-des-racines {
+        background:
+          linear-gradient(0deg, rgba(251, 222, 188, 0.759), rgba(226, 195, 151, 0.263)),
+          url('images/08-fond-mage.png') center / cover;
+      }
+      .card.class-card-nomade-des-terres-desolees {
+        background:
+          linear-gradient(0deg, rgba(251, 222, 188, 0.759), rgba(235, 194, 137, 0.682)),
+          url('images/10-personnage-arcaniste.png') center / cover;
+      }
+
+
       .class-icon {
         font-size: 3rem;
         text-align: center;
@@ -185,8 +237,12 @@
     <nav>
       <a href="Index.html" class="nav-logo">Terraform</a>
       <!-- Le JavaScript ouvre et ferme ce menu sur mobile. -->
-      <button class="nav-toggle" type="button" aria-label="Ouvrir le menu"
-        aria-controls="navigation-links" aria-expanded="false">
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Ouvrir le menu"
+        aria-controls="navigation-links"
+        aria-expanded="false">
         <span class="burger-icon" aria-hidden="true">
           <span></span><span></span><span></span>
         </span>
@@ -209,14 +265,12 @@
     <header class="page-header">
       <div class="tag">Systèmes et mécaniques</div>
       <h1>Gameplay</h1>
-      <p>Comment se déroule l'aventure dans Aethermure</p>
+      <p>Comment se déroule l'aventure dans Terraform</p>
     </header>
 
     <section class="mechanics">
       <div class="mechanic-row">
-        <div class="mechanic-image">
-          <span class="material-symbols-outlined"> castle </span>
-        </div>
+        <div class="mechanic-image"></div>
         <div class="mechanic-text">
           <div class="tag">Système de combat</div>
           <h2>Magie et acier en harmonie</h2>
@@ -240,12 +294,12 @@
       </div>
 
       <div class="mechanic-row reverse">
-        <div class="mechanic-visual">🗺️</div>
+        <div class="mechanic-visual"></div>
         <div class="mechanic-text">
           <div class="tag">Exploration</div>
           <h2>Un monde sans frontières</h2>
           <p>
-            Aétermur est un monde entièrement ouvert, sans zones de chargement.
+            Terraform est un monde entièrement ouvert, sans zones de chargement.
             Chaque grotte, tour et village cache ses propres secrets et ses
             propres séries de quêtes.
           </p>
@@ -264,7 +318,7 @@
       </div>
 
       <div class="mechanic-row">
-        <div class="mechanic-visual">💬</div>
+        <div class="mechanic-visual1"></div>
         <div class="mechanic-text">
           <div class="tag">Dialogues et choix</div>
           <h2>Les mots changent l'histoire</h2>
@@ -292,10 +346,10 @@
       <div class="container">
         <h2 class="section-title">Classes de personnages</h2>
         <div class="divider"></div>
-        <p class="section-subtitle">Choisissez votre voie à Aétermur</p>
+        <p class="section-subtitle">Choisissez votre voie à Terraform</p>
         <div class="grid-3">
-          <div class="card class-card">
-            <div class="class-icon">🗡️</div>
+          <div class="card class-card-chevalier-du-voile">
+  
             <div class="class-name">Chevalier du Voile</div>
             <div class="class-role">Défenseur · Combat rapproché</div>
             <div class="stat-bar-label">
@@ -322,8 +376,7 @@
             </p>
           </div>
 
-          <div class="card class-card">
-            <div class="class-icon">🌿</div>
+          <div class="card class-card-sorciere-des-racines">
             <div class="class-name">Sorcière des Racines</div>
             <div class="class-role">Soigneuse · Magie naturelle</div>
             <div class="stat-bar-label">
@@ -350,8 +403,8 @@
             </p>
           </div>
 
-          <div class="card class-card">
-            <div class="class-icon">🗺️</div>
+          <div class="card class-card-nomade-des-terres-desolees">
+      
             <div class="class-name">Nomade des Terres Désolées</div>
             <div class="class-role">Éclaireur · Combat à distance</div>
             <div class="stat-bar-label">
@@ -374,7 +427,7 @@
             </div>
             <p class="class-desc">
               Rapide et insaisissable. Maître des pièges et des poisons. Il
-              connaît la carte d'Aétermur mieux que quiconque.
+              connaît la carte Terre Désolées mieux que quiconque.
             </p>
           </div>
         </div>

@@ -3,13 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Terraform</title>
+    <title>Galerie - Terraform</title>
+
+    <meta
+      name="description"
+      content="Découvrez la galerie de Terraform avec des images et vidéos du jeu." />
+
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 
     <style>
       /* Styles propres à la galerie */
+
+      .page-header {
+        background:
+          linear-gradient(0deg, rgba(13, 11, 8, 0.5), rgba(13, 11, 8, 0.2)),
+          url('images/12-banniere-destin.png') center / cover;
+        height: 100vh;
+      }
       .filter-bar {
         padding: 1.5rem;
         border-bottom: 1px solid var(--gold-light);
@@ -205,8 +217,12 @@
     <nav>
       <a href="Index.html" class="nav-logo">Terraform</a>
       <!-- Le JavaScript ouvre et ferme ce menu sur mobile. -->
-      <button class="nav-toggle" type="button" aria-label="Ouvrir le menu"
-        aria-controls="navigation-links" aria-expanded="false">
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Ouvrir le menu"
+        aria-controls="navigation-links"
+        aria-expanded="false">
         <span class="burger-icon" aria-hidden="true">
           <span></span><span></span><span></span>
         </span>
@@ -244,15 +260,21 @@
 
     <section class="gallery-grid">
       <div class="g-grid">
-        <div class="g-item tall g-bg-1" data-category="concept locations">
-          <span class="material-symbols-outlined"> forest </span>
+        <div class="g-item tall" data-category="concept locations">
+          <img
+            class="gallery-image"
+            src="images/05-foret-ancienne.png"
+            alt="Forêt ancienne du monde de Terraform"
+            loading="lazy" />
+
           <div class="g-overlay">
-            <span class="g-label">Forest of Elion</span>
-            <span class="g-cat">Concept · Location</span>
+            <span class="g-label">Forêt ancienne</span>
+            <span class="g-cat">Concept · Lieu</span>
           </div>
         </div>
 
         <!-- GRILLE DE GALERIE -->
+
         <div class="g-item tall g-bg-1" data-category="concept locations">
           <span class="g-emoji">🌲</span>
           <div class="g-overlay">
@@ -260,41 +282,42 @@
             <span class="g-cat">Concept · Lieu</span>
           </div>
         </div>
-        <div class="g-item g-bg-2" data-category="characters concept">
-          <span class="g-emoji">🧙</span>
+        <div class="g-item tall" data-category="concept characters">
+          <img
+            class="gallery-image"
+            src="images/09-personnage-gardien.png"
+            alt="Gardien en armure avec une cape de fourrure"
+            loading="lazy" />
+        
           <div class="g-overlay">
-            <span class="g-label">Oriènne la Dédoublée</span>
-            <span class="g-cat">Personnage · Art</span>
+            <span class="g-label">Le Gardien</span>
+            <span class="g-cat">Concept · Personnage</span>
           </div>
         </div>
-        <div class="g-item g-bg-3" data-category="screenshots locations">
-          <span class="g-emoji">🏜️</span>
+        
+        <div class="g-item tall" data-category="concept characters">
+          <img
+            class="gallery-image"
+            src="images/10-personnage-arcaniste.png"
+            alt="Arcaniste tenant une sphère de lumière magique"
+            loading="lazy" />
+        
           <div class="g-overlay">
-            <span class="g-label"
-              >Terres désolées d'Ashara · Coucher de soleil</span
-            >
-            <span class="g-cat">Capture d'écran · Environnement</span>
+            <span class="g-label">L’Arcaniste</span>
+            <span class="g-cat">Concept · Personnage</span>
           </div>
         </div>
-        <div class="g-item wide g-bg-4" data-category="concept locations">
-          <span class="g-emoji">🏰</span>
+        
+        <div class="g-item tall" data-category="concept characters">
+          <img
+            class="gallery-image"
+            src="images/11-personnage-eclaireuse.png"
+            alt="Éclaireuse visant avec son arc dans une forêt"
+            loading="lazy" />
+        
           <div class="g-overlay">
-            <span class="g-label">Citadelle de la Côte d'Argent</span>
-            <span class="g-cat">Concept · Architecture</span>
-          </div>
-        </div>
-        <div class="g-item g-bg-5" data-category="characters concept">
-          <span class="g-emoji">💀</span>
-          <div class="g-overlay">
-            <span class="g-label">Le Mage sans nom</span>
-            <span class="g-cat">Personnage · Art</span>
-          </div>
-        </div>
-        <div class="g-item tall g-bg-6" data-category="characters concept">
-          <span class="g-emoji">🌿</span>
-          <div class="g-overlay">
-            <span class="g-label">Lirren-ta-Voa · Portrait</span>
-            <span class="g-cat">Personnage · Art</span>
+            <span class="g-label">L’Éclaireuse</span>
+            <span class="g-cat">Concept · Personnage</span>
           </div>
         </div>
         <div class="g-item g-bg-7" data-category="screenshots">
@@ -407,7 +430,7 @@
     <section class="artbook">
       <div class="artbook-inner">
         <div class="tag">Exclusivité</div>
-        <h2>Artbook d'Aétermur</h2>
+        <h2>Artbook de Terraform</h2>
         <p>
           272 pages de concepts, croquis et contenus exclusifs des coulisses.
           Disponible dans l'édition « Collector ».
@@ -415,23 +438,6 @@
         <a href="Nous Contacter.html" class="btn">Découvrir l'édition</a>
       </div>
     </section>
-
-    <footer>
-      <p>
-        © 2026 Ironveil Studios · <a href="Nous Contacter.html">Contacts</a> ·
-        <a href="#">Politique de confidentialité</a>
-      </p>
-    </footer>
-
-    <script>
-      const btns = document.querySelectorAll('.filter-btn');
-      btns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          btns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-        });
-      });
-    </script>
 
     <footer class="footer">
       <div class="container">
