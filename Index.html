@@ -1,200 +1,386 @@
-<!DOCTYPE html>     
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Terraform</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 
-</head>
+    <style>
+      /* Styles propres à la page d'accueil */
+      .switch {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.8rem 1rem;
+        font-size: 0.85rem;
+      }
+      .switch input {
+        accent-color: var(--gold);
+        width: 1.15rem;
+        height: 1.15rem;
+      }
+      .slider {
+        width: 2rem;
+        height: 1rem;
+        border-radius: 1rem;
+        background: var(--text-muted);
+        position: relative;
+      }
+      .slider::after {
+        content: '';
+        position: absolute;
+        width: 0.75rem;
+        height: 0.75rem;
+        top: 0.125rem;
+        left: 0.125rem;
+        border-radius: 50%;
+        background: white;
+        transition: transform 0.2s;
+      }
+      .switch input:checked + .slider {
+        background: var(--gold);
+      }
+      .switch input:checked + .slider::after {
+        transform: translateX(1rem);
+      }
+      .hero {
+        min-height: 620px;
+        display: grid;
+        place-items: center;
+        padding: 5rem 1.25rem;
+        text-align: center;
+        color: var(--light);
+        background:
+        linear-gradient(
+            0deg,
+            rgba(13, 11, 8, 0.35),
+            rgba(13, 11, 8, 0.12)
+        ),
+        url("images/01-fond-astrolabe.png") center / cover no-repeat;
+}
+          
+      
+      .hero-content {
+        width: min(100%, 900px);
+      }
+      .hero-eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 0.9rem;
+        color: var(--gold-light);
+      }
+      .hero-title {
+        font-size: clamp(2.25rem, 10vw, 7rem);
+        margin: 1rem 0;
+      }
+      .hero-tagline {
+        max-width: 650px;
+        margin: 0 auto 2rem;
+        font-size: 1.25rem;
+      }
+      .hero-btns {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .features,
+      .stats,
+      .new-preview {
+        padding: 5rem 0;
+      }
+      .section-description {
+        max-width: 760px;
+        margin: 0 auto 2.5rem;
+        text-align: center;
+        color: var(--text-muted);
+      }
+      .feature-card {
+        padding: 2rem;
+      }
+      .feature-card .material-symbols-outlined {
+        font-size: 2.5rem;
+        color: var(--gold);
+        margin-bottom: 1.5rem;
+      }
+      .feature-title,
+      .news-title {
+        margin-bottom: 1rem;
+      }
+      .feature-description,
+      .news-excerpt {
+        font-size: 1rem;
+      }
+      .cta-banner,
+      .cta-section {
+        padding: 4rem 0;
+        text-align: center;
+        background: var(--dark-2);
+        color: var(--light);
+      }
+      .cta-title {
+        margin-bottom: 1.5rem;
+      }
+      .cta-section h2 {
+        max-width: 900px;
+        margin: auto;
+        font-size: clamp(1.3rem, 3vw, 2rem);
+      }
+      .cta-section .btn {
+        display: table;
+        margin: 2rem auto 0;
+      }
+      .quote-banner {
+        padding: 5rem max(1.25rem, calc((100% - 850px) / 2));
+        text-align: center;
+        background: var(--light-2);
+      }
+      .quote-banner blockquote {
+        font-style: italic;
+        font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      }
+      .quote-banner cite {
+        display: block;
+        margin-top: 1.5rem;
+        color: var(--text-muted);
+        font-size: 0.95rem;
+      }
+      .stat-card {
+        text-align: center;
+        padding: 1.5rem;
+        border: 1px solid var(--gold-light);
+        border-radius: 8px;
+      }
+      .stat-number {
+        font-size: 3rem;
+        color: var(--gold);
+      }
+      .stat-description {
+        font-size: 1rem;
+      }
+      .new-preview {
+        background: var(--light-2);
+      }
+      .news-date {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-bottom: 1rem;
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
 
+  <body>
+    <!--Barre de navigation-->
 
+    <nav>
+      <a href="Index.html" class="nav-logo">Terraform</a>
+      <!-- Le JavaScript ouvre et ferme ce menu sur mobile. -->
+      <button class="nav-toggle" type="button" aria-label="Ouvrir le menu"
+        aria-controls="navigation-links" aria-expanded="false">
+        <span class="burger-icon" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
+      <ul class="nav-links" id="navigation-links">
+        <li>
+          <a href="Index.html" class="active" aria-current="page">Terraform</a>
+        </li>
+        <li><a href="About.html">Le monde de Terraform</a></li>
+        <li><a href="Gameplay.html">Gameplay</a></li>
+        <li><a href="Configuration requise.html">Configuration requise</a></li>
+        <li><a href="media.html">Galerie</a></li>
+        <li><a href="Boutique.html">Boutique</a></li>
+        <li><a href="Nous Contacter.html">Nous contacter </a></li>
+      </ul>
+    </nav>
 
-<body>
-   
-<nav></nav>
-<a href="index.html" class="nav-logo">Terraform</a>
-<ul class="nav-links">
-    <li><a href="Terraform.html">Terraform</a></li>
-    <li><a href="Monde de Terraform.html">Le monde de Terraform</a></li>
-    <li><a href="Gameplay.html">Gameplay</a></li>
-    <li><a href="Configuration requise.html">Configuration requise</a></li>
-    <li><a href="Media.html">Galerie</a></li>
-    <li><a href="Boutique.html">Boutique</a></li>
-    <li><a href="Nous Contacter.html">Nous contacter </a></li>
-    
+    <label class="switch">
+      boutton on/off audio guide commandes vocales
+      <input type="checkbox" id="toggleSound" />
+      <span class="slider"></span>
+    </label>
 
-</ul> 
-</nav>
+    <label class="switch">
+      boutton theme sombre/clair
+      <input type="checkbox" id="toggleTheme" />
+      <span class="slider"></span>
+    </label>
 
-  <label class="switch">
-     boutton on/off audio guide commandes vocales
-    <input type="checkbox" id="toggleSound">
-    <span class="slider"></span>
-  </label>
-
-
-  <label class="switch">
-    boutton theme sombre/clair 
-   <input type="checkbox" id="toggleTheme">
-   <span class="slider"></span>
- </label>
-
-
-<section class="hero">
-    <div class="hero-content">
-     <p class="hero-eyebrow">Commencez votre aventure avec</p>
-     <h1 class="hero-title">Terraform</h1>
-    <div class="hero-ornament"></div>
-     <p class=" hero-tagline">Un jeu de survie et d'exploration dans un monde fantastique</p>"
-     <div="hero-btns">
-        <a href="Configuration requise.html" class="btn">Voir les exigences système</a>
-        <a href="Demo version.html" class="btn btn-secondary">Télécharger la démo</a>
-
-  </div>
-
-
-  </div>
-
-</section>
-
-<section class="features">
-    <div class="container">
-        <h2 class="section-title">Un univers fantastique à explorer</h2>
-      <div class="divider"></div>
-      <p class="section-description">Découvrez des paysages époustouflants, des créatures mystérieuses et des secrets enfouis dans les profondeurs de ce monde en constante évolution.</p>
-      <div class="grid-3">
-       <div class="card feature-card">
-        <span class="material-symbols-outlined">
-          swords
-          </span>
-        <h3 class="feature-title">Combat dynamique</h3>
-        <p class="feature-description">Affrontez des ennemis redoutables avec un système de combat fluide et stratégique qui mettra à l'épreuve vos compétences de survie.</p>
+    <!--HERO-->
+    <section class="hero">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Commencez votre aventure avec</p>
+        <h1 class="hero-title">Terraform</h1>
+        <div class="hero-ornament"></div>
+        <p class="hero-tagline">
+          Un jeu de survie et d'exploration dans un monde fantastique
+        </p>
+        <div class="hero-btns">
+          <a href="Configuration requise.html" class="btn"
+            >Voir les exigences système</a
+          >
+          <a href="Demo version.html" class="btn btn-secondary"
+            >Télécharger la démo</a
+          >
         </div>
-        
-        <div class="card feature-card">
-            <span class="material-symbols-outlined">
-              explore
-            </span>
-            <h3 class="feature-title">Exploration</h3>
-            <p class="feature-description">Découvrez des lieux mystérieux et inexplorés, chacun avec ses propres défis et récompenses à gagner.</p>
-            </div>
-            
-
-            <div class="card feature-card">
-                <span class="material-symbols-outlined">
-                  book
-                </span>
-                <h3 class="feature-title">Histoire immersive</h3>
-                <p class="feature-description">Plongez dans une narrative riche et captivante, où vos choix auront un impact sur le monde qui vous entoure.</p>
-                </div>   
-
-       </div>
-
       </div>
+    </section>
 
+    <!--features-->
+    <section class="features">
+      <div class="container">
+        <h2 class="section-title">Un univers fantastique à explorer</h2>
+        <div class="divider"></div>
+        <p class="section-description">
+          Découvrez des paysages époustouflants, des créatures mystérieuses et
+          des secrets enfouis dans les profondeurs de ce monde en constante
+          évolution.
+        </p>
+        <div class="grid-3">
+          <div class="card feature-card">
+            <span class="material-symbols-outlined"> swords </span>
+            <h3 class="feature-title">Combat dynamique</h3>
+            <p class="feature-description">
+              Affrontez des ennemis redoutables avec un système de combat fluide
+              et stratégique qui mettra à l'épreuve vos compétences de survie.
+            </p>
+          </div>
 
-<section class="cta-banner">
-    <div class="container">
+          <div class="card feature-card">
+            <span class="material-symbols-outlined"> explore </span>
+            <h3 class="feature-title">Exploration</h3>
+            <p class="feature-description">
+              Découvrez des lieux mystérieux et inexplorés, chacun avec ses
+              propres défis et récompenses à gagner.
+            </p>
+          </div>
+
+          <div class="card feature-card">
+            <span class="material-symbols-outlined"> book </span>
+            <h3 class="feature-title">Histoire immersive</h3>
+            <p class="feature-description">
+              Plongez dans une narrative riche et captivante, où vos choix
+              auront un impact sur le monde qui vous entoure.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-banner">
+      <div class="container">
         <h2 class="cta-title">Prêt à vivre l'aventure de votre vie ?</h2>
-        <a href="Demo version.html" class="btn btn-primary">Télécharger la démo maintenant</a>
-    </div>
+        <a href="Demo version.html" class="btn btn-primary"
+          >Télécharger la démo maintenant</a
+        >
+      </div>
+    </section>
 
+    <section class="quote-banner">
+      <blockquote>
+        Terraform est une expérience de jeu unique qui combine exploration,
+        survie et narration immersive pour créer un monde vivant et dynamique à
+        découvrir. Le jeu est adapté à tous les personnes, ainsi que les joueurs
+        dont l'intégrité physique ou mentale est passagèrement ou définitivement
+        diminuée.
+      </blockquote>
+      <cite>— Équipe de développement de Terraform</cite>
+    </section>
 
-</section>
-
-<section class="quote-banner">
-    <blockquote>
-      Terraform est une expérience de jeu unique qui combine exploration, survie et narration immersive pour créer un monde vivant et dynamique à découvrir.
-      Le jeu est adapté à tous les personnes, ainsi que les joueurs  dont l'intégrité physique ou mentale est passagèrement ou définitivement diminuée.
-    </blockquote>
-    <cite>— Équipe de développement de Terraform</cite>
-        
-
-</section>
-
-<section class="stats">
-<div class="container">
-    <h2 class="section-title">Quelques chiffres sur Terraform</h2>
-    <div class="divider"></div>
-    <div class="grid-4">
-        <div class="stat-card">
+    <!--STATS-->
+    <section class="stats">
+      <div class="container">
+        <h2 class="section-title">Quelques chiffres sur Terraform</h2>
+        <div class="divider"></div>
+        <div class="grid-4">
+          <div class="stat-card">
             <h3 class="stat-number">100+</h3>
             <p class="stat-description">Heures de jeu</p>
-        </div>
-        <div class="stat-card">
+          </div>
+          <div class="stat-card">
             <h3 class="stat-number">50+</h3>
             <p class="stat-description">Créatures uniques</p>
-        </div>
-        <div class="stat-card">
+          </div>
+          <div class="stat-card">
             <h3 class="stat-number">20+</h3>
             <p class="stat-description">Biomes à explorer</p>
-        </div>
-        <div class="stat-card">
+          </div>
+          <div class="stat-card">
             <h3 class="stat-number">10+</h3>
             <p class="stat-description">Quêtes principales</p>
+          </div>
         </div>
+      </div>
+    </section>
 
-    </div>
-
-
-
+    <!--NEWS-->
     <section class="new-preview">
       <div class="container">
-        <h2 class="section-title">Découvrez les nouveautés du derniere mise à jour</h2>
+        <h2 class="section-title">
+          Découvrez les nouveautés du derniere mise à jour
+        </h2>
         <div class="divider"></div>
-        <p class="section-description">La derniere mise à jour apporte de nouvelles fonctionnalités et améliorations pour enrichir votre expérience de jeu </p>
-   
+        <p class="section-description">
+          La derniere mise à jour apporte de nouvelles fonctionnalités et
+          améliorations pour enrichir votre expérience de jeu
+        </p>
+
         <div class="grid-3">
-      <div class="card">
-        <div class="news-date">15 juin 2026</div>
-        <h3 class="news-title"> Un nouveau region ajouté</h3>
-        <p class="news-excerpt">Découvrez les nouveaux endroits magiques de Terraform </p>
-      </div>
+          <div class="card">
+            <div class="news-date">15 juin 2026</div>
+            <h3 class="news-title">Un nouveau region ajouté</h3>
+            <p class="news-excerpt">
+              Découvrez les nouveaux endroits magiques de Terraform
+            </p>
+          </div>
 
-      <div class="card">
-        <div class="news-date">15 juillet 2026</div>
-        <h3 class="news-title">Mise à jour des compétences</h3>
-        <p class="news-excerpt">Découvrez les nouvelles compétences disponibles dans la dernière mise à jour de Terraform </p>
-      </div>
+          <div class="card">
+            <div class="news-date">15 juillet 2026</div>
+            <h3 class="news-title">Mise à jour des compétences</h3>
+            <p class="news-excerpt">
+              Découvrez les nouvelles compétences disponibles dans la dernière
+              mise à jour de Terraform
+            </p>
+          </div>
 
-
-      <div class="card">
-        <div class="news-date">17 juillet 2026</div>
-        <h3 class="news-title"> Un nouveau personnage : Dark Elf</h3>
-        <p class="news-excerpt">Découvrez le nouveau personnage Dark Elf et ses compétences uniques</p>
-      </div>
-
-
+          <div class="card">
+            <div class="news-date">17 juillet 2026</div>
+            <h3 class="news-title">Un nouveau personnage : Dark Elf</h3>
+            <p class="news-excerpt">
+              Découvrez le nouveau personnage Dark Elf et ses compétences
+              uniques
+            </p>
+          </div>
         </div>
+      </div>
+    </section>
 
-        </div>
-      
-<section class="cta-section">
-  <div class="container">
-    <h2>
-      Préparez-vous à vivre une aventure inoubliale avec Terraform- Telecharger le jeu dés maintenant et plonge dans un monde fantastique
-      <a href="boutique.html" class="btn"> Acheter le jeu</a>
-    </h2>
-  </div>
-</section>
+    <section class="cta-section">
+      <div class="container">
+        <h2>
+          Préparez-vous à vivre une aventure inoubliale avec Terraform-
+          Telecharger le jeu dés maintenant et plonge dans un monde fantastique
+          <a href="Boutique.html" class="btn"> Acheter le jeu</a>
+        </h2>
+      </div>
+    </section>
 
-<footer class="footer">
-  <div class="container">
-    <p>&copy; 2026 Terraform. Tous droits réservés.</p>
-    <ul class="social-links">
-      <li><a href="#">Facebook</a></li>
-      <li><a href="#">Twitter</a></li>
-      <li><a href="#">Instagram</a></li>
-    </ul>
-  </div>
-
-
-</section>
-
-
-</body>  
-
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2026 Terraform. Tous droits réservés.</p>
+        <ul class="social-links">
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="Nous Contacter.html">Contact </a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
 </html>

@@ -1,81 +1,449 @@
-<!DOCTYPE html>     
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Terraform</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 
-</head>
+    <style>
+      /* Styles propres à la galerie */
+      .filter-bar {
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--gold-light);
+      }
+      .filter-inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.7rem;
+      }
+      .filter-btn {
+        padding: 0.65rem 1rem;
+        border: 1px solid var(--gold);
+        border-radius: 4px;
+        background: transparent;
+        font: inherit;
+        font-size: 0.9rem;
+        color: var(--text-dark);
+        cursor: pointer;
+      }
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: var(--dark-2);
+        color: var(--gold-light);
+      }
+      .gallery-grid {
+        max-width: 1200px;
+        padding: 3rem 2rem;
+        margin: auto;
+      }
+      .g-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-auto-rows: 230px;
+        gap: 1rem;
+      }
+      .g-item {
+        position: relative;
+        display: grid;
+        place-items: center;
+        border-radius: 8px;
+        border: 1px solid #c9b56e66;
+        overflow: hidden;
+        color: var(--light);
+      }
+      .g-item.tall {
+        grid-row: span 2;
+      }
+      .g-item.wide {
+        grid-column: span 2;
+      }
+      .g-emoji,
+      .g-item > .material-symbols-outlined {
+        font-size: 4.5rem;
+        margin-bottom: 3rem;
+        transition: transform 0.25s;
+      }
+      .g-item:hover .g-emoji {
+        transform: scale(1.08);
+      }
+      .g-overlay {
+        position: absolute;
+        inset: auto 0 0;
+        padding: 2.5rem 1.25rem 1.25rem;
+        background: linear-gradient(transparent, #0d0b08ed);
+      }
+      .g-label,
+      .g-cat {
+        display: block;
+      }
+      .g-label {
+        font-family: var(--font-head);
+        line-height: 1.3;
+        font-size: 1.2rem;
+      }
+      .g-cat {
+        font-size: 0.8rem;
+        color: var(--gold-light);
+        margin-top: 0.5rem;
+      }
+      .g-bg-1 {
+        background: radial-gradient(ellipse at top, #536c44, #18251a);
+      }
+      .g-bg-2 {
+        background: radial-gradient(ellipse at top, #665b80, #272032);
+      }
+      .g-bg-3 {
+        background: linear-gradient(145deg, #b4844b, #51332b);
+      }
+      .g-bg-4 {
+        background:
+          linear-gradient(#0d0b0833, #0d0b0866),
+          url('images/castle.png') center / cover;
+      }
+      .g-bg-5 {
+        background: radial-gradient(ellipse at top, #63555b, #211c24);
+      }
+      .g-bg-6 {
+        background: radial-gradient(ellipse at top, #6a7850, #223d2c);
+      }
+      .g-bg-7 {
+        background: linear-gradient(145deg, #775748, #28242a);
+      }
+      .g-bg-8 {
+        background: radial-gradient(ellipse at top, #5a5377, #151321);
+      }
+      .video-section,
+      .sound-section {
+        padding: 5rem 0;
+      }
+      .video-section {
+        background: var(--light-2);
+      }
+      .video-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 1rem;
+      }
+      .video-side {
+        display: grid;
+        gap: 1rem;
+      }
+      .video-thumb {
+        position: relative;
+        display: grid;
+        place-items: center;
+        min-height: 190px;
+        border: 1px solid var(--gold);
+        border-radius: 8px;
+        background: radial-gradient(ellipse, var(--mid), var(--dark-2));
+        color: var(--light);
+        padding: 4rem 1rem;
+      }
+      .video-grid > .video-thumb {
+        min-height: 400px;
+      }
+      .play-icon {
+        font-size: 2rem;
+        color: var(--gold-light);
+      }
+      .video-label {
+        position: absolute;
+        bottom: 1rem;
+        left: 1rem;
+        right: 1rem;
+        font-size: 0.85rem;
+      }
+      .track {
+        display: grid;
+        grid-template-columns: 2rem 2rem minmax(0, 1fr) auto;
+        gap: 1rem;
+        align-items: center;
+        max-width: 850px;
+        margin: auto;
+        padding: 1.25rem 0.75rem;
+        border-bottom: 1px solid #cfc4a5;
+      }
+      .track-num,
+      .track-composer,
+      .track-dur {
+        color: var(--text-muted);
+        font-size: 0.85rem;
+      }
+      .track-play {
+        color: var(--gold);
+      }
+      .track-name {
+        font-family: var(--font-head);
+        font-size: 1.15rem;
+      }
+      .artbook {
+        background: var(--dark-2);
+        color: var(--light);
+        padding: 4rem 1.25rem;
+        text-align: center;
+      }
+      .artbook-inner {
+        max-width: 720px;
+        margin: auto;
+      }
+      .artbook h2 {
+        margin: 1rem 0;
+      }
+      .artbook p {
+        margin-bottom: 2rem;
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
 
-
-
-<body>
-   
-<nav> 
-<a href="index.html" class="nav-logo">Terraform</a>
-<ul class="nav-links">
-    <li><a href="Index.html">Terraform</a></li>
-    <li><a href="Monde de Terraform.html">Le monde de Terraform</a></li>
-    <li><a href="Gameplay.html">Gameplay</a></li>
-    <li><a href="Configuration requise.html">Configuration requise</a></li>
-    <li><a href="Media.html">Galerie</a></li>
-    <li><a href="Boutique.html">Boutique</a></li>
-    <li><a href="Nous Contacter.html">Nous contacter </a></li>
-    
-
-</ul> 
-
-</nav>
-
-
-
-
-
-<header class="page-header">
-    <div class="tag">Le monde de Terraform</div>
-    <h1>Galerie</h1>
-    <p>Screens et OST</p>
-  </header>
-  
-
-  <div class="filter-bar">
-    <div class="filter-inner">
-      <button class="filter-btn active">Tout</button>
-      <button class="filter-btn">Concept Art</button>
-      <button class="filter-btn">Screenshots</button>
-      <button class="filter-btn">Personnages</button>
-      <button class="filter-btn">Locations</button>
-    </div>
-  </div>
-
-  <section class="gallery-grid"> 
-  <div class="g-grid">
-    <div class="g-item tall g-bg-1">
-      <span class="material-symbols-outlined">
-        forest
+  <body>
+    <nav>
+      <a href="Index.html" class="nav-logo">Terraform</a>
+      <!-- Le JavaScript ouvre et ferme ce menu sur mobile. -->
+      <button class="nav-toggle" type="button" aria-label="Ouvrir le menu"
+        aria-controls="navigation-links" aria-expanded="false">
+        <span class="burger-icon" aria-hidden="true">
+          <span></span><span></span><span></span>
         </span>
-      <div class="g-overlay">
-        <span class="g-label">Forest of Elion</span>
-        <span class="g-cat">Concept · Location</span>
+      </button>
+      <ul class="nav-links" id="navigation-links">
+        <li><a href="Index.html">Terraform</a></li>
+        <li><a href="About.html">Le monde de Terraform</a></li>
+        <li><a href="Gameplay.html">Gameplay</a></li>
+        <li><a href="Configuration requise.html">Configuration requise</a></li>
+        <li>
+          <a href="media.html" class="active" aria-current="page">Galerie</a>
+        </li>
+        <li><a href="Boutique.html">Boutique</a></li>
+        <li><a href="Nous Contacter.html">Nous contacter </a></li>
+      </ul>
+    </nav>
+
+    <header class="page-header">
+      <div class="tag">Le monde de Terraform</div>
+      <h1>Galerie</h1>
+      <p>Screens et OST</p>
+    </header>
+
+    <div class="filter-bar">
+      <div class="filter-inner">
+        <button class="filter-btn active" data-filter="all">Tout</button>
+        <button class="filter-btn" data-filter="concept">Concept Art</button>
+        <button class="filter-btn" data-filter="screenshots">
+          Screenshots
+        </button>
+        <button class="filter-btn" data-filter="characters">Personnages</button>
+        <button class="filter-btn" data-filter="locations">Locations</button>
       </div>
     </div>
 
+    <section class="gallery-grid">
+      <div class="g-grid">
+        <div class="g-item tall g-bg-1" data-category="concept locations">
+          <span class="material-symbols-outlined"> forest </span>
+          <div class="g-overlay">
+            <span class="g-label">Forest of Elion</span>
+            <span class="g-cat">Concept · Location</span>
+          </div>
+        </div>
 
+        <!-- GRILLE DE GALERIE -->
+        <div class="g-item tall g-bg-1" data-category="concept locations">
+          <span class="g-emoji">🌲</span>
+          <div class="g-overlay">
+            <span class="g-label">Forêt éternelle d'Ellion</span>
+            <span class="g-cat">Concept · Lieu</span>
+          </div>
+        </div>
+        <div class="g-item g-bg-2" data-category="characters concept">
+          <span class="g-emoji">🧙</span>
+          <div class="g-overlay">
+            <span class="g-label">Oriènne la Dédoublée</span>
+            <span class="g-cat">Personnage · Art</span>
+          </div>
+        </div>
+        <div class="g-item g-bg-3" data-category="screenshots locations">
+          <span class="g-emoji">🏜️</span>
+          <div class="g-overlay">
+            <span class="g-label"
+              >Terres désolées d'Ashara · Coucher de soleil</span
+            >
+            <span class="g-cat">Capture d'écran · Environnement</span>
+          </div>
+        </div>
+        <div class="g-item wide g-bg-4" data-category="concept locations">
+          <span class="g-emoji">🏰</span>
+          <div class="g-overlay">
+            <span class="g-label">Citadelle de la Côte d'Argent</span>
+            <span class="g-cat">Concept · Architecture</span>
+          </div>
+        </div>
+        <div class="g-item g-bg-5" data-category="characters concept">
+          <span class="g-emoji">💀</span>
+          <div class="g-overlay">
+            <span class="g-label">Le Mage sans nom</span>
+            <span class="g-cat">Personnage · Art</span>
+          </div>
+        </div>
+        <div class="g-item tall g-bg-6" data-category="characters concept">
+          <span class="g-emoji">🌿</span>
+          <div class="g-overlay">
+            <span class="g-label">Lirren-ta-Voa · Portrait</span>
+            <span class="g-cat">Personnage · Art</span>
+          </div>
+        </div>
+        <div class="g-item g-bg-7" data-category="screenshots">
+          <span class="g-emoji">⚔️</span>
+          <div class="g-overlay">
+            <span class="g-label">Combat contre le dragon de pierre</span>
+            <span class="g-cat">Capture d'écran · Gameplay</span>
+          </div>
+        </div>
+        <div class="g-item wide g-bg-8" data-category="concept locations">
+          <span class="g-emoji">🌑</span>
+          <div class="g-overlay">
+            <span class="g-label">Faille du Néant · Zone finale</span>
+            <span class="g-cat">Concept · Lieu</span>
+          </div>
+        </div>
+        <div class="g-item g-bg-2" data-category="characters concept">
+          <span class="g-emoji">🏹</span>
+          <div class="g-overlay">
+            <span class="g-label">Eïra Lunenott</span>
+            <span class="g-cat">Personnage · Art</span>
+          </div>
+        </div>
+      </div>
+      <p class="filter-status" id="gallery-status" role="status"></p>
+    </section>
 
+    <!-- VIDÉO -->
+    <section class="video-section">
+      <div class="container">
+        <h2 class="section-title">Vidéos</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">Bandes-annonces et vidéos de gameplay</p>
+        <div class="video-grid">
+          <div class="video-thumb">
+            <div class="play-icon">▶</div>
+            <div class="video-label">Bande-annonce officielle · 2:45</div>
+          </div>
+          <div class="video-side">
+            <div class="video-thumb">
+              <div class="play-icon">▶</div>
+              <div class="video-label">Gameplay · 8:32</div>
+            </div>
+            <div class="video-thumb">
+              <div class="play-icon">▶</div>
+              <div class="video-label">Histoire du monde · 5:10</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- BANDE-SON -->
+    <section class="sound-section">
+      <div class="container">
+        <h2 class="section-title">Bande-son</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">Musique d'Irila Vant pour Aétermur</p>
+        <div class="tracks">
+          <div class="track">
+            <span class="track-num">01</span>
+            <div class="track-play">▶</div>
+            <div class="track-info">
+              <div class="track-name">Éveil dans les ruines</div>
+              <div class="track-composer">Irila Vant · Thème principal</div>
+            </div>
+            <span class="track-dur">4:12</span>
+          </div>
+          <div class="track">
+            <span class="track-num">02</span>
+            <div class="track-play">▶</div>
+            <div class="track-info">
+              <div class="track-name">La forêt éternelle</div>
+              <div class="track-composer">Irila Vant · Ambiance</div>
+            </div>
+            <span class="track-dur">6:38</span>
+          </div>
+          <div class="track">
+            <span class="track-num">03</span>
+            <div class="track-play">▶</div>
+            <div class="track-info">
+              <div class="track-name">La bataille pour la Pierre du Cœur</div>
+              <div class="track-composer">Irila Vant · Combat</div>
+            </div>
+            <span class="track-dur">3:55</span>
+          </div>
+          <div class="track">
+            <span class="track-num">04</span>
+            <div class="track-play">▶</div>
+            <div class="track-info">
+              <div class="track-name">La voix du Néant</div>
+              <div class="track-composer">Irila Vant · Ambiance</div>
+            </div>
+            <span class="track-dur">7:22</span>
+          </div>
+          <div class="track">
+            <span class="track-num">05</span>
+            <div class="track-play">▶</div>
+            <div class="track-info">
+              <div class="track-name">La fin et le commencement</div>
+              <div class="track-composer">Irila Vant · Thème final</div>
+            </div>
+            <span class="track-dur">5:48</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  
-  <footer>
-    <p>© 2026 Terraform Studios · <a href="Nous Contacter.html">Contact</a> · <a href="#">Privacy Policy</a></p>
-  </footer>
+    <!-- ARTBOOK -->
+    <section class="artbook">
+      <div class="artbook-inner">
+        <div class="tag">Exclusivité</div>
+        <h2>Artbook d'Aétermur</h2>
+        <p>
+          272 pages de concepts, croquis et contenus exclusifs des coulisses.
+          Disponible dans l'édition « Collector ».
+        </p>
+        <a href="Nous Contacter.html" class="btn">Découvrir l'édition</a>
+      </div>
+    </section>
 
+    <footer>
+      <p>
+        © 2026 Ironveil Studios · <a href="Nous Contacter.html">Contacts</a> ·
+        <a href="#">Politique de confidentialité</a>
+      </p>
+    </footer>
 
+    <script>
+      const btns = document.querySelectorAll('.filter-btn');
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          btns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+        });
+      });
+    </script>
 
-
-
-
-</body>
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2026 Terraform. Tous droits réservés.</p>
+        <ul class="social-links">
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="Nous Contacter.html">Contact </a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
 </html>

@@ -1,75 +1,500 @@
-<!DOCTYPE html>     
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Terraform</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 
-</head>
+    <style>
+      /* Styles propres au gameplay */
+      .mechanics {
+        max-width: 1200px;
+        margin: auto;
+        padding: 4rem 2rem;
+      }
+      .mechanic-row {
+        display: grid;
+        grid-template-columns: 1fr 1.3fr;
+        gap: 3rem;
+        align-items: center;
+        padding: 2rem 0 4rem;
+      }
+      .mechanic-row.reverse {
+        grid-template-columns: 1.3fr 1fr;
+      }
+      .mechanic-row.reverse .mechanic-visual {
+        order: 2;
+      }
+      .mechanic-image,
+      .mechanic-visual {
+        min-height: 320px;
+        display: grid;
+        place-items: center;
+        font-size: 5rem;
+        border: 1px solid var(--gold);
+        border-radius: 8px;
+        background: radial-gradient(ellipse, var(--mid), var(--dark-2));
+      }
+      .mechanic-image {
+        background:
+          linear-gradient(0deg, rgba(13, 11, 8, 0.5), rgba(13, 11, 8, 0.2)),
+          url('images/castle.png') center / cover;
+      }
+      .mechanic-image .material-symbols-outlined {
+        font-size: 5rem;
+        color: var(--gold-light);
+      }
+      .mechanic-text h2 {
+        margin: 0.5rem 0 1.5rem;
+      }
+      .mechanic-text p,
+      .mechanic-text li {
+        font-size: 1rem;
+      }
+      .mechanic-text p + p {
+        margin-top: 1rem;
+      }
+      .mechanic-text ul {
+        padding-left: 1.25rem;
+        margin-top: 1rem;
+      }
+      .mechanic-text li::marker {
+        color: var(--gold);
+      }
+      .classes-section,
+      .progression,
+      .systems {
+        padding: 5rem 0;
+      }
+      .classes-section,
+      .systems {
+        background: var(--light-2);
+      }
+      .class-card {
+        padding: 2rem;
+      }
+      .class-icon {
+        font-size: 3rem;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      .class-name {
+        font-family: var(--font-head);
+        font-size: 1.4rem;
+        text-align: center;
+        line-height: 1.3;
+      }
+      .class-role {
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        text-align: center;
+        margin: 0.75rem 0 2rem;
+      }
+      .stat-bar-label {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.85rem;
+        margin-top: 0.8rem;
+      }
+      .stat-bar {
+        height: 6px;
+        margin-top: 0.4rem;
+        background: #d8d0be;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .stat-bar-fill {
+        height: 100%;
+        background: var(--gold);
+      }
+      .stat-bar-fill--90 {
+        width: 90%;
+      }
+      .stat-bar-fill--30 {
+        width: 30%;
+      }
+      .stat-bar-fill--50 {
+        width: 50%;
+      }
+      .stat-bar-fill--60 {
+        width: 60%;
+      }
+      .class-desc {
+        margin-top: 1.5rem;
+        font-size: 0.95rem;
+      }
+      .prog-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 2rem;
+      }
+      .prog-number {
+        font-family: var(--font-head);
+        font-size: 3rem;
+        color: var(--gold);
+        border-bottom: 1px solid var(--gold-light);
+        margin-bottom: 1.5rem;
+      }
+      .prog-step h3 {
+        margin-bottom: 1rem;
+      }
+      .prog-step p {
+        font-size: 1rem;
+      }
+      .sys-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+        text-align: left;
+      }
+      .sys-table th {
+        background: var(--dark-2);
+        color: var(--gold-light);
+      }
+      .sys-table th,
+      .sys-table td {
+        padding: 1rem;
+        border-bottom: 1px solid #cfc4a5;
+      }
+      .sys-table tbody tr:nth-child(even) {
+        background: var(--light);
+      }
+      .badge {
+        display: inline-block;
+        padding: 0.25rem 0.6rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+      }
+      .badge-classic {
+        background: #ded5bf;
+        color: var(--text-dark);
+      }
+      .badge-new {
+        background: #d9e4ce;
+        color: #304329;
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
 
+  <body>
+    <nav>
+      <a href="Index.html" class="nav-logo">Terraform</a>
+      <!-- Le JavaScript ouvre et ferme ce menu sur mobile. -->
+      <button class="nav-toggle" type="button" aria-label="Ouvrir le menu"
+        aria-controls="navigation-links" aria-expanded="false">
+        <span class="burger-icon" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
+      <ul class="nav-links" id="navigation-links">
+        <li><a href="Index.html">Terraform</a></li>
+        <li><a href="About.html">Le monde de Terraform</a></li>
+        <li>
+          <a href="Gameplay.html" class="active" aria-current="page"
+            >Gameplay</a
+          >
+        </li>
+        <li><a href="Configuration requise.html">Configuration requise</a></li>
+        <li><a href="media.html">Galerie</a></li>
+        <li><a href="Boutique.html">Boutique</a></li>
+        <li><a href="Nous Contacter.html">Nous contacter </a></li>
+      </ul>
+    </nav>
 
+    <header class="page-header">
+      <div class="tag">Systèmes et mécaniques</div>
+      <h1>Gameplay</h1>
+      <p>Comment se déroule l'aventure dans Aethermure</p>
+    </header>
 
-<body>
-   
-<nav> 
-<a href="index.html" class="nav-logo">Terraform</a>
-<ul class="nav-links">
-    <li><a href="Index.html">Terraform</a></li>
-    <li><a href="Monde de Terraform.html">Le monde de Terraform</a></li>
-    <li><a href="Gameplay.html">Gameplay</a></li>
-    <li><a href="Configuration requise.html">Configuration requise</a></li>
-    <li><a href="Media.html">Galerie</a></li>
-    <li><a href="Boutique.html">Boutique</a></li>
-    <li><a href="Nous Contacter.html">Nous contacter </a></li>
-    
-
-</ul> 
-
-</nav>
-
-
-
-<header class="page-header">
-    <div class="tag">Systèmes et mécaniques</div>
-    <h1>Gameplay</h1>
-    <p>Comment se déroule l'aventure dans Aethermure</p>
-  </header>
-
-
-  <section class="mechanics">
-    <div class="mechanic-row">
+    <section class="mechanics">
+      <div class="mechanic-row">
         <div class="mechanic-image">
-            <span class="material-symbols-outlined">
-            castle
-            </span>
-      <div class="mechanic-text">
-        <div class="tag">Système de combat</div>
-        <h2>Magie et acier en harmonie</h2>
-        <p>Combat en temps réel avec la possibilité de mise en pause tactique. Chaque ennemi a des vulnérabilités face à certaines éléments et types d'attaque.</p>
-        <p>Combinez armes, runes et sorts pour créer des combinaisons uniques. Le système de positionnement vous permet d'utiliser le relief en votre faveur.</p>
-        <ul>
-          <li>8 éléments magiques avec des effets d'interaction</li>
-          <li>Système de runes — plus de 150 modificateurs actifs</li>
-          <li>Pause tactique avec carte des priorités</li>
-          <li>Positions de combat et abris influencent les dégâts</li>
+          <span class="material-symbols-outlined"> castle </span>
+        </div>
+        <div class="mechanic-text">
+          <div class="tag">Système de combat</div>
+          <h2>Magie et acier en harmonie</h2>
+          <p>
+            Combat en temps réel avec la possibilité de mise en pause tactique.
+            Chaque ennemi a des vulnérabilités face à certaines éléments et
+            types d'attaque.
+          </p>
+          <p>
+            Combinez armes, runes et sorts pour créer des combinaisons uniques.
+            Le système de positionnement vous permet d'utiliser le relief en
+            votre faveur.
+          </p>
+          <ul>
+            <li>8 éléments magiques avec des effets d'interaction</li>
+            <li>Système de runes — plus de 150 modificateurs actifs</li>
+            <li>Pause tactique avec carte des priorités</li>
+            <li>Positions de combat et abris influencent les dégâts</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mechanic-row reverse">
+        <div class="mechanic-visual">🗺️</div>
+        <div class="mechanic-text">
+          <div class="tag">Exploration</div>
+          <h2>Un monde sans frontières</h2>
+          <p>
+            Aétermur est un monde entièrement ouvert, sans zones de chargement.
+            Chaque grotte, tour et village cache ses propres secrets et ses
+            propres séries de quêtes.
+          </p>
+          <p>
+            La météo, l'heure de la journée et vos actions influencent le
+            comportement des PNJ et la disponibilité des événements. Le monde
+            vit selon ses propres lois, indépendamment de votre présence.
+          </p>
+          <ul>
+            <li>47 lieux uniques sans écrans de chargement</li>
+            <li>Cycle dynamique du jour et de la nuit</li>
+            <li>Événements procéduraux sur les routes</li>
+            <li>Zones secrètes nécessitant des capacités spéciales</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mechanic-row">
+        <div class="mechanic-visual">💬</div>
+        <div class="mechanic-text">
+          <div class="tag">Dialogues et choix</div>
+          <h2>Les mots changent l'histoire</h2>
+          <p>
+            Un système de dialogue avancé avec un système de réputation. Chaque
+            faction garde une trace de vos actions, ce qui détermine ce qui vous
+            est accessible.
+          </p>
+          <p>
+            Certaines décisions sont irréversibles. Les personnages se
+            souviennent de vos promesses — et de vos trahisons.
+          </p>
+          <ul>
+            <li>Plus de 40 000 lignes de dialogue</li>
+            <li>8 factions avec un système de réputation indépendant</li>
+            <li>Des choix aux conséquences à long terme</li>
+            <li>Un système moral sans jugement</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLASSES -->
+    <section class="classes-section">
+      <div class="container">
+        <h2 class="section-title">Classes de personnages</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">Choisissez votre voie à Aétermur</p>
+        <div class="grid-3">
+          <div class="card class-card">
+            <div class="class-icon">🗡️</div>
+            <div class="class-name">Chevalier du Voile</div>
+            <div class="class-role">Défenseur · Combat rapproché</div>
+            <div class="stat-bar-label">
+              <span>Force</span><span>9/10</span>
+            </div>
+            <div class="stat-bar">
+              <div class="stat-bar-fill stat-bar-fill--90"></div>
+            </div>
+            <div class="stat-bar-label">
+              <span>Magie</span><span>3/10</span>
+            </div>
+            <div class="stat-bar">
+              <div class="stat-bar-fill stat-bar-fill--30"></div>
+            </div>
+            <div class="stat-bar-label">
+              <span>Vitesse</span><span>5/10</span>
+            </div>
+            <div class="stat-bar">
+              <div class="stat-bar-fill stat-bar-fill--50"></div>
+            </div>
+            <p class="class-desc">
+              Maître des armures et des armes lourdes. Capable d'absorber le
+              mana des ennemis lorsqu'il bloque leurs attaques.
+            </p>
+          </div>
+
+          <div class="card class-card">
+            <div class="class-icon">🌿</div>
+            <div class="class-name">Sorcière des Racines</div>
+            <div class="class-role">Soigneuse · Magie naturelle</div>
+            <div class="stat-bar-label">
+              <span>Force</span><span>3/10</span>
+            </div>
+            <div class="stat-bar">
+              <div class="stat-bar-fill stat-bar-fill--30"></div>
+            </div>
+            <div class="stat-bar-label">
+              <span>Magie</span><span>9/10</span>
+            </div>
+            <div class="stat-bar">
+              <div class="stat-bar-fill stat-bar-fill--90"></div>
+            </div>
+            <div class="stat-bar-label">
+              <span>Vitesse</span><span>6/10</span>
+            </div>
+            <div class="stat-bar">
+              <div class="stat-bar-fill stat-bar-fill--60"></div>
+            </div>
+            <p class="class-desc">
+              Maîtrise les forces de la nature et invoque les esprits de la
+              forêt. Indispensable pour soigner le groupe.
+            </p>
+          </div>
+
+          <div class="card class-card">
+            <div class="class-icon">🗺️</div>
+            <div class="class-name">Nomade des Terres Désolées</div>
+            <div class="class-role">Éclaireur · Combat à distance</div>
+            <div class="stat-bar-label">
+              <span>Force</span><span>6/10</span>
+            </div>
+            <div class="stat-bar">
+              <div class="stat-bar-fill stat-bar-fill--60"></div>
+            </div>
+            <div class="stat-bar-label">
+              <span>Magie</span><span>5/10</span>
+            </div>
+            <div class="stat-bar">
+              <div class="stat-bar-fill stat-bar-fill--50"></div>
+            </div>
+            <div class="stat-bar-label">
+              <span>Vitesse</span><span>9/10</span>
+            </div>
+            <div class="stat-bar">
+              <div class="stat-bar-fill stat-bar-fill--90"></div>
+            </div>
+            <p class="class-desc">
+              Rapide et insaisissable. Maître des pièges et des poisons. Il
+              connaît la carte d'Aétermur mieux que quiconque.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRESSION -->
+    <section class="progression">
+      <div class="container">
+        <h2 class="section-title">Système de progression</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">
+          Quatre voies pour faire progresser votre héros
+        </p>
+        <div class="prog-grid">
+          <div class="prog-step">
+            <div class="prog-number">01</div>
+            <h3>Niveaux</h3>
+            <p>
+              Une progression classique basée sur l'expérience. Tous les 5
+              niveaux, une nouvelle branche de compétences est débloquée.
+            </p>
+          </div>
+          <div class="prog-step">
+            <div class="prog-number">02</div>
+            <h3>Runes</h3>
+            <p>
+              Insérez des runes dans votre équipement et combinez leurs effets
+              pour créer un style de combat unique.
+            </p>
+          </div>
+          <div class="prog-step">
+            <div class="prog-number">03</div>
+            <h3>Héritage</h3>
+            <p>
+              Des compétences spéciales liées à la lignée de votre personnage.
+              Elles sont débloquées au cours de l'histoire principale.
+            </p>
+          </div>
+          <div class="prog-step">
+            <div class="prog-number">04</div>
+            <h3>Réputation</h3>
+            <p>
+              Les relations avec les factions offrent des bonus passifs et
+              donnent accès à des compétences exclusives.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SYSTEMS TABLE -->
+    <section class="systems">
+      <div class="container">
+        <h2 class="section-title">Tous les systèmes de jeu</h2>
+        <div class="divider"></div>
+        <table class="sys-table">
+          <thead>
+            <tr>
+              <th>Système</th>
+              <th>Description</th>
+              <th>Statut</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Artisanat</td>
+              <td>
+                Création d'armes, d'armures et de potions à partir des
+                ressources récoltées
+              </td>
+              <td><span class="badge badge-classic">Classique</span></td>
+            </tr>
+            <tr>
+              <td>Alchimie</td>
+              <td>Modèle physique amélioré pour la préparation des potions</td>
+              <td><span class="badge badge-new">Mis à jour</span></td>
+            </tr>
+            <tr>
+              <td>Compagnons</td>
+              <td>
+                Jusqu'à 3 compagnons avec leurs propres histoires et leur propre
+                progression
+              </td>
+              <td><span class="badge badge-classic">Classique</span></td>
+            </tr>
+            <tr>
+              <td>Domaine</td>
+              <td>Construction et gestion de votre propre base</td>
+              <td><span class="badge badge-new">Nouveauté</span></td>
+            </tr>
+            <tr>
+              <td>Chasse aux reliques</td>
+              <td>
+                Recherche des artefacts des Fondateurs avec des histoires
+                cachées
+              </td>
+              <td><span class="badge badge-new">Nouveauté</span></td>
+            </tr>
+            <tr>
+              <td>Arène des Jugements</td>
+              <td>Mode de combat optionnel avec des vagues d'ennemis</td>
+              <td><span class="badge badge-classic">Classique</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2026 Terraform. Tous droits réservés.</p>
+        <ul class="social-links">
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="Nous Contacter.html">Contact </a></li>
+          <li><a href="#">Privacy Policy</a></li>
         </ul>
       </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-</body>
-
+    </footer>
+  </body>
 </html>
