@@ -1,8 +1,9 @@
 import express from 'express';
 import db from '../config/db.js';
 import authRequired from '../middleware/auth.js';
-import adminrequired  from '../middleware/admin.js';
+
 import adminRequired from '../middleware/admin.js';
+
 const router = express.Router();
 
 // GET /characters

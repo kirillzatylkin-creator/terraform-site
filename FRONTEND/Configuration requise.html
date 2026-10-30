@@ -4,74 +4,71 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Configuration requise - Terraform</title>
-<meta
+    <meta
       name="description"
       content="Vérifiez la configuration requise pour jouer à Terraform sur PC et consoles." />
-
 
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-
+      <link rel="stylesheet" href="style.css" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Crete+Round:ital@0;1&family=Marcellus&display=swap" />
     <style>
-      .compare-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 1rem;
+      .platforms-section,
+      .requirements-section {
+        padding: 5rem 0;
       }
-      .compare-table th,
-      .compare-table td {
-        border: 1px solid #ccc;
-        padding: 0.5rem;
-        text-align: center;
-      }
-      .featured {
-        background-color: #f0f0f0;
-      }
-      .featured-col {
-        background-color: #f9f9f9;
+
+      /*  RESPONSIVE (Configuration requise)  */
+      @media (max-width: 768px) {
+        .platforms-section,
+        .requirements-section {
+          padding-block: 3rem;
+        }
       }
     </style>
 
-    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
 
   <body>
+
+    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
     <nav>
-      <a href="index.html" class="nav-logo">Terraform</a>
+      <a href="Index.html" class="nav-logo">Terraform</a>
 
-      <button 
-      
-    class="nav-toggle"
-    type="button"
-    aria-label="Ouvrir le menu"
-    aria-controls="navigation-links"
-    aria-expanded="false">
-  <span class="burger-icon" aria-hidden="true">
-  <span></span>
-  <span></span>
-  <span></span>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Ouvrir le menu"
+        aria-controls="navigation-links"
+        aria-expanded="false">
+        <span class="burger-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
 
-  </span></button>
-
-
-
-
-
-      <ul class="nav-links">
+      <ul class="nav-links" id="navigation-links">
         <li><a href="Index.html">Terraform</a></li>
         <li><a href="About.html">Le monde de Terraform</a></li>
         <li><a href="Gameplay.html">Gameplay</a></li>
-        <li><a href="Configuration requise.html">Configuration requise</a></li>
-        <li><a href="Media.html">Galerie</a></li>
+        <li><a href="Configuration requise.html" class="active" aria-current="page">Configuration requise</a></li>
+        <li><a href="media.html">Galerie</a></li>
         <li><a href="Boutique.html">Boutique</a></li>
-        <li><a href="Nous Contacter.html">Nous contacter </a></li>
+        <li><a href="Nous Contacter.html">Nous contacter</a></li>
       </ul>
     </nav>
 
     <!--Page Header-->
 
+
+    <main id="main-content" tabindex="-1">
     <header class="page-header">
       <div class="tag">Avant de commencer l'aventure</div>
       <h1>Configuration requise</h1>
@@ -90,7 +87,7 @@
         </p>
         <div class="grid-3">
           <div class="card feature-card">
-            <span class="material-symbols-outlined"> computer </span>
+            <span class="material-symbols-outlined" aria-hidden="true">computer</span>
             <h3 class="feature-title">PC (Windows)</h3>
             <p class="feature-description">
               Disponible sur Steam et sur la boutique officielle de Terraform,
@@ -99,7 +96,7 @@
           </div>
 
           <div class="card feature-card">
-            <span class="material-symbols-outlined"> stadia_controller </span>
+            <span class="material-symbols-outlined" aria-hidden="true">stadia_controller</span>
             <h3 class="feature-title">PlayStation 5</h3>
             <p class="feature-description">
               Version optimisée pour le SSD ultra-rapide, avec support de la
@@ -108,7 +105,7 @@
           </div>
 
           <div class="card feature-card">
-            <span class="material-symbols-outlined"> sports_esports </span>
+            <span class="material-symbols-outlined" aria-hidden="true">sports_esports</span>
             <h3 class="feature-title">Xbox Series X|S</h3>
             <p class="feature-description">
               Compatible Smart Delivery et Xbox Game Pass, avec des temps de
@@ -123,65 +120,63 @@
 
     <section class="requirements-section">
       <div class="container">
-        <h2 class="section-title">Configuration PC</h2>
+        <h2 class="section-title" id="titre-config">Configuration PC</h2>
         <div class="divider"></div>
         <p class="section-description">
           Configurations testées et validées par nos équipes techniques pour une
           expérience de jeu fluide.
         </p>
 
-        <table class="compare-table">
+        <table class="compare-table" aria-labelledby="titre-config">
           <thead>
             <tr>
-              <th style="text-align: left">Composant</th>
-              <th>Minimum</th>
-              <th class="featured">Recommandé</th>
+              <th scope="col">Composant</th>
+              <th scope="col">Minimum</th>
+              <th scope="col" class="featured">Recommandé</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Système d'exploitation</td>
+              <th scope="row">Système d'exploitation</th>
               <td>Windows 10 64 bits</td>
               <td class="featured-col">Windows 11 64 bits</td>
             </tr>
             <tr>
-              <td>Processeur</td>
+              <th scope="row">Processeur</th>
               <td>Intel Core i5-8400 / AMD Ryzen 5 2600</td>
               <td class="featured-col">
                 Intel Core i7-10700K / AMD Ryzen 7 3700X
               </td>
             </tr>
             <tr>
-              <td>Mémoire vive</td>
+              <th scope="row">Mémoire vive</th>
               <td>8 Go RAM</td>
               <td class="featured-col">16 Go RAM</td>
             </tr>
             <tr>
-              <td>Carte graphique</td>
+              <th scope="row">Carte graphique</th>
               <td>NVIDIA GTX 1060 6 Go / AMD RX 580 8 Go</td>
               <td class="featured-col">NVIDIA RTX 3070 / AMD RX 6700 XT</td>
             </tr>
             <tr>
-              <td>DirectX</td>
+              <th scope="row">DirectX</th>
               <td>Version 12</td>
               <td class="featured-col">Version 12</td>
             </tr>
             <tr>
-              <td>Stockage</td>
+              <th scope="row">Stockage</th>
               <td>75 Go d'espace disponible (SSD recommandé)</td>
               <td class="featured-col">
                 75 Go d'espace disponible (SSD requis)
               </td>
             </tr>
             <tr>
-              <td>Connexion internet</td>
+              <th scope="row">Connexion internet</th>
               <td>Requise pour l'activation et les mises à jour</td>
               <td class="featured-col">Haut débit pour le mode multijoueur</td>
             </tr>
-            <tr class="edition-price-row">
-              <td style="color: var(--text-dark); font-size: 0.85rem">
-                Résolution / FPS visés
-              </td>
+            <tr>
+              <th scope="row">Résolution / FPS visés</th>
               <td>1080p · 30 FPS</td>
               <td class="featured-col">1440p · 60 FPS</td>
             </tr>
@@ -192,27 +187,32 @@
 
     <!--Note-->
 
-    <section class="quote-banner">
-      <blockquote>
-        Ces configurations sont susceptibles d'évoluer avant la sortie finale du
-        jeu, à mesure que nos équipes continuent d'optimiser le moteur. Nous
-        vous recommandons de maintenir vos pilotes graphiques à jour pour une
-        expérience optimale.
-      </blockquote>
-      <cite>— Équipe technique de Terraform</cite>
+    <section class="quote-banner section-alt">
+      <figure>
+        <blockquote>
+          <p>
+            Ces configurations sont susceptibles d'évoluer avant la sortie finale
+            du jeu, à mesure que nos équipes continuent d'optimiser le moteur.
+            Nous vous recommandons de maintenir vos pilotes graphiques à jour
+            pour une expérience optimale.
+          </p>
+        </blockquote>
+        <figcaption>— Équipe technique de Terraform</figcaption>
+      </figure>
     </section>
 
     <!--CTA-->
 
-    <section class="cta-section">
+    <section class="cta-section section-dark">
       <div class="container">
-        <h2>
-          Votre configuration est prête ? Rejoignez l'aventure dès la sortie de
-          Terraform
-          <a href="Boutique.html" class="btn"> Voir la boutique</a>
-        </h2>
+        <h2 class="cta-title">Votre configuration est prête ?</h2>
+        <p class="cta-text">
+          Rejoignez l'aventure dès la sortie de Terraform.
+        </p>
+        <a href="Boutique.html" class="btn btn-primary">Voir la boutique</a>
       </div>
     </section>
+    </main>
 
     <footer class="footer">
       <div class="container">
@@ -221,8 +221,8 @@
           <li><a href="#">Facebook</a></li>
           <li><a href="#">Twitter</a></li>
           <li><a href="#">Instagram</a></li>
-          <li><a href="Nous Contacter.html">Contact </a></li>
-          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="Nous Contacter.html">Contact</a></li>
+          <li><a href="#">Politique de confidentialité</a></li>
         </ul>
       </div>
     </footer>

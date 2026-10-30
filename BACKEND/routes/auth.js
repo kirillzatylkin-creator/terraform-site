@@ -39,7 +39,7 @@ router.post('/register', async (req, res) => {
         .status(409)
         .json({ error: 'User with this email or username already exists' });
     }
-    res.status(500).json({ error: 'Server error' });
+    res.status(500).json({ error: 'Erreur serveur' });
   }
 });
 
@@ -76,7 +76,7 @@ router.post('/login', async (req, res) => {
       },
     });
   } catch (err) {
-    res.status(500).json({ error: 'Server error' });
+    res.status(500).json({ error: 'Erreur serveur' });
   }
 });
 

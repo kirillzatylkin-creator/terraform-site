@@ -3,86 +3,71 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Terraform- Accueil</title>
-    <meta
+    <title>Accueil - Terraform</title>
+    <meta 
       name="description"
       content="Découvrez Terraform, un jeu de survie et d’exploration dans un univers fantastique." />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Crete+Round:ital@0;1&family=Marcellus&display=swap" />
+
+    <link rel="stylesheet" href="style.css" />
+
     <style>
+
       /* Styles propres à la page d'accueil */
 
-      .switch {
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.7rem;
-        padding: 0.8rem 1rem;
-        font-size: 1rem;
-      }
-      .switch input {
-        position: absolute;
-        opacity: 0;
-        width: 0;
-        height: 0;
-      }
-      .slider {
-        width: 2rem;
-        height: 1rem;
-        border-radius: 1rem;
-        background: var(--text-muted);
-        position: relative;
-      }
-      .slider::after {
-        content: '';
-        position: absolute;
-        width: 0.75rem;
-        height: 0.75rem;
-        top: 0.125rem;
-        left: 0.125rem;
-        border-radius: 50%;
-        background: white;
-        transition: transform 0.2s;
-      }
-      .switch input:checked + .slider {
-        background: var(--gold);
-      }
-      .switch input:checked + .slider::after {
-        transform: translateX(1rem);
-      }
+      
       .hero {
-        min-height: 620px;
+        min-height: 70vh;
         display: grid;
         place-items: center;
         padding: 5rem 1.25rem;
         text-align: center;
-        color: var(--light);
+        color: var(--color-text-on-dark);
         background:
           linear-gradient(0deg, rgba(13, 11, 8, 0.35), rgba(13, 11, 8, 0.12)),
           url('images/01-fond-astrolabe.png') center / cover no-repeat;
       }
 
       .hero-content {
-        width: min(100%, 900px);
+        width: min(100%, 1200px);
       }
       .hero-eyebrow {
         text-transform: uppercase;
         letter-spacing: 0.2em;
         font-size: 0.9rem;
-        color: var(--gold-light);
+        color: var(--color-highlight-on-dark);
       }
       .hero-title {
         font-size: clamp(2.25rem, 10vw, 7rem);
         margin: 1rem 0;
+      }
+
+      /* Ornement décoratif pour le hero */
+      .hero-ornament {
+        width: 120px;
+        height: 1px;
+        margin: 1.5rem auto;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--color-highlight-on-dark),
+          transparent
+        );
       }
       .hero-tagline {
         max-width: 650px;
         margin: 0 auto 2rem;
         font-size: 1.25rem;
       }
-      .hero-btns {
+      .hero-btn {
         display: flex;
         gap: 1rem;
         flex-wrap: wrap;
@@ -93,85 +78,62 @@
       .new-preview {
         padding: 5rem 0;
       }
-      .section-description {
-        max-width: 760px;
-        margin: 0 auto 2.5rem;
-        text-align: center;
-        color: var(--text-muted);
-      }
-      .feature-card {
-        padding: 2rem;
-      }
-      .feature-card .material-symbols-outlined {
-        font-size: 2.5rem;
-        color: var(--gold);
-        margin-bottom: 1.5rem;
-      }
-      .feature-title,
+      
       .news-title {
         margin-bottom: 1rem;
       }
-      .feature-description,
       .news-excerpt {
         font-size: 1rem;
       }
-      .cta-banner,
-      .cta-section {
-        padding: 4rem 0;
-        text-align: center;
-        background: var(--dark-2);
-        color: var(--light);
-      }
-      .cta-title {
-        margin-bottom: 1.5rem;
-      }
-      .cta-section h2 {
-        max-width: 900px;
-        margin: auto;
-        font-size: clamp(1.3rem, 3vw, 2rem);
-      }
-      .cta-section .btn {
-        display: table;
-        margin: 2rem auto 0;
-      }
-      .quote-banner {
-        padding: 5rem max(1.25rem, calc((100% - 850px) / 2));
-        text-align: center;
-        background: var(--light-2);
-      }
-      .quote-banner blockquote {
-        font-style: italic;
-        font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-      }
-      .quote-banner cite {
-        display: block;
-        margin-top: 1.5rem;
-        color: var(--text-muted);
-        font-size: 0.95rem;
-      }
+
       .stat-card {
         text-align: center;
         padding: 1.5rem;
-        border: 1px solid var(--gold-light);
+        border: 1px solid var(--color-border);
         border-radius: 8px;
       }
       .stat-number {
-        font-size: 3rem;
-        color: var(--gold);
+    font-family: var(--font-head);
+    font-size: 3rem;
+    color: var(--color-heading);
+    line-height: 1.2;
       }
       .stat-description {
         font-size: 1rem;
       }
-      .new-preview {
-        background: var(--light-2);
-      }
+
       .news-date {
+        display: block;
         font-size: 0.85rem;
-        color: var(--text-muted);
+        color: var(--color-text-muted);
         margin-bottom: 1rem;
       }
+
+      /*  RESPONSIVE (page d'accueil) */
+      @media (max-width: 768px) {
+        .hero {
+          min-height: 520px;
+          padding-block: 3rem;
+        }
+        .hero-btn {
+          flex-direction: column;
+        }
+       
+        .features,
+        .stats,
+        .new-preview {
+          padding-block: 3rem;
+        }
+    
+      }
+
+      @media (max-width: 480px) {
+        .hero-eyebrow {
+          letter-spacing: 0.12em;
+        }
+      }
     </style>
-    <link rel="stylesheet" href="style.css" />
+
     <script src="script.js" defer></script>
   </head>
 
@@ -182,6 +144,7 @@
 
     <nav>
       <a href="Index.html" class="nav-logo">Terraform</a>
+
       <!-- Le JavaScript ouvre et ferme ce menu sur mobile. -->
       <button
         class="nav-toggle"
@@ -206,25 +169,6 @@
       </ul>
     </nav>
 
-    <main id="main-content">
-      <label class="switch">
-        <input type="checkbox" id="audio-guide" />
-        <span class="slider"></span>
-        <span>boutton on/off audio guide commandes vocales</span>
-      </label>
-
-      <label class="switch">
-        <input type="checkbox" id="theme-toggle" />
-        <span class="slider"></span>
-        <span>boutton theme sombre/clair</span>
-      </label>
-
-      <label class="switch">
-        <input type="checkbox" id="toggle" />
-        <span class="slider"></span>
-        <span>imprimer manuel en language braille</span>
-      </label>
-
       <!--HERO SECTION-->
 
       <section class="hero">
@@ -235,11 +179,11 @@
           <p class="hero-tagline">
             Un jeu de survie et d'exploration dans un monde fantastique
           </p>
-          <div class="hero-btns">
+          <div class="hero-btn">
             <a href="Configuration requise.html" class="btn"
               >Voir les exigences système</a
             >
-            <a href="Demo version.html" class="btn btn-secondary"
+            <a href="Gameplay.html" class="btn btn-secondary"
               >Télécharger la démo</a
             >
           </div>
@@ -252,7 +196,7 @@
           <h2 class="section-title">Un univers fantastique à explorer</h2>
           <div class="divider"></div>
           <p class="section-description">
-            Histoire Sur la planète Eidos, les humains ont découvert une source
+            Sur la planète Eidos, les humains ont découvert une source
             d’énergie rare : des cristaux capables de réveiller d’anciennes
             machines de terraformation. Celles-ci devaient transformer un monde
             désertique en un nouveau foyer. Mais après leur premier démarrage,
@@ -270,7 +214,7 @@
           </p>
           <div class="grid-3">
             <div class="card feature-card">
-              <span class="material-symbols-outlined"> swords </span>
+              <span class="material-symbols-outlined" aria-hidden="true">swords</span>
               <h3 class="feature-title">Combat dynamique</h3>
               <p class="feature-description">
                 Affrontez des ennemis redoutables avec un système de combat
@@ -280,19 +224,19 @@
             </div>
 
             <div class="card feature-card">
-              <span class="material-symbols-outlined"> explore </span>
+              <span class="material-symbols-outlined" aria-hidden="true"> explore </span>
               <h3 class="feature-title">Exploration</h3>
               <p class="feature-description">
                 Découvrez des lieux mystérieux et inexplorés, chacun avec ses
                 propres défis et récompenses à gagner.
               </p>
             </div>
-
+            
             <div class="card feature-card">
-              <span class="material-symbols-outlined"> book </span>
+              <span class="material-symbols-outlined" aria-hidden="true"> book </span>
               <h3 class="feature-title">Histoire immersive</h3>
               <p class="feature-description">
-                Plongez dans une narrative riche et captivante, où vos choix
+                Plongez dans un récit riche et captivant, où vos choix
                 auront un impact sur le monde qui vous entoure.
               </p>
             </div>
@@ -300,25 +244,25 @@
         </div>
       </section>
 
-      <section class="cta-banner">
+      <section class="cta-banner section-dark">
         <div class="container">
           <h2 class="cta-title">Prêt à vivre l'aventure de votre vie ?</h2>
-          <a href="Demo version.html" class="btn btn-primary"
+          <a href="media.html" class="btn btn-primary"
             >Télécharger la démo maintenant</a
           >
         </div>
       </section>
 
-      <section class="quote-banner">
+      <figure>
         <blockquote>
-          Terraform est une expérience de jeu unique qui combine exploration,
-          survie et narration immersive pour créer un monde vivant et dynamique
-          à découvrir. Le jeu est adapté à tous les personnes, ainsi que les
-          joueurs dont l'intégrité physique ou mentale est passagèrement ou
-          définitivement diminuée.
+          <p>
+            Terraform est une expérience de jeu unique qui combine exploration,
+            survie et narration immersive pour créer un monde vivant et dynamique
+            à découvrir. Le jeu est adapté à toutes les personnes.
+          </p>
         </blockquote>
-        <cite>— Équipe de développement de Terraform</cite>
-      </section>
+        <figcaption>— Équipe de développement de Terraform</figcaption>
+      </figure>
 
       <!--STATS-->
       <section class="stats">
@@ -327,19 +271,19 @@
           <div class="divider"></div>
           <div class="grid-4">
             <div class="stat-card">
-              <h3 class="stat-number">100+</h3>
+              <p class="stat-number">100+</p>
               <p class="stat-description">Heures de jeu</p>
             </div>
             <div class="stat-card">
-              <h3 class="stat-number">50+</h3>
+              <p class="stat-number">50+</p>
               <p class="stat-description">Créatures uniques</p>
             </div>
             <div class="stat-card">
-              <h3 class="stat-number">20+</h3>
+              <p class="stat-number">20+</p>
               <p class="stat-description">Biomes à explorer</p>
             </div>
             <div class="stat-card">
-              <h3 class="stat-number">10+</h3>
+              <p class="stat-number">10+</p>
               <p class="stat-description">Quêtes principales</p>
             </div>
           </div>
@@ -347,28 +291,28 @@
       </section>
 
       <!--NEWS-->
-      <section class="new-preview">
+      <section class="new-preview section-alt">
         <div class="container">
           <h2 class="section-title">
-            Découvrez les nouveautés du derniere mise à jour
+            Découvrez les nouveautés de la dernière mise à jour
           </h2>
           <div class="divider"></div>
           <p class="section-description">
-            La derniere mise à jour apporte de nouvelles fonctionnalités et
-            améliorations pour enrichir votre expérience de jeu
+            La dernière mise à jour apporte de nouvelles fonctionnalités et
+            améliorations pour enrichir votre expérience de jeu.
           </p>
 
           <div class="grid-3">
             <div class="card">
-              <div class="news-date">15 juin 2026</div>
-              <h3 class="news-title">Un nouveau region ajouté</h3>
+              <time class="news-date" datetime="2026-06-15">15 juin 2026</time>
+              <h3 class="news-title">Une nouvelle région ajoutée</h3>
               <p class="news-excerpt">
                 Découvrez les nouveaux endroits magiques de Terraform
               </p>
             </div>
 
             <div class="card">
-              <div class="news-date">15 juillet 2026</div>
+              <time class="news-date" datetime="2026-07-15">15 juillet 2026</time>
               <h3 class="news-title">Mise à jour des compétences</h3>
               <p class="news-excerpt">
                 Découvrez les nouvelles compétences disponibles dans la dernière
@@ -377,7 +321,7 @@
             </div>
 
             <div class="card">
-              <div class="news-date">17 juillet 2026</div>
+              <time class="news-date" datetime="2026-07-17">17 juillet 2026</time>
               <h3 class="news-title">Un nouveau personnage : Dark Elf</h3>
               <p class="news-excerpt">
                 Découvrez le nouveau personnage Dark Elf et ses compétences
@@ -388,14 +332,15 @@
         </div>
       </section>
 
-      <section class="cta-section">
+      <section class="cta-section section-dark">
         <div class="container">
-          <h2>
-            Préparez-vous à vivre une aventure inoubliale avec Terraform-
-            Telecharger le jeu dés maintenant et plonge dans un monde
-            fantastique
-            <a href="Boutique.html" class="btn"> Acheter le jeu</a>
+          <h2 class="cta-title">
+            Préparez-vous à vivre une aventure inoubliable avec Terraform
           </h2>
+          <p class="cta-text">
+            Téléchargez le jeu dès maintenant et plongez dans un monde fantastique.
+          </p>
+          <a href="Boutique.html" class="btn btn-primary">Acheter le jeu</a>
         </div>
       </section>
     </main>
@@ -407,8 +352,8 @@
           <li><a href="#">Facebook</a></li>
           <li><a href="#">Twitter</a></li>
           <li><a href="#">Instagram</a></li>
-          <li><a href="Nous Contacter.html">Contact </a></li>
-          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="Nous Contacter.html">Contact</a></li>
+          <li><a href="#">Politique de confidentialité</a></li>
         </ul>
       </div>
     </footer>

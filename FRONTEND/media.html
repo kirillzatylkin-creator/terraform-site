@@ -9,22 +9,24 @@
       name="description"
       content="Découvrez la galerie de Terraform avec des images et vidéos du jeu." />
 
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+   
 
+
+      <link rel="stylesheet" href="style.css" />
     <style>
       /* Styles propres à la galerie */
 
       .page-header {
+        min-height: 70vh;
+        display: grid;
+        place-content: center;
         background:
-          linear-gradient(0deg, rgba(13, 11, 8, 0.5), rgba(13, 11, 8, 0.2)),
-          url('images/12-banniere-destin.png') center / cover;
-        height: 100vh;
+          linear-gradient(rgba(31, 36, 25, 0.55), rgba(31, 36, 25, 0.8)),
+          url('images/12-banniere-destin.png') center / cover no-repeat;
       }
       .filter-bar {
         padding: 1.5rem;
-        border-bottom: 1px solid var(--gold-light);
+        border-bottom: 1px solid var(--color-border);
       }
       .filter-inner {
         display: flex;
@@ -34,23 +36,23 @@
       }
       .filter-btn {
         padding: 0.65rem 1rem;
-        border: 1px solid var(--gold);
-        border-radius: 4px;
-        background: transparent;
-        font: inherit;
         font-size: 0.9rem;
-        color: var(--text-dark);
+        color: var(--color-text);
+        background: transparent;
+        border: 1px solid var(--color-border);
+        border-radius: 4px;
         cursor: pointer;
       }
       .filter-btn:hover,
       .filter-btn.active {
-        background: var(--dark-2);
-        color: var(--gold-light);
+        background-color: var(--color-background-dark);
+        color: var(--color-highlight-on-dark);
       }
       .gallery-grid {
-        max-width: 1200px;
+        width: 100%;
+        max-width: var(--content-width);
+        margin-inline: auto;
         padding: 3rem 2rem;
-        margin: auto;
       }
       .g-grid {
         display: grid;
@@ -60,12 +62,10 @@
       }
       .g-item {
         position: relative;
-        display: grid;
-        place-items: center;
+        overflow: hidden; /* l'image ne dépasse pas des coins arrondis */
+        border: 1px solid var(--color-border);
         border-radius: 8px;
-        border: 1px solid #c9b56e66;
-        overflow: hidden;
-        color: var(--light);
+        color: var(--color-text-on-dark); /* texte toujours sur voile sombre */
       }
       .g-item.tall {
         grid-row: span 2;
@@ -73,20 +73,11 @@
       .g-item.wide {
         grid-column: span 2;
       }
-      .g-emoji,
-      .g-item > .material-symbols-outlined {
-        font-size: 4.5rem;
-        margin-bottom: 3rem;
-        transition: transform 0.25s;
-      }
-      .g-item:hover .g-emoji {
-        transform: scale(1.08);
-      }
       .g-overlay {
         position: absolute;
         inset: auto 0 0;
         padding: 2.5rem 1.25rem 1.25rem;
-        background: linear-gradient(transparent, #0d0b08ed);
+        background: linear-gradient(transparent, rgba(31, 36, 25, 0.92)); /* voile « nuit » */
       }
       .g-label,
       .g-cat {
@@ -94,107 +85,16 @@
       }
       .g-label {
         font-family: var(--font-head);
-        line-height: 1.3;
         font-size: 1.2rem;
+        line-height: 1.3;
       }
       .g-cat {
-        font-size: 0.8rem;
-        color: var(--gold-light);
         margin-top: 0.5rem;
+        font-size: 0.8rem;
+        color: var(--color-highlight-on-dark); /* kaki sur voile : > 5 */
       }
-      .g-bg-1 {
-        background: radial-gradient(ellipse at top, #536c44, #18251a);
-      }
-      .g-bg-2 {
-        background: radial-gradient(ellipse at top, #665b80, #272032);
-      }
-      .g-bg-3 {
-        background: linear-gradient(145deg, #b4844b, #51332b);
-      }
-      .g-bg-4 {
-        background:
-          linear-gradient(#0d0b0833, #0d0b0866),
-          url('images/castle.png') center / cover;
-      }
-      .g-bg-5 {
-        background: radial-gradient(ellipse at top, #63555b, #211c24);
-      }
-      .g-bg-6 {
-        background: radial-gradient(ellipse at top, #6a7850, #223d2c);
-      }
-      .g-bg-7 {
-        background: linear-gradient(145deg, #775748, #28242a);
-      }
-      .g-bg-8 {
-        background: radial-gradient(ellipse at top, #5a5377, #151321);
-      }
-      .video-section,
-      .sound-section {
-        padding: 5rem 0;
-      }
-      .video-section {
-        background: var(--light-2);
-      }
-      .video-grid {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 1rem;
-      }
-      .video-side {
-        display: grid;
-        gap: 1rem;
-      }
-      .video-thumb {
-        position: relative;
-        display: grid;
-        place-items: center;
-        min-height: 190px;
-        border: 1px solid var(--gold);
-        border-radius: 8px;
-        background: radial-gradient(ellipse, var(--mid), var(--dark-2));
-        color: var(--light);
-        padding: 4rem 1rem;
-      }
-      .video-grid > .video-thumb {
-        min-height: 400px;
-      }
-      .play-icon {
-        font-size: 2rem;
-        color: var(--gold-light);
-      }
-      .video-label {
-        position: absolute;
-        bottom: 1rem;
-        left: 1rem;
-        right: 1rem;
-        font-size: 0.85rem;
-      }
-      .track {
-        display: grid;
-        grid-template-columns: 2rem 2rem minmax(0, 1fr) auto;
-        gap: 1rem;
-        align-items: center;
-        max-width: 850px;
-        margin: auto;
-        padding: 1.25rem 0.75rem;
-        border-bottom: 1px solid #cfc4a5;
-      }
-      .track-num,
-      .track-composer,
-      .track-dur {
-        color: var(--text-muted);
-        font-size: 0.85rem;
-      }
-      .track-play {
-        color: var(--gold);
-      }
-      .track-name {
-        font-family: var(--font-head);
-        font-size: 1.15rem;
-      }
+
       .artbook {
-        background: var(--dark-2);
-        color: var(--light);
         padding: 4rem 1.25rem;
         text-align: center;
       }
@@ -208,12 +108,63 @@
       .artbook p {
         margin-bottom: 2rem;
       }
+
+
+      /* L'image remplit toute la tuile, le texte passe par-dessus */
+      .gallery-image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;               /* recadre sans déformer */
+      }
+
+      /*  RESPONSIVE (Galerie) */
+      @media (max-width: 1100px) {
+        .g-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        .gallery-grid {
+          padding-inline: 1.25rem;
+        }
+        .g-grid {
+          grid-template-columns: 1fr;
+        }
+        .g-item.tall {
+          grid-row: auto;
+        }
+        .g-item.wide {
+          grid-column: auto;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .gallery-grid {
+          padding-block: 2.5rem;
+        }
+      }
+
+
+
     </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Crete+Round:ital@0;1&family=Marcellus&display=swap" />
+
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
 
   <body>
+
+
+    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
     <nav>
       <a href="Index.html" class="nav-logo">Terraform</a>
       <!-- Le JavaScript ouvre et ferme ce menu sur mobile. -->
@@ -240,6 +191,8 @@
       </ul>
     </nav>
 
+    
+    <main id="main-content" tabindex="-1">
     <header class="page-header">
       <div class="tag">Le monde de Terraform</div>
       <h1>Galerie</h1>
@@ -275,10 +228,14 @@
 
         <!-- GRILLE DE GALERIE -->
 
-        <div class="g-item tall g-bg-1" data-category="concept locations">
-          <span class="g-emoji">🌲</span>
+        <div class="g-item tall" data-category="concept locations">
+          <img
+            class="gallery-image"
+            src="images/14%20chateau%20nuit.png"
+            alt="Château illuminé au bord d'un lac, dans une forêt de sapins sous un croissant de lune"
+            loading="lazy" />
           <div class="g-overlay">
-            <span class="g-label">Forêt éternelle d'Ellion</span>
+            <span class="g-label">Le château du lac nocturne</span>
             <span class="g-cat">Concept · Lieu</span>
           </div>
         </div>
@@ -288,146 +245,77 @@
             src="images/09-personnage-gardien.png"
             alt="Gardien en armure avec une cape de fourrure"
             loading="lazy" />
-        
+
           <div class="g-overlay">
             <span class="g-label">Le Gardien</span>
             <span class="g-cat">Concept · Personnage</span>
           </div>
         </div>
-        
+
         <div class="g-item tall" data-category="concept characters">
           <img
             class="gallery-image"
             src="images/10-personnage-arcaniste.png"
             alt="Arcaniste tenant une sphère de lumière magique"
             loading="lazy" />
-        
+
           <div class="g-overlay">
             <span class="g-label">L’Arcaniste</span>
             <span class="g-cat">Concept · Personnage</span>
           </div>
         </div>
-        
+
         <div class="g-item tall" data-category="concept characters">
           <img
             class="gallery-image"
             src="images/11-personnage-eclaireuse.png"
             alt="Éclaireuse visant avec son arc dans une forêt"
             loading="lazy" />
-        
+
           <div class="g-overlay">
             <span class="g-label">L’Éclaireuse</span>
             <span class="g-cat">Concept · Personnage</span>
           </div>
         </div>
-        <div class="g-item g-bg-7" data-category="screenshots">
-          <span class="g-emoji">⚔️</span>
+        <div class="g-item" data-category="screenshots">
+          <img
+            class="gallery-image"
+            src="images/17_volcanic_kingdom.png"
+            alt="Un voyageur en cape face à une forteresse entourée de coulées de lave"
+            loading="lazy" />
           <div class="g-overlay">
-            <span class="g-label">Combat contre le dragon de pierre</span>
-            <span class="g-cat">Capture d'écran · Gameplay</span>
+            <span class="g-label">Le royaume volcanique</span>
+            <span class="g-cat">Capture d'écran · Lieu</span>
           </div>
         </div>
-        <div class="g-item wide g-bg-8" data-category="concept locations">
-          <span class="g-emoji">🌑</span>
+        <div class="g-item wide" data-category="concept locations">
+          <img
+            class="gallery-image"
+            src="images/16_eclipse_sea_fortress.png"
+            alt="Forteresse sur des falaises battues par la mer, sous une éclipse"
+            loading="lazy" />
           <div class="g-overlay">
-            <span class="g-label">Faille du Néant · Zone finale</span>
+            <span class="g-label">Forteresse de l'Éclipse · Zone finale</span>
             <span class="g-cat">Concept · Lieu</span>
           </div>
         </div>
-        <div class="g-item g-bg-2" data-category="characters concept">
-          <span class="g-emoji">🏹</span>
+        <div class="g-item" data-category="screenshots locations">
+          <img
+            class="gallery-image"
+            src="images/24_gothic_harbor_fleet.png"
+            alt="Une flotte de navires aux voiles éclairées entre dans un port fortifié"
+            loading="lazy" />
           <div class="g-overlay">
-            <span class="g-label">Eïra Lunenott</span>
-            <span class="g-cat">Personnage · Art</span>
+            <span class="g-label">Le port des flottes</span>
+            <span class="g-cat">Capture d'écran · Lieu</span>
           </div>
         </div>
       </div>
       <p class="filter-status" id="gallery-status" role="status"></p>
     </section>
 
-    <!-- VIDÉO -->
-    <section class="video-section">
-      <div class="container">
-        <h2 class="section-title">Vidéos</h2>
-        <div class="divider"></div>
-        <p class="section-subtitle">Bandes-annonces et vidéos de gameplay</p>
-        <div class="video-grid">
-          <div class="video-thumb">
-            <div class="play-icon">▶</div>
-            <div class="video-label">Bande-annonce officielle · 2:45</div>
-          </div>
-          <div class="video-side">
-            <div class="video-thumb">
-              <div class="play-icon">▶</div>
-              <div class="video-label">Gameplay · 8:32</div>
-            </div>
-            <div class="video-thumb">
-              <div class="play-icon">▶</div>
-              <div class="video-label">Histoire du monde · 5:10</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- BANDE-SON -->
-    <section class="sound-section">
-      <div class="container">
-        <h2 class="section-title">Bande-son</h2>
-        <div class="divider"></div>
-        <p class="section-subtitle">Musique d'Irila Vant pour Aétermur</p>
-        <div class="tracks">
-          <div class="track">
-            <span class="track-num">01</span>
-            <div class="track-play">▶</div>
-            <div class="track-info">
-              <div class="track-name">Éveil dans les ruines</div>
-              <div class="track-composer">Irila Vant · Thème principal</div>
-            </div>
-            <span class="track-dur">4:12</span>
-          </div>
-          <div class="track">
-            <span class="track-num">02</span>
-            <div class="track-play">▶</div>
-            <div class="track-info">
-              <div class="track-name">La forêt éternelle</div>
-              <div class="track-composer">Irila Vant · Ambiance</div>
-            </div>
-            <span class="track-dur">6:38</span>
-          </div>
-          <div class="track">
-            <span class="track-num">03</span>
-            <div class="track-play">▶</div>
-            <div class="track-info">
-              <div class="track-name">La bataille pour la Pierre du Cœur</div>
-              <div class="track-composer">Irila Vant · Combat</div>
-            </div>
-            <span class="track-dur">3:55</span>
-          </div>
-          <div class="track">
-            <span class="track-num">04</span>
-            <div class="track-play">▶</div>
-            <div class="track-info">
-              <div class="track-name">La voix du Néant</div>
-              <div class="track-composer">Irila Vant · Ambiance</div>
-            </div>
-            <span class="track-dur">7:22</span>
-          </div>
-          <div class="track">
-            <span class="track-num">05</span>
-            <div class="track-play">▶</div>
-            <div class="track-info">
-              <div class="track-name">La fin et le commencement</div>
-              <div class="track-composer">Irila Vant · Thème final</div>
-            </div>
-            <span class="track-dur">5:48</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ARTBOOK -->
-    <section class="artbook">
+    <section class="artbook section-dark">
       <div class="artbook-inner">
         <div class="tag">Exclusivité</div>
         <h2>Artbook de Terraform</h2>
@@ -439,6 +327,7 @@
       </div>
     </section>
 
+  </main> 
     <footer class="footer">
       <div class="container">
         <p>&copy; 2026 Terraform. Tous droits réservés.</p>

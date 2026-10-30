@@ -1,5 +1,50 @@
+
+// THÈME CLAIR / SOMBRE
+
+const racine = document.documentElement; // la balise <html>
+const systemeSombre = window.matchMedia('(prefers-color-scheme: dark)');
+
+const boutonTheme = document.createElement('button');
+boutonTheme.type = 'button';
+boutonTheme.className = 'theme-toggle';
+
+const iconeTheme = document.createElement('span');
+iconeTheme.textContent = '☾';
+iconeTheme.setAttribute('aria-hidden', 'true'); // décoratif : le lecteur d'écran l'ignore
+boutonTheme.append(iconeTheme, ' Thème sombre');
+
+// Lit le choix enregistré (localStorage peut être bloqué en navigation privée)
+function lireThemeEnregistre() {
+  try {
+    return localStorage.getItem('theme');
+  } catch {
+    return null;
+  }
+}
+
+function appliquerTheme(theme) {
+  racine.dataset.theme = theme; // → <html data-theme="dark"> ou "light"
+  boutonTheme.setAttribute('aria-pressed', String(theme === 'dark'));
+}
+
+//  choix enregistré,  réglage du système,  clair par défaut
+appliquerTheme(lireThemeEnregistre() || (systemeSombre.matches ? 'dark' : 'light'));
+
+boutonTheme.addEventListener('click', () => {
+  const nouveauTheme = racine.dataset.theme === 'dark' ? 'light' : 'dark';
+  appliquerTheme(nouveauTheme);
+  try {
+    localStorage.setItem('theme', nouveauTheme);
+  } catch {
+    // pas d'enregistrement possible : le thème change quand même pour cette page
+  }
+});
+
+document.querySelector('nav')?.append(boutonTheme);
+
 // MENU BURGER
 // Le HTML contient le bouton. Le CSS affiche le menu avec la classe "ouvert".
+
 const boutonMenu = document.querySelector('.nav-toggle');
 const menu = document.querySelector('.nav-links');
 
@@ -401,8 +446,6 @@ async function chargerProduits() {
 
     productsGrid.replaceChildren(...produits.map(creerCarteProduit));
 
-
-
     // Réappliquer le filtre actif aux nouvelles cartes
     document.querySelector('.tab-btn.active')?.click();
   } catch (erreur) {
@@ -417,7 +460,7 @@ async function chargerProduits() {
 if (productsGrid) chargerProduits();
 
 //PANIER
-// PANIER (localStorage) 
+// PANIER (localStorage)
 const MAX_QUANTITE = 10;
 
 function getCart() {
@@ -495,7 +538,6 @@ function addCartLink() {
 
 addCartLink();
 
-
 // ----- Page cart.html -----
 const cartContent = document.getElementById('cart-content');
 const cartStatus = document.getElementById('cart-status');
@@ -549,7 +591,11 @@ function renderCart() {
       setQuantity(ligne.id, ligne.quantity + 1);
       renderCart();
     });
-    tdQte.append(moins, creer('span', String(ligne.quantity), 'qty-value'), plus);
+    tdQte.append(
+      moins,
+      creer('span', String(ligne.quantity), 'qty-value'),
+      plus,
+    );
     tr.appendChild(tdQte);
 
     tr.appendChild(creer('td', formatPrix(ligne.price * ligne.quantity)));
@@ -569,7 +615,9 @@ function renderCart() {
   table.appendChild(corps);
   cartContent.appendChild(table);
 
-  cartContent.appendChild(creer('p', 'Total : ' + formatPrix(cartTotal()), 'cart-total'));
+  cartContent.appendChild(
+    creer('p', 'Total : ' + formatPrix(cartTotal()), 'cart-total'),
+  );
 
   const actions = creer('div', undefined, 'cart-actions');
   const vider = creer('button', 'Vider le panier', 'btn btn-secondary');
@@ -585,7 +633,8 @@ function renderCart() {
       cartStatus.textContent = 'Connectez-vous pour passer commande.';
       return;
     }
-    cartStatus.textContent = 'La validation de la commande sera disponible à la prochaine étape.';
+    cartStatus.textContent =
+      'La validation de la commande sera disponible à la prochaine étape.';
   });
   actions.append(vider, commander);
   cartContent.appendChild(actions);

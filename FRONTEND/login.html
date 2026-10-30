@@ -4,7 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Connexion - Terraform</title>
-    <meta name="description" content="Connectez-vous à votre compte Terraform." />
+    <meta
+      name="description"
+      content="Connectez-vous à votre compte Terraform." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Crete+Round:ital@0;1&family=Marcellus&display=swap" />
+
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
@@ -47,17 +56,30 @@
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="email" maxlength="254" required />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="email"
+              maxlength="254"
+              required />
           </div>
 
           <div class="form-group">
             <label for="password">Mot de passe</label>
-            <input type="password" id="password" name="password" autocomplete="current-password" required />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              autocomplete="current-password"
+              required />
           </div>
 
           <button class="form-submit" type="submit">Se connecter</button>
           <p class="auth-status" id="auth-status" role="status"></p>
-          <p class="auth-link">Pas encore de compte ? <a href="register.html">Créer un compte</a></p>
+          <p class="auth-link">
+            Pas encore de compte ? <a href="register.html">Créer un compte</a>
+          </p>
         </form>
       </section>
     </main>

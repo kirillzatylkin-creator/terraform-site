@@ -8,25 +8,28 @@
     <meta
       name="description"
       content="Découvrez le gameplay de Terraform, ses mécaniques, ses classes et son système de progression." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-
+      href="https://fonts.googleapis.com/css2?family=Crete+Round:ital@0;1&family=Marcellus&display=swap" />
+    <link rel="stylesheet" href="style.css" />
     <style>
       /* Styles propres au gameplay */
 
-
-
       .page-header {
+        min-height: 70vh;
+        display: grid;
+        place-content: center;
         background:
-          linear-gradient(0deg, rgba(13, 11, 8, 0.5), rgba(13, 11, 8, 0.2)),
-          url('images/03-fond-chateau.png') center / cover;
-        height: 100vh;
-       
+          linear-gradient(rgba(31, 36, 25, 0.55), rgba(31, 36, 25, 0.8)),
+          url('images/03-fond-chateau.png') center / cover no-repeat;
       }
       .mechanics {
-        max-width: 1200px;
-        margin: auto;
+        width: 100%;
+        max-width: var(--content-width);
+        margin-inline: auto;
         padding: 4rem 2rem;
       }
       .mechanic-row {
@@ -42,43 +45,27 @@
       .mechanic-row.reverse .mechanic-visual {
         order: 2;
       }
-      .mechanic-image,
-      .mechanic-visual,
-      .mechanic-visual1 {
-        min-height: 380px;
-        display: grid;
-        place-items: center;
-        font-size: 5rem;
-        border: 1px solid var(--gold);
-        border-radius: 8px;
-        background: radial-gradient(ellipse, var(--mid), var(--dark-2));
-      }
-
-      .mechanic-image {
-        background:
-          linear-gradient(0deg, rgba(13, 11, 8, 0.5), rgba(13, 11, 8, 0.2)),
-          url('images/08-fond-mage.png') center / cover;
-      }
-
-
-
       .mechanic-visual {
-        background:
-          linear-gradient(0deg, rgba(13, 11, 8, 0.5), rgba(13, 11, 8, 0.2)),
-          url('images/04-hautes-brumes.png') center / cover;
+        min-height: 380px;
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        background-color: var(
+          --color-card-dark
+        ); 
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .mechanic-visual--combat {
+        background-image: url('images/08-fond-mage.png');
+      }
+      .mechanic-visual--exploration {
+        background-image: url('images/04-hautes-brumes.png');
+      }
+      .mechanic-visual--dialogues {
+        background-image: url('images/06-cite-oubliee.png');
       }
 
-
-      .mechanic-visual1 {
-        background:
-          linear-gradient(0deg, rgba(13, 11, 8, 0.5), rgba(13, 11, 8, 0.2)),
-          url('images/06-cite-oubliee.png') center / cover;
-      }
-    
-      .mechanic-image .material-symbols-outlined {
-        font-size: 5rem;
-        color: var(--gold-light);
-      }
       .mechanic-text h2 {
         margin: 0.5rem 0 1.5rem;
       }
@@ -94,53 +81,43 @@
         margin-top: 1rem;
       }
       .mechanic-text li::marker {
-        color: var(--gold);
+        color: var(--color-heading);
       }
       .classes-section,
       .progression,
       .systems {
         padding: 5rem 0;
       }
-      .classes-section,
-      .systems {
-        background: var(--light-2);
-      }
+
       .class-card {
+        --voile: color-mix(in srgb, var(--color-background) 88%, transparent);
         padding: 2rem;
+        background-position: center;
+        background-size: cover;
+      }
+      .class-card--chevalier {
+        background-image:
+          linear-gradient(var(--voile), var(--voile)),
+          url('images/09-personnage-gardien.png');
+      }
+      .class-card--sorciere {
+        background-image:
+          linear-gradient(var(--voile), var(--voile)),
+          url('images/10-personnage-arcaniste.png');
+      }
+      .class-card--nomade {
+        background-image:
+          linear-gradient(var(--voile), var(--voile)),
+          url('images/11-personnage-eclaireuse.png');
       }
 
-      .card.class-card-chevalier-du-voile {
-        background:
-        
-          linear-gradient(0deg, rgba(195, 144, 85, 0.759), rgba(235, 194, 137, 0.682)),
-          url('images/09-personnage-gardien.png') center / cover;
-      }
-
-      .card.class-card-sorciere-des-racines {
-        background:
-          linear-gradient(0deg, rgba(251, 222, 188, 0.759), rgba(226, 195, 151, 0.263)),
-          url('images/08-fond-mage.png') center / cover;
-      }
-      .card.class-card-nomade-des-terres-desolees {
-        background:
-          linear-gradient(0deg, rgba(251, 222, 188, 0.759), rgba(235, 194, 137, 0.682)),
-          url('images/10-personnage-arcaniste.png') center / cover;
-      }
-
-
-      .class-icon {
-        font-size: 3rem;
-        text-align: center;
-        margin-bottom: 1rem;
-      }
       .class-name {
-        font-family: var(--font-head);
         font-size: 1.4rem;
         text-align: center;
         line-height: 1.3;
       }
       .class-role {
-        color: var(--text-muted);
+        color: var(--color-text-muted);
         font-size: 0.85rem;
         text-align: center;
         margin: 0.75rem 0 2rem;
@@ -154,13 +131,13 @@
       .stat-bar {
         height: 6px;
         margin-top: 0.4rem;
-        background: #d8d0be;
+        background: var(--color-background-alt);
         border-radius: 4px;
         overflow: hidden;
       }
       .stat-bar-fill {
         height: 100%;
-        background: var(--gold);
+        background: var(--color-heading);
       }
       .stat-bar-fill--90 {
         width: 90%;
@@ -179,6 +156,7 @@
         font-size: 0.95rem;
       }
       .prog-grid {
+        list-style: none;
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 2rem;
@@ -186,8 +164,8 @@
       .prog-number {
         font-family: var(--font-head);
         font-size: 3rem;
-        color: var(--gold);
-        border-bottom: 1px solid var(--gold-light);
+        color: var(--color-heading);
+        border-bottom: 1px solid var(--color-border);
         margin-bottom: 1.5rem;
       }
       .prog-step h3 {
@@ -201,18 +179,27 @@
         border-collapse: collapse;
         font-size: 0.95rem;
         text-align: left;
+        table-layout: fixed;
+        overflow-wrap: anywhere;
+      }
+      .sys-table thead th {
+        /* uniquement l'en-tête du tableau */
+        background: var(--color-background-dark);
+        color: var(--color-highlight-on-dark);
       }
       .sys-table th {
-        background: var(--dark-2);
-        color: var(--gold-light);
+        font-weight: 400; /* Crete Round n'a pas de gras */
+      }
+      .sys-table tbody th {
+        font-family: var(--font-head); /* nom du système mis en valeur */
       }
       .sys-table th,
       .sys-table td {
         padding: 1rem;
-        border-bottom: 1px solid #cfc4a5;
+        border-bottom: 1px solid var(--color-border);
       }
       .sys-table tbody tr:nth-child(even) {
-        background: var(--light);
+        background: var(--color-background);
       }
       .badge {
         display: inline-block;
@@ -221,19 +208,67 @@
         font-size: 0.8rem;
       }
       .badge-classic {
-        background: #ded5bf;
-        color: var(--text-dark);
+        background: transparent;
+        color: var(--color-text);
+        border: 1px solid var(--color-border);
       }
       .badge-new {
-        background: #d9e4ce;
-        color: #304329;
+        background: var(--color-highlight-on-dark);
+        color: var(--color-text-on-light);
+      }
+
+      .mechanic-row > *,
+      .prog-grid > * {
+        min-width: 0;
+      }
+
+      /* ===== RESPONSIVE (Gameplay) ===== */
+      @media (max-width: 1100px) {
+        .prog-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        .mechanics {
+          padding-inline: 1.25rem;
+        }
+        .prog-grid,
+        .mechanic-row,
+        .mechanic-row.reverse {
+          grid-template-columns: 1fr;
+        }
+        .mechanic-row {
+          gap: 1.5rem;
+        }
+        .mechanic-row.reverse .mechanic-visual {
+          order: 0;
+        }
+    
+        .mechanic-visual {
+          min-height: 230px;
+        }
+        .class-card {
+          padding: 1.5rem;
+        }
+        .classes-section,
+        .progression,
+        .systems {
+          padding-block: 3rem;
+        }
+        .sys-table th,
+        .sys-table td {
+          padding: 0.6rem 0.3rem;
+          font-size: 0.8rem;
+        }
       }
     </style>
-    <link rel="stylesheet" href="style.css" />
+
     <script src="script.js" defer></script>
   </head>
 
   <body>
+    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
     <nav>
       <a href="Index.html" class="nav-logo">Terraform</a>
       <!-- Le JavaScript ouvre et ferme ce menu sur mobile. -->
@@ -258,284 +293,285 @@
         <li><a href="Configuration requise.html">Configuration requise</a></li>
         <li><a href="media.html">Galerie</a></li>
         <li><a href="Boutique.html">Boutique</a></li>
-        <li><a href="Nous Contacter.html">Nous contacter </a></li>
+        <li><a href="Nous Contacter.html">Nous contacter</a></li>
       </ul>
     </nav>
+    <main id="main-content" tabindex="-1">
+      <header class="page-header">
+        <div class="tag">Systèmes et mécaniques</div>
+        <h1>Gameplay</h1>
+        <p>Comment se déroule l'aventure dans Terraform</p>
+      </header>
 
-    <header class="page-header">
-      <div class="tag">Systèmes et mécaniques</div>
-      <h1>Gameplay</h1>
-      <p>Comment se déroule l'aventure dans Terraform</p>
-    </header>
-
-    <section class="mechanics">
-      <div class="mechanic-row">
-        <div class="mechanic-image"></div>
-        <div class="mechanic-text">
-          <div class="tag">Système de combat</div>
-          <h2>Magie et acier en harmonie</h2>
-          <p>
-            Combat en temps réel avec la possibilité de mise en pause tactique.
-            Chaque ennemi a des vulnérabilités face à certaines éléments et
-            types d'attaque.
-          </p>
-          <p>
-            Combinez armes, runes et sorts pour créer des combinaisons uniques.
-            Le système de positionnement vous permet d'utiliser le relief en
-            votre faveur.
-          </p>
-          <ul>
-            <li>8 éléments magiques avec des effets d'interaction</li>
-            <li>Système de runes — plus de 150 modificateurs actifs</li>
-            <li>Pause tactique avec carte des priorités</li>
-            <li>Positions de combat et abris influencent les dégâts</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="mechanic-row reverse">
-        <div class="mechanic-visual"></div>
-        <div class="mechanic-text">
-          <div class="tag">Exploration</div>
-          <h2>Un monde sans frontières</h2>
-          <p>
-            Terraform est un monde entièrement ouvert, sans zones de chargement.
-            Chaque grotte, tour et village cache ses propres secrets et ses
-            propres séries de quêtes.
-          </p>
-          <p>
-            La météo, l'heure de la journée et vos actions influencent le
-            comportement des PNJ et la disponibilité des événements. Le monde
-            vit selon ses propres lois, indépendamment de votre présence.
-          </p>
-          <ul>
-            <li>47 lieux uniques sans écrans de chargement</li>
-            <li>Cycle dynamique du jour et de la nuit</li>
-            <li>Événements procéduraux sur les routes</li>
-            <li>Zones secrètes nécessitant des capacités spéciales</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="mechanic-row">
-        <div class="mechanic-visual1"></div>
-        <div class="mechanic-text">
-          <div class="tag">Dialogues et choix</div>
-          <h2>Les mots changent l'histoire</h2>
-          <p>
-            Un système de dialogue avancé avec un système de réputation. Chaque
-            faction garde une trace de vos actions, ce qui détermine ce qui vous
-            est accessible.
-          </p>
-          <p>
-            Certaines décisions sont irréversibles. Les personnages se
-            souviennent de vos promesses — et de vos trahisons.
-          </p>
-          <ul>
-            <li>Plus de 40 000 lignes de dialogue</li>
-            <li>8 factions avec un système de réputation indépendant</li>
-            <li>Des choix aux conséquences à long terme</li>
-            <li>Un système moral sans jugement</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- CLASSES -->
-    <section class="classes-section">
-      <div class="container">
-        <h2 class="section-title">Classes de personnages</h2>
-        <div class="divider"></div>
-        <p class="section-subtitle">Choisissez votre voie à Terraform</p>
-        <div class="grid-3">
-          <div class="card class-card-chevalier-du-voile">
-  
-            <div class="class-name">Chevalier du Voile</div>
-            <div class="class-role">Défenseur · Combat rapproché</div>
-            <div class="stat-bar-label">
-              <span>Force</span><span>9/10</span>
-            </div>
-            <div class="stat-bar">
-              <div class="stat-bar-fill stat-bar-fill--90"></div>
-            </div>
-            <div class="stat-bar-label">
-              <span>Magie</span><span>3/10</span>
-            </div>
-            <div class="stat-bar">
-              <div class="stat-bar-fill stat-bar-fill--30"></div>
-            </div>
-            <div class="stat-bar-label">
-              <span>Vitesse</span><span>5/10</span>
-            </div>
-            <div class="stat-bar">
-              <div class="stat-bar-fill stat-bar-fill--50"></div>
-            </div>
-            <p class="class-desc">
-              Maître des armures et des armes lourdes. Capable d'absorber le
-              mana des ennemis lorsqu'il bloque leurs attaques.
-            </p>
-          </div>
-
-          <div class="card class-card-sorciere-des-racines">
-            <div class="class-name">Sorcière des Racines</div>
-            <div class="class-role">Soigneuse · Magie naturelle</div>
-            <div class="stat-bar-label">
-              <span>Force</span><span>3/10</span>
-            </div>
-            <div class="stat-bar">
-              <div class="stat-bar-fill stat-bar-fill--30"></div>
-            </div>
-            <div class="stat-bar-label">
-              <span>Magie</span><span>9/10</span>
-            </div>
-            <div class="stat-bar">
-              <div class="stat-bar-fill stat-bar-fill--90"></div>
-            </div>
-            <div class="stat-bar-label">
-              <span>Vitesse</span><span>6/10</span>
-            </div>
-            <div class="stat-bar">
-              <div class="stat-bar-fill stat-bar-fill--60"></div>
-            </div>
-            <p class="class-desc">
-              Maîtrise les forces de la nature et invoque les esprits de la
-              forêt. Indispensable pour soigner le groupe.
-            </p>
-          </div>
-
-          <div class="card class-card-nomade-des-terres-desolees">
-      
-            <div class="class-name">Nomade des Terres Désolées</div>
-            <div class="class-role">Éclaireur · Combat à distance</div>
-            <div class="stat-bar-label">
-              <span>Force</span><span>6/10</span>
-            </div>
-            <div class="stat-bar">
-              <div class="stat-bar-fill stat-bar-fill--60"></div>
-            </div>
-            <div class="stat-bar-label">
-              <span>Magie</span><span>5/10</span>
-            </div>
-            <div class="stat-bar">
-              <div class="stat-bar-fill stat-bar-fill--50"></div>
-            </div>
-            <div class="stat-bar-label">
-              <span>Vitesse</span><span>9/10</span>
-            </div>
-            <div class="stat-bar">
-              <div class="stat-bar-fill stat-bar-fill--90"></div>
-            </div>
-            <p class="class-desc">
-              Rapide et insaisissable. Maître des pièges et des poisons. Il
-              connaît la carte Terre Désolées mieux que quiconque.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROGRESSION -->
-    <section class="progression">
-      <div class="container">
-        <h2 class="section-title">Système de progression</h2>
-        <div class="divider"></div>
-        <p class="section-subtitle">
-          Quatre voies pour faire progresser votre héros
-        </p>
-        <div class="prog-grid">
-          <div class="prog-step">
-            <div class="prog-number">01</div>
-            <h3>Niveaux</h3>
+      <section class="mechanics">
+        <div class="mechanic-row">
+          <div class="mechanic-visual mechanic-visual--combat"></div>
+          <div class="mechanic-text">
+            <div class="tag">Système de combat</div>
+            <h2>Magie et acier en harmonie</h2>
             <p>
-              Une progression classique basée sur l'expérience. Tous les 5
-              niveaux, une nouvelle branche de compétences est débloquée.
+              Combat en temps réel avec la possibilité de mise en pause
+              tactique. Chaque ennemi a des vulnérabilités face à certains
+              éléments et types d'attaque.
             </p>
-          </div>
-          <div class="prog-step">
-            <div class="prog-number">02</div>
-            <h3>Runes</h3>
             <p>
-              Insérez des runes dans votre équipement et combinez leurs effets
-              pour créer un style de combat unique.
+              Combinez armes, runes et sorts pour créer des combinaisons
+              uniques. Le système de positionnement vous permet d'utiliser le
+              relief en votre faveur.
             </p>
-          </div>
-          <div class="prog-step">
-            <div class="prog-number">03</div>
-            <h3>Héritage</h3>
-            <p>
-              Des compétences spéciales liées à la lignée de votre personnage.
-              Elles sont débloquées au cours de l'histoire principale.
-            </p>
-          </div>
-          <div class="prog-step">
-            <div class="prog-number">04</div>
-            <h3>Réputation</h3>
-            <p>
-              Les relations avec les factions offrent des bonus passifs et
-              donnent accès à des compétences exclusives.
-            </p>
+            <ul>
+              <li>8 éléments magiques avec des effets d'interaction</li>
+              <li>Système de runes — plus de 150 modificateurs actifs</li>
+              <li>Pause tactique avec carte des priorités</li>
+              <li>Positions de combat et abris influencent les dégâts</li>
+            </ul>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- SYSTEMS TABLE -->
-    <section class="systems">
-      <div class="container">
-        <h2 class="section-title">Tous les systèmes de jeu</h2>
-        <div class="divider"></div>
-        <table class="sys-table">
-          <thead>
-            <tr>
-              <th>Système</th>
-              <th>Description</th>
-              <th>Statut</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Artisanat</td>
-              <td>
-                Création d'armes, d'armures et de potions à partir des
-                ressources récoltées
-              </td>
-              <td><span class="badge badge-classic">Classique</span></td>
-            </tr>
-            <tr>
-              <td>Alchimie</td>
-              <td>Modèle physique amélioré pour la préparation des potions</td>
-              <td><span class="badge badge-new">Mis à jour</span></td>
-            </tr>
-            <tr>
-              <td>Compagnons</td>
-              <td>
-                Jusqu'à 3 compagnons avec leurs propres histoires et leur propre
-                progression
-              </td>
-              <td><span class="badge badge-classic">Classique</span></td>
-            </tr>
-            <tr>
-              <td>Domaine</td>
-              <td>Construction et gestion de votre propre base</td>
-              <td><span class="badge badge-new">Nouveauté</span></td>
-            </tr>
-            <tr>
-              <td>Chasse aux reliques</td>
-              <td>
-                Recherche des artefacts des Fondateurs avec des histoires
-                cachées
-              </td>
-              <td><span class="badge badge-new">Nouveauté</span></td>
-            </tr>
-            <tr>
-              <td>Arène des Jugements</td>
-              <td>Mode de combat optionnel avec des vagues d'ennemis</td>
-              <td><span class="badge badge-classic">Classique</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+        <div class="mechanic-row reverse">
+          <div class="mechanic-visual mechanic-visual--exploration"></div>
+          <div class="mechanic-text">
+            <div class="tag">Exploration</div>
+            <h2>Un monde sans frontières</h2>
+            <p>
+              Terraform est un monde entièrement ouvert, sans zones de
+              chargement. Chaque grotte, tour et village cache ses propres
+              secrets et ses propres séries de quêtes.
+            </p>
+            <p>
+              La météo, l'heure de la journée et vos actions influencent le
+              comportement des PNJ et la disponibilité des événements. Le monde
+              vit selon ses propres lois, indépendamment de votre présence.
+            </p>
+            <ul>
+              <li>47 lieux uniques sans écrans de chargement</li>
+              <li>Cycle dynamique du jour et de la nuit</li>
+              <li>Événements procéduraux sur les routes</li>
+              <li>Zones secrètes nécessitant des capacités spéciales</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mechanic-row">
+          <div class="mechanic-visual mechanic-visual--dialogues"></div>
+          <div class="mechanic-text">
+            <div class="tag">Dialogues et choix</div>
+            <h2>Les mots changent l'histoire</h2>
+            <p>
+              Un système de dialogue avancé avec un système de réputation.
+              Chaque faction garde une trace de vos actions, ce qui détermine ce
+              qui vous est accessible.
+            </p>
+            <p>
+              Certaines décisions sont irréversibles. Les personnages se
+              souviennent de vos promesses — et de vos trahisons.
+            </p>
+            <ul>
+              <li>Plus de 40 000 lignes de dialogue</li>
+              <li>8 factions avec un système de réputation indépendant</li>
+              <li>Des choix aux conséquences à long terme</li>
+              <li>Un système moral sans jugement</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- CLASSES -->
+      <section class="classes-section section-alt">
+        <div class="container">
+          <h2 class="section-title section-alt">Classes de personnages</h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">Choisissez votre voie à Terraform</p>
+          <div class="grid-3">
+            <div class="card class-card class-card--chevalier">
+             <h3 class="class-name">Chevalier du Voile</h3>
+              <div class="class-role">Défenseur · Combat rapproché</div>
+              <div class="stat-bar-label">
+                <span>Force</span><span>9/10</span>
+              </div>
+              <div class="stat-bar">
+                <div class="stat-bar-fill stat-bar-fill--90"></div>
+              </div>
+              <div class="stat-bar-label">
+                <span>Magie</span><span>3/10</span>
+              </div>
+              <div class="stat-bar">
+                <div class="stat-bar-fill stat-bar-fill--30"></div>
+              </div>
+              <div class="stat-bar-label">
+                <span>Vitesse</span><span>5/10</span>
+              </div>
+              <div class="stat-bar">
+                <div class="stat-bar-fill stat-bar-fill--50"></div>
+              </div>
+              <p class="class-desc">
+                Maître des armures et des armes lourdes. Capable d'absorber le
+                mana des ennemis lorsqu'il bloque leurs attaques.
+              </p>
+            </div>
+
+            <div class="card class-card class-card--sorciere">
+              <h3 class="class-name">Sorcière des Racines</h3>
+              <div class="class-role">Soigneuse · Magie naturelle</div>
+              <div class="stat-bar-label">
+                <span>Force</span><span>3/10</span>
+              </div>
+              <div class="stat-bar">
+                <div class="stat-bar-fill stat-bar-fill--30"></div>
+              </div>
+              <div class="stat-bar-label">
+                <span>Magie</span><span>9/10</span>
+              </div>
+              <div class="stat-bar">
+                <div class="stat-bar-fill stat-bar-fill--90"></div>
+              </div>
+              <div class="stat-bar-label">
+                <span>Vitesse</span><span>6/10</span>
+              </div>
+              <div class="stat-bar">
+                <div class="stat-bar-fill stat-bar-fill--60"></div>
+              </div>
+              <p class="class-desc">
+                Maîtrise les forces de la nature et invoque les esprits de la
+                forêt. Indispensable pour soigner le groupe.
+              </p>
+            </div>
+
+            <div class="card class-card class-card--nomade">
+              <h3 class="class-name">Nomade des Terres Désolées</h3>
+              <div class="class-role">Éclaireur · Combat à distance</div>
+              <div class="stat-bar-label">
+                <span>Force</span><span>6/10</span>
+              </div>
+              <div class="stat-bar">
+                <div class="stat-bar-fill stat-bar-fill--60"></div>
+              </div>
+              <div class="stat-bar-label">
+                <span>Magie</span><span>5/10</span>
+              </div>
+              <div class="stat-bar">
+                <div class="stat-bar-fill stat-bar-fill--50"></div>
+              </div>
+              <div class="stat-bar-label">
+                <span>Vitesse</span><span>9/10</span>
+              </div>
+              <div class="stat-bar">
+                <div class="stat-bar-fill stat-bar-fill--90"></div>
+              </div>
+              <p class="class-desc">
+                Rapide et insaisissable. Maître des pièges et des poisons. Il
+                connaît la carte de Terraform mieux que quiconque.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROGRESSION -->
+      <section class="progression">
+        <div class="container">
+          <h2 class="section-title">Système de progression</h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">
+            Quatre voies pour faire progresser votre héros
+          </p>
+          <ol class="prog-grid">
+            <li class="prog-step">
+              <div class="prog-number" aria-hidden="true">01</div>
+              <h3>Niveaux</h3>
+              <p>
+                Une progression classique basée sur l'expérience. Tous les 5
+                niveaux, une nouvelle branche de compétences est débloquée.
+              </p>
+            </li>
+            <li class="prog-step">
+              <div class="prog-number" aria-hidden="true">02</div>
+              <h3>Runes</h3>
+              <p>
+                Insérez des runes dans votre équipement et combinez leurs effets
+                pour créer un style de combat unique.
+              </p>
+            </li>
+            <li class="prog-step">
+              <div class="prog-number" aria-hidden="true">03</div>
+              <h3>Héritage</h3>
+              <p>
+                Des compétences spéciales liées à la lignée de votre personnage.
+                Elles sont débloquées au cours de l'histoire principale.
+              </p>
+            </li>
+            <li class="prog-step">
+              <div class="prog-number" aria-hidden="true">04</div>
+              <h3>Réputation</h3>
+              <p>
+                Les relations avec les factions offrent des bonus passifs et
+                donnent accès à des compétences exclusives.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- SYSTEMS TABLE -->
+      <section class="systems section-alt">
+        <div class="container">
+          <h2 class="section-title" id="titre-systemes">Tous les systèmes de jeu</h2>
+          <div class="divider"></div>
+          <table class="sys-table" aria-labelledby="titre-systemes">
+            <thead>
+              <tr>
+                <th scope="col">Système</th>
+                <th scope="col">Description</th>
+                <th scope="col">Statut</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Artisanat</th>
+                <td>
+                  Création d'armes, d'armures et de potions à partir des
+                  ressources récoltées
+                </td>
+                <td><span class="badge badge-classic">Classique</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Alchimie</th>
+                <td>
+                  Modèle physique amélioré pour la préparation des potions
+                </td>
+                <td><span class="badge badge-new">Mis à jour</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Compagnons</th>
+                <td>
+                  Jusqu'à 3 compagnons avec leurs propres histoires et leur
+                  propre progression
+                </td>
+                <td><span class="badge badge-classic">Classique</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Domaine</th>
+                <td>Construction et gestion de votre propre base</td>
+                <td><span class="badge badge-new">Nouveauté</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Chasse aux reliques</th>
+                <td>
+                  Recherche des artefacts des Fondateurs avec des histoires
+                  cachées
+                </td>
+                <td><span class="badge badge-new">Nouveauté</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Arène des Jugements</th>
+                <td>Mode de combat optionnel avec des vagues d'ennemis</td>
+                <td><span class="badge badge-classic">Classique</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
 
     <footer class="footer">
       <div class="container">
@@ -544,8 +580,8 @@
           <li><a href="#">Facebook</a></li>
           <li><a href="#">Twitter</a></li>
           <li><a href="#">Instagram</a></li>
-          <li><a href="Nous Contacter.html">Contact </a></li>
-          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="Nous Contacter.html">Contact</a></li>
+          <li><a href="#">Politique de confidentialité</a></li>
         </ul>
       </div>
     </footer>

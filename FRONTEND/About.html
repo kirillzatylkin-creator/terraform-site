@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Le Monde de Terraform</title>
+    <title>Le monde - Terraform</title>
     <meta
       name="description"
       content="Explorez le monde de Terraform, son histoire, ses territoires et ses mystères."
     >
 
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-    >
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crete+Round:ital@0;1&family=Marcellus&display=swap" />
+
     <link rel="stylesheet" href="style.css">
 
     <style>
@@ -25,10 +25,11 @@
       }
 
       .page-header {
-        height: 100vh;
-        text-align: center;
-        background:
-          linear-gradient(0deg, rgba(13, 11, 8, 0.35), rgba(13, 11, 8, 0.12)),
+         min-height: 70vh;
+         display: grid;
+         place-content: center;
+         background:
+          linear-gradient( rgba(31, 36, 25, 0.55), rgba(31, 36, 25, 0.8)),
           url("images/07-banniere-voyage.png") center / cover no-repeat;
       }
 
@@ -40,25 +41,16 @@
         justify-content: center;
         gap: 1rem;
         padding: 2rem;
-        border: 1px solid var(--gold);
+        border: 1px solid var(--color-border);
         border-radius: 8px;
-        color: var(--gold-light);
-        background: radial-gradient(ellipse at center, var(--mid), var(--dark-2));
+        color: var(--color-highlight-on-dark);
+        background: radial-gradient(ellipse at center, var(--color-card-dark), var(--color-background-dark));
         font-size: 0.9rem;
         letter-spacing: 0.12em;
+        text-transform: uppercase; /* majuscules par le CSS, pas dans le HTML */
         text-align: center;
       }
 
-      .map-placeholder img {
-        display: block;
-        max-width: 100%;
-        height: auto;
-      }
-
-      .lore-section,
-      .studio-section {
-        background: var(--light-2);
-      }
 
       .lore-block {
         max-width: 800px;
@@ -70,15 +62,12 @@
         margin-top: 1.3rem;
       }
 
-      .timeline-section h2 {
-        text-align: center;
-      }
 
       .timeline {
         max-width: 800px;
         margin: 3rem auto 0;
         padding-left: 2rem;
-        border-left: 1px solid var(--gold);
+        border-left: 1px solid var(--color-border);
       }
 
       .timeline-item {
@@ -97,15 +86,16 @@
         width: 0.75rem;
         height: 0.75rem;
         border-radius: 50%;
-        background: var(--gold);
-        box-shadow: 0 0 0 5px var(--light);
+        background: var(--color-border);
+        box-shadow: 0 0 0 5px var(--color-background);
       }
 
       .timeline-year {
         margin-bottom: 0.5rem;
-        color: var(--dark);
+        font-family: var(--font-head);
         font-size: 1rem;
-        font-weight: bold;
+        letter-spacing: 0.05em;
+        color: var(--color-heading); /* brun sur crème : 6.1 */
       }
 
       .timeline-item h3 {
@@ -131,44 +121,57 @@
         justify-content: center;
         align-items: center;
         padding: 2rem;
-        border: 1px solid var(--gold);
+        border: 1px solid var(--color-border);
         border-radius: 8px;
-        background: var(--dark-2);
-        color: var(--gold-light);
+        background: var(--color-background-dark);
+        color: var(--color-highlight-on-dark);
         font-family: var(--font-head);
         text-align: center;
       }
 
-      .studio-logo-box img {
-        max-width: 100%;
-        height: auto;
-      }
 
       .studio-info h2 {
         margin-bottom: 1.5rem;
       }
 
       .award-card {
-        padding: 1.5rem;
         text-align: center;
       }
 
-      .award-icon {
-        margin-bottom: 1rem;
-        font-size: 2.5rem;
-      }
 
       .award-name {
         margin-bottom: 0.75rem;
-        font-family: var(--font-head);
         font-size: 1.15rem;
         line-height: 1.4;
       }
 
       .award-body {
-        color: var(--text-muted);
+        color: var(--color-text-muted);
         font-size: 0.85rem;
       }
+
+      .studio-inner > * {
+        min-width: 0;      /* empêche le texte de déborder de la grille */
+      }
+
+      /*  RESPONSIVE (Le monde) */
+      @media (max-width: 768px) {
+        .map-section,
+        .lore-section,
+        .timeline-section,
+        .studio-section,
+        .awards {
+          padding-block: 3rem;
+        }
+        .studio-inner {
+          grid-template-columns: 1fr;
+        }
+        .map-placeholder {
+          min-height: 260px;
+        }
+      }
+
+
     </style>
 
     <script src="script.js" defer></script>
@@ -228,17 +231,17 @@
             La carte interactive est disponible dans le jeu
           </p>
 
-          <div class="map-placeholder">
+          <figure class="map-placeholder">
             <img
               src="images/02-carte-du-monde.png"
-              alt="Carte du continent"
+              alt="Carte du continent de Terraform"
             >
-            <span>LA CARTE DE TERRAFORM · ÉCHELLE 1:500 000</span>
-          </div>
+            <figcaption>La carte de Terraform · Échelle 1:500 000</figcaption>
+          </figure>
         </div>
       </section>
 
-      <section class="lore-section">
+      <section class="lore-section section-alt">
         <div class="container">
           <h2 class="section-title">Les origines</h2>
           <div class="divider"></div>
@@ -259,7 +262,7 @@
             </p>
             <p>
               Les Gardiens du Voile — l’Ordre des Cinq Doigts — se sont
-              désintégrés après une hérésie interne. Les derniers membres de
+              désintégrés après une hérésie interne. Les survivants de
               l’ordre recherchent les derniers porteurs de l’Étincelle — des
               êtres capables de réveiller les Pierres une nouvelle fois.
             </p>
@@ -269,7 +272,7 @@
 
       <section class="timeline-section">
         <div class="container">
-          <h2>Chronologie du monde</h2>
+          <h2 class="section-title">Chronologie du monde</h2>
           <div class="divider"></div>
           <p class="section-subtitle">
             Les événements clés de l'histoire de Terraform
@@ -278,7 +281,7 @@
           <div class="timeline">
             <article class="timeline-item">
               <div class="timeline-dot"></div>
-              <div class="timeline-year">Année zéro</div>
+              <p class="timeline-year">Année zéro</p>
               <h3>La création du Voile</h3>
               <p>
                 Cinq mages fondateurs refermèrent la faille et placèrent les
@@ -288,7 +291,7 @@
 
             <article class="timeline-item">
               <div class="timeline-dot"></div>
-              <div class="timeline-year">345e année</div>
+              <p class="timeline-year">345e année</p>
               <h3>L'apogée de l'Âge d'Argent</h3>
               <p>
                 Les grandes cités de Terraform atteignent le sommet de leur
@@ -299,7 +302,7 @@
 
             <article class="timeline-item">
               <div class="timeline-dot"></div>
-              <div class="timeline-year">612e année</div>
+              <p class="timeline-year">612e année</p>
               <h3>La fracture de l'Ordre des Cinq Doigts</h3>
               <p>
                 L'hérésie du Mage Sans-Nom divise l'ordre. La première Pierre
@@ -309,7 +312,7 @@
 
             <article class="timeline-item">
               <div class="timeline-dot"></div>
-              <div class="timeline-year">899e année</div>
+              <p class="timeline-year">899e année</p>
               <h3>Le Déluge des Ténèbres</h3>
               <p>
                 Deux pierres s'éteignent en une seule nuit. Un tiers des terres
@@ -320,7 +323,7 @@
 
             <article class="timeline-item">
               <div class="timeline-dot"></div>
-              <div class="timeline-year">1000e année — aujourd'hui</div>
+              <p class="timeline-year">1000e année — aujourd'hui</p>
               <h3>Le début de votre histoire</h3>
               <p>
                 Vous vous réveillez dans les ruines du château ancestral. Le
@@ -332,14 +335,13 @@
         </div>
       </section>
 
-      <section class="studio-section">
+      <section class="studio-section section-alt">
         <div class="container">
           <div class="studio-inner">
             <div class="studio-logo-box">
               <img
                 src="images/13-ornement-exploration.png"
                 alt=""
-                aria-hidden="true"
               >
               <span>Ironveil Studios</span>
             </div>
@@ -375,25 +377,25 @@
           <div class="grid-4">
             <article class="award-card card">
               
-              <div class="award-name">Meilleur jeu indépendant</div>
-              <div class="award-body">GameDev  Awards 2025</div>
+              <h3 class="award-name">Meilleur jeu indépendant</h3>
+              <div class="award-body">GameDev Awards 2025</div>
             </article>
 
             <article class="award-card card">
          
-              <div class="award-name">Meilleure direction artistique</div>
+              <h3 class="award-name">Meilleure direction artistique</h3>
               <div class="award-body">FantasyExpo 2025</div>
             </article>
 
             <article class="award-card card">
           
-              <div class="award-name">Meilleur scénario</div>
+              <h3 class="award-name">Meilleur scénario</h3>
               <div class="award-body">RPG Critics Circle 2025</div>
             </article>
 
             <article class="award-card card">
              
-              <div class="award-name">Meilleure bande-son</div>
+              <h3 class="award-name">Meilleure bande-son</h3>
               <div class="award-body">Indie Sound Awards 2025</div>
             </article>
           </div>
