@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terraform</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+   <style>
+
+
+nav {
+        background-color: #333;
+        color: #fff;
+        padding: 1rem;
+      }
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        margin-right: 1rem;
+      }
+      .page-header {
+        text-align: center;
+        padding: 2rem 1rem;
+        background-color:;
+      }
+      .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .divider {
+        height: 2px;
+        background-color: #333;
+        margin-bottom: 1rem;
+      }
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+      .card {
+        background-color: #fff;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .compare-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+      }
+      .compare-table th,
+      .compare-table td {
+        border: 1px solid #ccc;
+        padding: 0.5rem;
+        text-align: center;
+      }
+      .featured {
+        background-color: #f0f0f0;
+      }
+      .featured-col {
+        background-color: #f9f9f9;
+      }
+   </style>
+  </head>
+
+  <body>
+    <nav>
+      <a href="index.html" class="nav-logo">Terraform</a>
+      <ul class="nav-links">
+        <li><a href="Index.html">Terraform</a></li>
+        <li><a href="About.html">Le monde de Terraform</a></li>
+        <li><a href="Gameplay.html">Gameplay</a></li>
+        <li><a href="Configuration requise.html">Configuration requise</a></li>
+        <li><a href="Media.html">Galerie</a></li>
+        <li><a href="Boutique.html">Boutique</a></li>
+        <li><a href="Nous Contacter.html">Nous contacter </a></li>
+      </ul>
+    </nav>
+
+    <!--Page Header-->
+
+    <header class="page-header">
+      <div class="tag">Avant de commencer l'aventure</div>
+      <h1>Configuration requise</h1>
+      <p>Vérifiez que votre installation est prête à explorer Aétermur</p>
+    </header>
+
+    <!--Plateformes-->
+
+    <section class="platforms-section">
+      <div class="container">
+        <h2 class="section-title">Plateformes disponibles</h2>
+        <div class="divider"></div>
+        <p class="section-description">
+          Terraform est disponible sur PC ainsi que sur les consoles de dernière
+          génération.
+        </p>
+        <div class="grid-3">
+          <div class="card feature-card">
+            <span class="material-symbols-outlined"> computer </span>
+            <h3 class="feature-title">PC (Windows)</h3>
+            <p class="feature-description">
+              Disponible sur Steam et sur la boutique officielle de Terraform,
+              avec support des manettes et du clavier-souris.
+            </p>
+          </div>
+
+          <div class="card feature-card">
+            <span class="material-symbols-outlined"> stadia_controller </span>
+            <h3 class="feature-title">PlayStation 5</h3>
+            <p class="feature-description">
+              Version optimisée pour le SSD ultra-rapide, avec support de la
+              manette DualSense et du retour haptique.
+            </p>
+          </div>
+
+          <div class="card feature-card">
+            <span class="material-symbols-outlined"> sports_esports </span>
+            <h3 class="feature-title">Xbox Series X|S</h3>
+            <p class="feature-description">
+              Compatible Smart Delivery et Xbox Game Pass, avec des temps de
+              chargement quasi instantanés.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Configuration PC-->
+
+    <section class="requirements-section">
+      <div class="container">
+        <h2 class="section-title">Configuration PC</h2>
+        <div class="divider"></div>
+        <p class="section-description">
+          Configurations testées et validées par nos équipes techniques pour une
+          expérience de jeu fluide.
+        </p>
+
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th style="text-align: left">Composant</th>
+              <th>Minimum</th>
+              <th class="featured">Recommandé</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Système d'exploitation</td>
+              <td>Windows 10 64 bits</td>
+              <td class="featured-col">Windows 11 64 bits</td>
+            </tr>
+            <tr>
+              <td>Processeur</td>
+              <td>Intel Core i5-8400 / AMD Ryzen 5 2600</td>
+              <td class="featured-col">
+                Intel Core i7-10700K / AMD Ryzen 7 3700X
+              </td>
+            </tr>
+            <tr>
+              <td>Mémoire vive</td>
+              <td>8 Go RAM</td>
+              <td class="featured-col">16 Go RAM</td>
+            </tr>
+            <tr>
+              <td>Carte graphique</td>
+              <td>NVIDIA GTX 1060 6 Go / AMD RX 580 8 Go</td>
+              <td class="featured-col">NVIDIA RTX 3070 / AMD RX 6700 XT</td>
+            </tr>
+            <tr>
+              <td>DirectX</td>
+              <td>Version 12</td>
+              <td class="featured-col">Version 12</td>
+            </tr>
+            <tr>
+              <td>Stockage</td>
+              <td>75 Go d'espace disponible (SSD recommandé)</td>
+              <td class="featured-col">
+                75 Go d'espace disponible (SSD requis)
+              </td>
+            </tr>
+            <tr>
+              <td>Connexion internet</td>
+              <td>Requise pour l'activation et les mises à jour</td>
+              <td class="featured-col">Haut débit pour le mode multijoueur</td>
+            </tr>
+            <tr class="edition-price-row">
+              <td style="color: var(--text-dark); font-size: 0.85rem">
+                Résolution / FPS visés
+              </td>
+              <td>1080p · 30 FPS</td>
+              <td class="featured-col">1440p · 60 FPS</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!--Note-->
+
+    <section class="quote-banner">
+      <blockquote>
+        Ces configurations sont susceptibles d'évoluer avant la sortie finale du
+        jeu, à mesure que nos équipes continuent d'optimiser le moteur. Nous
+        vous recommandons de maintenir vos pilotes graphiques à jour pour une
+        expérience optimale.
+      </blockquote>
+      <cite>— Équipe technique de Terraform</cite>
+    </section>
+
+    <!--CTA-->
+
+    <section class="cta-section">
+      <div class="container">
+        <h2>
+          Votre configuration est prête ? Rejoignez l'aventure dès la sortie de
+          Terraform
+          <a href="Boutique.html" class="btn"> Voir la boutique</a>
+        </h2>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2026 Terraform. Tous droits réservés.</p>
+        <ul class="social-links">
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="Nous Contacter.html">Contact </a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>
