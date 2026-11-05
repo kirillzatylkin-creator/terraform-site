@@ -8,7 +8,7 @@ SELECT
   'game',
   'Le jeu de base et des contenus exclusifs.',
   59.99,
-  'images/03-fond-chateau.png',
+  'images/03-fond-chateau.webp',
   CONCAT_WS(CHAR(10), 'Jeu de base', 'Contenus exclusifs', 'Support technique')
 WHERE NOT EXISTS (
   SELECT 1 FROM products WHERE name = 'Édition Standard'
@@ -20,7 +20,7 @@ SELECT
   'game',
   'Le jeu de base, des contenus additionnels et un artbook numérique.',
   79.99,
-  'images/03-fond-chateau.png',
+  'images/03-fond-chateau.webp',
   CONCAT_WS(
     CHAR(10),
     'Jeu de base',
@@ -38,7 +38,7 @@ SELECT
   'game',
   'Le jeu de base, des contenus additionnels et une installation guidée.',
   99.99,
-  'images/03-fond-chateau.png',
+  'images/03-fond-chateau.webp',
   CONCAT_WS(
     CHAR(10),
     'Jeu de base',

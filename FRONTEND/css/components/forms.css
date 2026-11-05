@@ -1,0 +1,114 @@
+/* Pages inscription / connexion /contact */
+
+.auth-form,
+.contact-form {
+  padding: 2rem;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-card);
+}
+.auth-form h2,
+.contact-form h2 {
+  margin-bottom: 1.5rem;
+}
+
+.auth-form .form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-hint {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);   
+}
+
+.form-group textarea {
+  min-height: 170px;
+  resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+
+.form-submit {
+  width: 100%;
+  padding: 0.8rem;
+  font-family: var(--font-head);
+  font-size: 1rem;
+  color: var(--color-button-text);
+  background-color: var(--color-button);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.form-submit:hover {
+  background-color: var(--color-button-hover);
+}
+
+/*message de retour formulaire */
+
+.form-status {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.form-status:empty {
+  display: none;
+}
+
+/*erreurs de formulaire */
+.form-status.error {
+  padding-left: 0.75rem;
+  color: var(--color-error);
+  border-left: 3px solid var(--color-error);
+}
+
+.auth-main {
+  max-width: 520px;
+  margin-inline: auto;
+  padding: 4rem 1.25rem 5rem;
+}
+
+.auth-link {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.auth-link a {
+  color: var(--color-link);
+}
+
+@media (max-width: 768px) {
+  .contact-form,
+   .auth-form {
+    padding: 1.25rem;
+  }
+}

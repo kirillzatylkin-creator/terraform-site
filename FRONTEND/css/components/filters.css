@@ -1,0 +1,27 @@
+/* FILTRES : galerie (media.html) et boutique (boutique.html) */
+
+.filter-status {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+/* (Galerie : .filter-btn · Boutique : .tab-btn) */
+.filter-btn,
+.tab-btn {
+  padding: 0.65rem 1rem;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.filter-btn:hover,
+.filter-btn.active,
+.tab-btn:hover,
+.tab-btn.active {
+  background-color: var(--color-background-dark);
+  color: var(--color-highlight-on-dark);   
+}

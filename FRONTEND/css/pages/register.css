@@ -1,0 +1,10 @@
+/* Styles propres à la page register.html */
+
+.page-header {
+  min-height: 70vh;
+  display: grid;
+  place-content: center;
+  background:
+    linear-gradient(rgba(31, 36, 25, 0.55), rgba(31, 36, 25, 0.8)),
+    url('../../images/23_golden_tree_abbey.webp') center / cover no-repeat;
+}

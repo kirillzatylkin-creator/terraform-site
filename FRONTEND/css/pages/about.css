@@ -1,0 +1,156 @@
+/* Styles propres à la page about.html */
+
+.map-section,
+.lore-section,
+.timeline-section,
+.studio-section,
+.awards {
+  padding: 5rem 0;
+}
+
+.page-header {
+  min-height: 70vh;
+  display: grid;
+  place-content: center;
+  background:
+    linear-gradient(rgba(31, 36, 25, 0.55), rgba(31, 36, 25, 0.8)),
+    url('../../images/07-banniere-voyage.webp') center / cover no-repeat;
+}
+
+.map-placeholder {
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  color: var(--color-highlight-on-dark);
+  background: radial-gradient(
+    ellipse at center,
+    var(--color-card-dark),
+    var(--color-background-dark)
+  );
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase; /* majuscules par le CSS, pas dans le HTML */
+  text-align: center;
+}
+
+.lore-block {
+  max-width: 800px;
+  margin: 2rem auto 0;
+}
+
+.lore-block p + p,
+.studio-info p + p {
+  margin-top: 1.3rem;
+}
+
+.timeline {
+  max-width: 800px;
+  margin: 3rem auto 0;
+  padding-left: 2rem;
+  border-left: 1px solid var(--color-border);
+}
+
+.timeline-item {
+  position: relative;
+  padding: 0 0 2.5rem 1rem;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 0.55rem;
+  left: -2.4rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: var(--color-border);
+  box-shadow: 0 0 0 5px var(--color-background);
+}
+
+.timeline-year {
+  margin-bottom: 0.5rem;
+  font-family: var(--font-head);
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  color: var(--color-heading); /* brun sur crème : 6.1 */
+}
+
+.timeline-item h3 {
+  margin-bottom: 0.8rem;
+}
+
+.timeline-item p,
+.studio-info p {
+  font-size: 1rem;
+}
+
+.studio-inner {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.studio-logo-box {
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-background-dark);
+  color: var(--color-highlight-on-dark);
+  font-family: var(--font-head);
+  text-align: center;
+}
+
+.studio-info h2 {
+  margin-bottom: 1.5rem;
+}
+
+.award-card {
+  text-align: center;
+}
+
+.award-name {
+  margin-bottom: 0.75rem;
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+.award-body {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.studio-inner > * {
+  min-width: 0; /* empêche le texte de déborder de la grille */
+}
+
+/*  RESPONSIVE (Le monde) */
+@media (max-width: 768px) {
+  .map-section,
+  .lore-section,
+  .timeline-section,
+  .studio-section,
+  .awards {
+    padding-block: 3rem;
+  }
+  .studio-inner {
+    grid-template-columns: 1fr;
+  }
+  .map-placeholder {
+    min-height: 260px;
+  }
+}

@@ -1,0 +1,23 @@
+/* Styles propres à la page configuration-requise.html */
+
+.page-header {
+  min-height: 70vh;
+  display: grid;
+  place-content: center;
+  background:
+    linear-gradient(rgba(31, 36, 25, 0.55), rgba(31, 36, 25, 0.8)),
+    url('../../images/19_celestial_observatory.webp') center / cover no-repeat;
+}
+
+.platforms-section,
+.requirements-section {
+  padding: 5rem 0;
+}
+
+/*  RESPONSIVE (Configuration requise)  */
+@media (max-width: 768px) {
+  .platforms-section,
+  .requirements-section {
+    padding-block: 3rem;
+  }
+}

@@ -4,7 +4,27 @@ import db from '../config/db.js';
 import authRequired from '../middleware/auth.js';
 import adminRequired from '../middleware/admin.js';
 
+
+
+
+
 // GET /games
+
+function validateGame(req, res, next) {
+  const { title, price } = req.body;
+  if (typeof title !== 'string' || !title.trim()) {
+    return res.status(400).json({ error: 'title invalide' });
+  }
+  if (
+    price === '' ||
+    price === null ||
+    !Number.isFinite(Number(price)) ||
+    Number(price) < 0
+  ) {
+    return res.status(400).json({ error: 'price invalide (nombre positif)' });
+  }
+  next();
+}
 
 router.get('/', async (req, res) => {
   try {
@@ -33,11 +53,9 @@ router.get('/:id', async (req, res) => {
 });
 
 // POST /games
-router.post('/', authRequired, adminRequired, async (req, res) => {
+router.post('/', authRequired, adminRequired, validateGame, async (req, res) => {
   const { title, description, price } = req.body;
-  if (!title || price === undefined) {
-    return res.status(400).json({ error: 'title and price necessary' });
-  }
+ 
   try {
     const [result] = await db.query(
       'INSERT INTO games (title, description, price) VALUES (?, ?, ?)',
@@ -51,11 +69,9 @@ router.post('/', authRequired, adminRequired, async (req, res) => {
 });
 
 // PUT /games/id
-router.put('/:id', authRequired,adminRequired, async (req, res) => {
+router.put('/:id', authRequired,adminRequired,validateGame, async (req, res) => {
   const { title, description, price } = req.body;
-  if (!title || price === undefined) {
-    return res.status(400).json({ error: 'title and price necessary' });
-  }
+  
   try {
     const [result] = await db.query(
       'UPDATE games SET title = ?, description = ?, price = ? WHERE id = ?',

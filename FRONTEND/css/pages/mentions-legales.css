@@ -1,0 +1,76 @@
+/* Styles propres à la page Mentions légales */
+
+/* Texte long : largeur de lecture confortable (environ 70 caractères) */
+.legal-content {
+  max-width: 800px;
+  margin-inline: auto;
+  padding: 4rem 1.25rem 5rem;
+}
+
+.legal-summary {
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+  background-color: var(--color-background-alt);
+  border-left: 4px solid var(--color-heading);
+  border-radius: 4px;
+}
+
+.legal-summary h2 {
+  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
+}
+
+.legal-content > section + section {
+  margin-top: 3rem;
+}
+
+.legal-content h2 {
+  margin-bottom: 1rem;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  color: var(--color-heading);
+}
+
+.legal-content h3 {
+  margin: 1.75rem 0 0.75rem;
+  font-size: 1.2rem;
+}
+
+.legal-content p + p,
+.legal-content p + ul,
+.legal-content ul + p {
+  margin-top: 0.9rem;
+}
+
+.legal-content ul {
+  padding-left: 1.25rem;
+}
+
+.legal-content li + li {
+  margin-top: 0.4rem;
+}
+
+.legal-content a {
+  color: var(--color-link);
+  text-underline-offset: 0.2em;
+}
+
+/* Le tableau comparatif (components/compare-table.css) est centré : ici, texte aligné à gauche */
+.legal-content .compare-table th,
+.legal-content .compare-table td {
+  text-align: left;
+  vertical-align: top;
+}
+
+.legal-update {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+/* RESPONSIVE (Mentions légales)  */
+@media (max-width: 768px) {
+  .legal-content {
+    padding-block: 2.5rem 3rem;
+  }
+}

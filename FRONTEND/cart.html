@@ -4,7 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Panier - Terraform</title>
-    <meta name="description" content="panier-terraform" />
+    <meta
+      name="description"
+      content="Votre panier Terraform : vérifiez vos éditions avant de commander." />
+
+    <link
+      rel="preload"
+      as="image"
+      href="images/22_bridge_over_cloud_canyon.webp" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,15 +19,29 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Crete+Round:ital@0;1&family=Marcellus&display=swap" />
 
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
+    <script>
+      try {
+        var theme = localStorage.getItem('theme');
+        if (theme !== 'dark' && theme !== 'light') {
+          theme = matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+      } catch (e) {}
+    </script>
+
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components/forms.css" />
+    <link rel="stylesheet" href="css/pages/cart.css" />
+    <script type="module" src="js/pages/cart.js"></script>
   </head>
 
   <body>
     <a class="skip-link" href="#main-content">Aller au contenu principal</a>
 
     <nav>
-      <a href="Index.html" class="nav-logo">Terraform</a>
+      <a href="index.html" class="nav-logo">Terraform</a>
       <button
         class="nav-toggle"
         type="button"
@@ -31,14 +52,26 @@
           <span></span><span></span><span></span>
         </span>
       </button>
+
+      <button type="button" class="theme-toggle" aria-pressed="false">
+        <span aria-hidden="true">☾</span> Thème sombre
+      </button>
+
       <ul class="nav-links" id="navigation-links">
-        <li><a href="Index.html">Terraform</a></li>
-        <li><a href="About.html">Le monde de Terraform</a></li>
-        <li><a href="Gameplay.html">Gameplay</a></li>
-        <li><a href="Configuration requise.html">Configuration requise</a></li>
+        <li><a href="index.html">Terraform</a></li>
+        <li><a href="about.html">Le monde de Terraform</a></li>
+        <li><a href="gameplay.html">Gameplay</a></li>
+        <li><a href="configuration-requise.html">Configuration requise</a></li>
         <li><a href="media.html">Galerie</a></li>
-        <li><a href="Boutique.html">Boutique</a></li>
-        <li><a href="Nous Contacter.html">Nous contacter</a></li>
+        <li><a href="boutique.html">Boutique</a></li>
+        <li><a href="contact.html">Nous contacter</a></li>
+        <li><a href="register.html" id="nav-register">Inscription</a></li>
+        <li><a href="login.html" id="nav-login">Connexion</a></li>
+        <li>
+          <a href="cart.html" id="cart-link" class="active" aria-current="page"
+            >Panier</a
+          >
+        </li>
       </ul>
     </nav>
 
@@ -47,21 +80,25 @@
         <div class="tag">Vos achats</div>
         <h1>Panier</h1>
       </header>
-    </main>
-    <section class="cart-main">
-      <div id="cart-content"></div>
-      <p class="auth-status" id="cart-status" role="status"></p>
-    </section>
 
+      <section class="cart-main">
+        <div id="cart-content"></div>
+        <p class="form-status" id="cart-status" role="status"></p>
+      </section>
+    </main>
     <footer class="footer">
       <div class="container">
-        <p>&copy; 2026 Terraform. Tous droits réservés.</p>
+        <p>&copy; 2026 Ironveil Studios · Terraform. Tous droits réservés.</p>
         <ul class="social-links">
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">Twitter</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="Nous Contacter.html">Contact</a></li>
-          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="https://www.facebook.com/">Facebook</a></li>
+          <li><a href="https://x.com/">X (Twitter)</a></li>
+          <li><a href="https://www.instagram.com/">Instagram</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <a href="mentions-legales.html"
+              >Mentions légales et confidentialité</a
+            >
+          </li>
         </ul>
       </div>
     </footer>

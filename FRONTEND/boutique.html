@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boutique - Terraform</title>
+    <meta
+      name="description"
+      content="Découvrez la boutique de Terraform avec toutes les éditions et contenus disponibles." />
+
+    <link rel="preload" as="image" href="images/04-hautes-brumes.webp" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Crete+Round:ital@0;1&family=Marcellus&display=swap" />
+
+    <script>
+      try {
+        var theme = localStorage.getItem('theme');
+        if (theme !== 'dark' && theme !== 'light') {
+          theme = matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+      } catch (e) {}
+    </script>
+
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components/filters.css" />
+    <link rel="stylesheet" href="css/components/compare-table.css" />
+    <link rel="stylesheet" href="css/pages/boutique.css" />
+    <script type="module" src="js/pages/boutique.js"></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main-content"> Aller au contenu principal </a>
+
+    <nav>
+      <a href="index.html" class="nav-logo">Terraform</a>
+
+      <!-- Le JavaScript ouvre et ferme ce menu sur mobile. -->
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Ouvrir le menu"
+        aria-controls="navigation-links"
+        aria-expanded="false">
+        <span class="burger-icon" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
+
+      <button type="button" class="theme-toggle" aria-pressed="false">
+        <span aria-hidden="true">☾</span> Thème sombre
+      </button>
+
+      <ul class="nav-links" id="navigation-links">
+        <li><a href="index.html">Terraform</a></li>
+        <li><a href="about.html">Le monde de Terraform</a></li>
+        <li><a href="gameplay.html">Gameplay</a></li>
+        <li><a href="configuration-requise.html">Configuration requise</a></li>
+        <li><a href="media.html">Galerie</a></li>
+        <li>
+          <a href="boutique.html" class="active" aria-current="page"
+            >Boutique</a
+          >
+        </li>
+        <li><a href="contact.html">Nous contacter </a></li>
+        <li><a href="register.html" id="nav-register">Inscription</a></li>
+        <li><a href="login.html" id="nav-login">Connexion</a></li>
+        <li><a href="cart.html" id="cart-link">Panier </a></li>
+      </ul>
+    
+    </nav>
+
+    <main id="main-content" tabindex="-1">
+      <!--HERO-->
+      <header class="page-header">
+        <div class="tag">Éditions et produits</div>
+        <h1>La boutique</h1>
+        <p>Découvrez nos éditions et produits exclusifs de Terraform</p>
+      </header>
+
+      <div class="store-tabs">
+        <button class="tab-btn active" data-filter="all">
+          Tous les produits
+        </button>
+        <button class="tab-btn" data-filter="game">Versions du jeu</button>
+        <button class="tab-btn" data-filter="merch">Merch</button>
+      </div>
+
+      <section class="store-grid">
+        <h2 class="section-title">Nos éditions</h2>
+        <div class="products-grid" id="products-grid">
+          <div class="product-card" data-category="game">
+            <div class="product-img edition-std">
+              <img src="images/03-fond-chateau.webp" alt="" />
+            </div>
+            <div class="product-info">
+              <div class="product-type"></div>
+              <div class="product-type">Édition Standard</div>
+              <p class="product-description">
+                Découvrez l'édition standard de Terraform, incluant le jeu de
+                base et des contenus exclusifs.
+              </p>
+
+              <p class="product-price">59,99 €</p>
+              <ul class="product-features">
+                <li>Jeu de base</li>
+                <li>Contenus exclusifs</li>
+                <li>Support technique</li>
+              </ul>
+
+              <div class="product-actions">
+                <button class="add-to-cart-btn" type="button">
+                  Ajouter au panier
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card" data-category="game">
+            <div class="product-img edition-std">
+              <img src="images/25_aurora_moor_castle.webp" alt="" />
+            </div>
+            <div class="product-info">
+              <div class="product-type">Édition Deluxe</div>
+              <p class="product-description">
+                Découvrez l'édition deluxe de Terraform, incluant le jeu de base
+                et des contenus exclusifs.
+              </p>
+
+              <p class="product-price">79,99 €</p>
+              <ul class="product-features">
+                <li>Jeu de base</li>
+                <li>Contenus additionnels + bonus exclusifs</li>
+                <li>Artbook numérique</li>
+                <li>Support technique + multijoueur</li>
+              </ul>
+
+              <div class="product-actions">
+                <button class="add-to-cart-btn" type="button">
+                  Ajouter au panier
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card" data-category="game">
+            <div class="product-img edition-std">
+              <img src="images/16_eclipse_sea_fortress.webp" alt="" />
+            </div>
+            <div class="product-info">
+              <div class="product-type">Édition Gold</div>
+              <p class="product-description">
+                Découvrez l'édition gold de Terraform, incluant le jeu de base
+                pour jouer hors norme et d'une maniere differente.
+              </p>
+
+              <p class="product-price">99,99 €</p>
+              <ul class="product-features">
+                <li>Jeu de base</li>
+                <li>Contenus additionnels + bonus exclusifs</li>
+                <li>Artbook numérique</li>
+                <li>Support technique + multijoueur</li>
+                <li>Installation guidée par nos experts et techniciens</li>
+              </ul>
+
+              <div class="product-actions">
+                <button class="add-to-cart-btn" type="button">
+                  Ajouter au panier
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="filter-status" id="store-status" role="status"></p>
+      </section>
+
+      <section class="editions-compare section-alt">
+        <div class="container">
+          <h2 class="section-title" id="titre-editions">
+            Comparaison des éditions
+          </h2>
+          <div class="divider"></div>
+          <p class="section-subtitle comparison-subtitle">
+            Ce qui est inclus dans chaque édition
+          </p>
+          <table class="compare-table" aria-labelledby="titre-editions">
+            <thead>
+              <tr>
+                <th scope="col">Contenu</th>
+                <th scope="col">Standard</th>
+                <th scope="col" class="featured">Deluxe</th>
+                <th scope="col">Gold</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Jeu de base</th>
+                <td>
+                  <span class="check" aria-hidden="true">✓</span
+                  ><span class="visually-hidden">Inclus</span>
+                </td>
+                <td class="featured-col">
+                  <span class="check" aria-hidden="true">✓</span
+                  ><span class="visually-hidden">Inclus</span>
+                </td>
+                <td>
+                  <span class="check" aria-hidden="true">✓</span
+                  ><span class="visually-hidden">Inclus</span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">DLC «Les Terres Désolées d'Ashara»</th>
+                <td>
+                  <span class="cross" aria-hidden="true">✕</span
+                  ><span class="visually-hidden">Non inclus</span>
+                </td>
+                <td class="featured-col">
+                  <span class="check" aria-hidden="true">✓</span
+                  ><span class="visually-hidden">Inclus</span>
+                </td>
+                <td>
+                  <span class="check" aria-hidden="true">✓</span
+                  ><span class="visually-hidden">Inclus</span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Tous les futurs DLC</th>
+                <td>
+                  <span class="cross" aria-hidden="true">✕</span
+                  ><span class="visually-hidden">Non inclus</span>
+                </td>
+                <td class="featured-col">
+                  <span class="cross" aria-hidden="true">✕</span
+                  ><span class="visually-hidden">Non inclus</span>
+                </td>
+                <td>
+                  <span class="check" aria-hidden="true">✓</span
+                  ><span class="visually-hidden">Inclus</span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Artbook numérique</th>
+                <td>
+                  <span class="cross" aria-hidden="true">✕</span
+                  ><span class="visually-hidden">Non inclus</span>
+                </td>
+                <td class="featured-col">100 pages</td>
+                <td>272 pages</td>
+              </tr>
+              <tr>
+                <th scope="row">Bande originale (FLAC)</th>
+                <td>
+                  <span class="cross" aria-hidden="true">✕</span
+                  ><span class="visually-hidden">Non inclus</span>
+                </td>
+                <td class="featured-col">
+                  <span class="cross" aria-hidden="true">✕</span
+                  ><span class="visually-hidden">Non inclus</span>
+                </td>
+                <td>
+                  <span class="check" aria-hidden="true">✓</span
+                  ><span class="visually-hidden">Inclus</span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Apparence unique</th>
+                <td>
+                  <span class="cross" aria-hidden="true">✕</span
+                  ><span class="visually-hidden">Non inclus</span>
+                </td>
+                <td class="featured-col">Chevalier du Voile</td>
+                <td>Fondateur</td>
+              </tr>
+              <tr>
+                <th scope="row">Accès anticipé aux DLC</th>
+                <td>
+                  <span class="cross" aria-hidden="true">✕</span
+                  ><span class="visually-hidden">Non inclus</span>
+                </td>
+                <td class="featured-col">
+                  <span class="cross" aria-hidden="true">✕</span
+                  ><span class="visually-hidden">Non inclus</span>
+                </td>
+                <td>
+                  <span class="check" aria-hidden="true">✓</span
+                  ><span class="visually-hidden">Inclus</span>
+                </td>
+              </tr>
+              <tr class="edition-price-row">
+                <th scope="row">Prix</th>
+                <td>59,99 €</td>
+                <td class="featured-col">79,99 €</td>
+                <td>99,99 €</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2026 Ironveil Studios · Terraform. Tous droits réservés.</p>
+        <ul class="social-links">
+          <li><a href="https://www.facebook.com/">Facebook</a></li>
+          <li><a href="https://x.com/">X (Twitter)</a></li>
+          <li><a href="https://www.instagram.com/">Instagram</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <a href="mentions-legales.html"
+              >Mentions légales et confidentialité</a
+            >
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

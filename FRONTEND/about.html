@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>histoire - Terraform</title>
+    <meta
+      name="description"
+      content="Explorez le monde de Terraform, son histoire, ses territoires et ses mystères." />
+
+    <link rel="preload" as="image" href="images/02-carte-du-monde.webp" />
+
+    <link rel="preload" as="image" href="images/07-banniere-voyage.webp" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Crete+Round:ital@0;1&family=Marcellus&display=swap" />
+
+    <script>
+      try {
+        var theme = localStorage.getItem('theme');
+        if (theme !== 'dark' && theme !== 'light') {
+          theme = matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+      } catch (e) {}
+    </script>
+
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/pages/about.css" />
+    <script type="module" src="js/pages/common.js"></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+    <nav>
+      <a class="nav-logo" href="index.html">Terraform</a>
+
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Ouvrir le menu"
+        aria-controls="navigation-links"
+        aria-expanded="false">
+        <span class="burger-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
+      <button type="button" class="theme-toggle" aria-pressed="false">
+        <span aria-hidden="true">☾</span> Thème sombre
+      </button>
+
+      <ul class="nav-links" id="navigation-links">
+        <li><a href="index.html">Terraform</a></li>
+        <li>
+          <a href="about.html" class="active" aria-current="page">
+            Le monde de Terraform
+          </a>
+        </li>
+        <li><a href="gameplay.html">Gameplay</a></li>
+        <li><a href="configuration-requise.html">Configuration requise</a></li>
+        <li><a href="media.html">Galerie</a></li>
+        <li><a href="boutique.html">Boutique</a></li>
+        <li><a href="contact.html">Nous contacter</a></li>
+        <li><a href="register.html" id="nav-register">Inscription</a></li>
+        <li><a href="login.html" id="nav-login">Connexion</a></li>
+        <li><a href="cart.html" id="cart-link">Panier </a></li>
+      </ul>
+    </nav>
+
+    <main id="main-content" tabindex="-1">
+      <header class="page-header">
+        <div class="tag">Le continent et ses mystères</div>
+        <h1>Le monde de Terraform</h1>
+        <p class="hero-tagline">
+          Chaque coin a une histoire. Chaque forêt porte un nom.
+        </p>
+        <p>
+          Explorez les terres mystérieuses et découvrez les secrets cachés de
+          Terraform.
+        </p>
+      </header>
+
+      <section class="map-section">
+        <div class="container">
+          <h2 class="section-title">La carte du continent</h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">
+            La carte interactive est disponible dans le jeu
+          </p>
+
+          <figure class="map-placeholder">
+            <img
+              src="images/02-carte-du-monde.webp"
+              alt="Carte du continent de Terraform" />
+            <figcaption>La carte de Terraform · Échelle 1:500 000</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="lore-section section-alt">
+        <div class="container">
+          <h2 class="section-title">Les origines</h2>
+          <div class="divider"></div>
+
+          <div class="lore-block">
+            <p>
+              Il y a mille ans, les mages fondateurs créèrent le Voile — un
+              bouclier invisible séparant le monde des vivants du Néant. Le
+              Voile repose sur cinq Pierres-Cœurs, dispersées à travers les
+              terres de Terraform. Mais les pierres commencent à s’éteindre.
+            </p>
+            <p>
+              Trois des cinq sont déjà silencieuses. Là où les Cœurs se sont
+              tus, l’espace est devenu fragile : des créatures du Néant
+              s’infiltrent à travers les fissures, tandis que le temps s’écoule
+              différemment. De vieilles cités s’enfoncent dans un brouillard
+              dont personne ne revient.
+            </p>
+            <p>
+              Les Gardiens du Voile — l’Ordre des Cinq Doigts — se sont
+              désintégrés après une hérésie interne. Les survivants de l’ordre
+              recherchent les derniers porteurs de l’Étincelle — des êtres
+              capables de réveiller les Pierres une nouvelle fois.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="timeline-section">
+        <div class="container">
+          <h2 class="section-title">Chronologie du monde</h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">
+            Les événements clés de l'histoire de Terraform
+          </p>
+
+          <div class="timeline">
+            <article class="timeline-item">
+              <div class="timeline-dot"></div>
+              <p class="timeline-year">Année zéro</p>
+              <h3>La création du Voile</h3>
+              <p>
+                Cinq mages fondateurs refermèrent la faille et placèrent les
+                Pierres du Cœur en des lieux sacrés à travers le continent.
+              </p>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-dot"></div>
+              <p class="timeline-year">345e année</p>
+              <h3>L'apogée de l'Âge d'Argent</h3>
+              <p>
+                Les grandes cités de Terraform atteignent le sommet de leur
+                puissance. La magie est accessible à tous ceux qui possèdent le
+                talent.
+              </p>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-dot"></div>
+              <p class="timeline-year">612e année</p>
+              <h3>La fracture de l'Ordre des Cinq Doigts</h3>
+              <p>
+                L'hérésie du Mage Sans-Nom divise l'ordre. La première Pierre du
+                Cœur s'éteint. Le Néant commence à s'infiltrer.
+              </p>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-dot"></div>
+              <p class="timeline-year">899e année</p>
+              <h3>Le Déluge des Ténèbres</h3>
+              <p>
+                Deux pierres s'éteignent en une seule nuit. Un tiers des terres
+                septentrionales est englouti par le Néant. Un grand exode des
+                peuples commence.
+              </p>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-dot"></div>
+              <p class="timeline-year">1000e année — aujourd'hui</p>
+              <h3>Le début de votre histoire</h3>
+              <p>
+                Vous vous réveillez dans les ruines du château ancestral. Le
+                monde est au bord de son dernier crépuscule. Tout est entre vos
+                mains.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="studio-section section-alt">
+        <div class="container">
+          <div class="studio-inner">
+            <div class="studio-logo-box">
+              <img src="images/13-ornement-exploration.webp" alt="" />
+              <span>Ironveil Studios</span>
+            </div>
+
+            <div class="studio-info">
+              <h2>Développeur</h2>
+              <p>
+                Ironveil Studios est une équipe indépendante de 38 personnes,
+                fondée en 2019. Nous croyons que les jeux vidéo sont un
+                véritable art. Terraform est notre premier projet d'envergure,
+                sur lequel nous travaillons depuis déjà cinq ans.
+              </p>
+              <p>
+                Nous puisons notre inspiration dans la littérature classique,
+                l’architecture médiévale et la mythologie scandinave. Notre
+                objectif est de créer un monde qui continue de vivre même après
+                que vous avez éteint votre écran.
+              </p>
+              <p>
+                Le studio est basé à Paris, en France. Une partie de l'équipe
+                travaille à distance depuis différents pays.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="awards">
+        <div class="container">
+          <h2 class="section-title">Distinctions</h2>
+          <div class="divider"></div>
+
+          <div class="grid-4">
+            <article class="award-card card">
+              <h3 class="award-name">Meilleur jeu indépendant</h3>
+              <div class="award-body">GameDev Awards 2025</div>
+            </article>
+
+            <article class="award-card card">
+              <h3 class="award-name">Meilleure direction artistique</h3>
+              <div class="award-body">FantasyExpo 2025</div>
+            </article>
+
+            <article class="award-card card">
+              <h3 class="award-name">Meilleur scénario</h3>
+              <div class="award-body">RPG Critics Circle 2025</div>
+            </article>
+
+            <article class="award-card card">
+              <h3 class="award-name">Meilleure bande-son</h3>
+              <div class="award-body">Indie Sound Awards 2025</div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2026 Ironveil Studios · Terraform. Tous droits réservés.</p>
+        <ul class="social-links">
+          <li><a href="https://www.facebook.com/">Facebook</a></li>
+          <li><a href="https://x.com/">X (Twitter)</a></li>
+          <li><a href="https://www.instagram.com/">Instagram</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <a href="mentions-legales.html"
+              >Mentions légales et confidentialité</a
+            >
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

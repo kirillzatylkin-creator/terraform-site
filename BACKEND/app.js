@@ -7,6 +7,9 @@ import authRouter from './routes/auth.js';
 import productsRouter from './routes/products.js';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
+import contactRouter from './routes/contact.js';
+
+
 const app = express();
 
 // Derrière Nginx : lire l'IP réelle du visiteur (nécessaire au rate limiting)
@@ -14,7 +17,6 @@ if (process.env.NODE_ENV === 'production') {
   app.set('trust proxy', 1);
 }
 
-import contactRouter from './routes/contact.js';
 
 app.use(express.json());
 
@@ -22,7 +24,7 @@ app.use(express.json());
 const allowedOrigins = (process.env.CORS_ORIGIN || 'http://localhost:3000')
   .split(',')
   .map(o => o.trim());
-  console.log('CORS autorisé pour :', allowedOrigins);
+ 
 
 app.use(helmet());
 app.use(cors({ origin: allowedOrigins }));

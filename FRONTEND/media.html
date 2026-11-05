@@ -9,147 +9,7 @@
       name="description"
       content="Découvrez la galerie de Terraform avec des images et vidéos du jeu." />
 
-   
-
-
-      <link rel="stylesheet" href="style.css" />
-    <style>
-      /* Styles propres à la galerie */
-
-      .page-header {
-        min-height: 70vh;
-        display: grid;
-        place-content: center;
-        background:
-          linear-gradient(rgba(31, 36, 25, 0.55), rgba(31, 36, 25, 0.8)),
-          url('images/12-banniere-destin.png') center / cover no-repeat;
-      }
-      .filter-bar {
-        padding: 1.5rem;
-        border-bottom: 1px solid var(--color-border);
-      }
-      .filter-inner {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.7rem;
-      }
-      .filter-btn {
-        padding: 0.65rem 1rem;
-        font-size: 0.9rem;
-        color: var(--color-text);
-        background: transparent;
-        border: 1px solid var(--color-border);
-        border-radius: 4px;
-        cursor: pointer;
-      }
-      .filter-btn:hover,
-      .filter-btn.active {
-        background-color: var(--color-background-dark);
-        color: var(--color-highlight-on-dark);
-      }
-      .gallery-grid {
-        width: 100%;
-        max-width: var(--content-width);
-        margin-inline: auto;
-        padding: 3rem 2rem;
-      }
-      .g-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        grid-auto-rows: 230px;
-        gap: 1rem;
-      }
-      .g-item {
-        position: relative;
-        overflow: hidden; /* l'image ne dépasse pas des coins arrondis */
-        border: 1px solid var(--color-border);
-        border-radius: 8px;
-        color: var(--color-text-on-dark); /* texte toujours sur voile sombre */
-      }
-      .g-item.tall {
-        grid-row: span 2;
-      }
-      .g-item.wide {
-        grid-column: span 2;
-      }
-      .g-overlay {
-        position: absolute;
-        inset: auto 0 0;
-        padding: 2.5rem 1.25rem 1.25rem;
-        background: linear-gradient(transparent, rgba(31, 36, 25, 0.92)); /* voile « nuit » */
-      }
-      .g-label,
-      .g-cat {
-        display: block;
-      }
-      .g-label {
-        font-family: var(--font-head);
-        font-size: 1.2rem;
-        line-height: 1.3;
-      }
-      .g-cat {
-        margin-top: 0.5rem;
-        font-size: 0.8rem;
-        color: var(--color-highlight-on-dark); /* kaki sur voile : > 5 */
-      }
-
-      .artbook {
-        padding: 4rem 1.25rem;
-        text-align: center;
-      }
-      .artbook-inner {
-        max-width: 720px;
-        margin: auto;
-      }
-      .artbook h2 {
-        margin: 1rem 0;
-      }
-      .artbook p {
-        margin-bottom: 2rem;
-      }
-
-
-      /* L'image remplit toute la tuile, le texte passe par-dessus */
-      .gallery-image {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;               /* recadre sans déformer */
-      }
-
-      /*  RESPONSIVE (Galerie) */
-      @media (max-width: 1100px) {
-        .g-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-      }
-
-      @media (max-width: 768px) {
-        .gallery-grid {
-          padding-inline: 1.25rem;
-        }
-        .g-grid {
-          grid-template-columns: 1fr;
-        }
-        .g-item.tall {
-          grid-row: auto;
-        }
-        .g-item.wide {
-          grid-column: auto;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .gallery-grid {
-          padding-block: 2.5rem;
-        }
-      }
-
-
-
-    </style>
+    <link rel="preload" as="image" href="images/12-banniere-destin.webp" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -157,16 +17,29 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Crete+Round:ital@0;1&family=Marcellus&display=swap" />
 
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
+    <script>
+      try {
+        var theme = localStorage.getItem('theme');
+        if (theme !== 'dark' && theme !== 'light') {
+          theme = matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+      } catch (e) {}
+    </script>
+
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components/filters.css" />
+    <link rel="stylesheet" href="css/pages/media.css" />
+    <script type="module" src="js/pages/media.js"></script>
   </head>
 
   <body>
-
-
     <a class="skip-link" href="#main-content">Aller au contenu principal</a>
     <nav>
-      <a href="Index.html" class="nav-logo">Terraform</a>
+      <a href="index.html" class="nav-logo">Terraform</a>
+
       <!-- Le JavaScript ouvre et ferme ce menu sur mobile. -->
       <button
         class="nav-toggle"
@@ -178,165 +51,179 @@
           <span></span><span></span><span></span>
         </span>
       </button>
+
+      <button type="button" class="theme-toggle" aria-pressed="false">
+        <span aria-hidden="true">☾</span> Thème sombre
+      </button>
+
       <ul class="nav-links" id="navigation-links">
-        <li><a href="Index.html">Terraform</a></li>
-        <li><a href="About.html">Le monde de Terraform</a></li>
-        <li><a href="Gameplay.html">Gameplay</a></li>
-        <li><a href="Configuration requise.html">Configuration requise</a></li>
+        <li><a href="index.html">Terraform</a></li>
+        <li><a href="about.html">Le monde de Terraform</a></li>
+        <li><a href="gameplay.html">Gameplay</a></li>
+        <li><a href="configuration-requise.html">Configuration requise</a></li>
         <li>
           <a href="media.html" class="active" aria-current="page">Galerie</a>
         </li>
-        <li><a href="Boutique.html">Boutique</a></li>
-        <li><a href="Nous Contacter.html">Nous contacter </a></li>
+        <li><a href="boutique.html">Boutique</a></li>
+        <li><a href="contact.html">Nous contacter</a></li>
+        <li><a href="register.html" id="nav-register">Inscription</a></li>
+        <li><a href="login.html" id="nav-login">Connexion</a></li>
+        <li><a href="cart.html" id="cart-link">Panier </a></li>
       </ul>
     </nav>
 
-    
     <main id="main-content" tabindex="-1">
-    <header class="page-header">
-      <div class="tag">Le monde de Terraform</div>
-      <h1>Galerie</h1>
-      <p>Screens et OST</p>
-    </header>
+      <header class="page-header">
+        <div class="tag">Le monde de Terraform</div>
+        <h1>Galerie</h1>
+        <p>Illustrations du monde de Terraform</p>
+      </header>
 
-    <div class="filter-bar">
-      <div class="filter-inner">
-        <button class="filter-btn active" data-filter="all">Tout</button>
-        <button class="filter-btn" data-filter="concept">Concept Art</button>
-        <button class="filter-btn" data-filter="screenshots">
-          Screenshots
-        </button>
-        <button class="filter-btn" data-filter="characters">Personnages</button>
-        <button class="filter-btn" data-filter="locations">Locations</button>
-      </div>
-    </div>
-
-    <section class="gallery-grid">
-      <div class="g-grid">
-        <div class="g-item tall" data-category="concept locations">
-          <img
-            class="gallery-image"
-            src="images/05-foret-ancienne.png"
-            alt="Forêt ancienne du monde de Terraform"
-            loading="lazy" />
-
-          <div class="g-overlay">
-            <span class="g-label">Forêt ancienne</span>
-            <span class="g-cat">Concept · Lieu</span>
-          </div>
-        </div>
-
-        <!-- GRILLE DE GALERIE -->
-
-        <div class="g-item tall" data-category="concept locations">
-          <img
-            class="gallery-image"
-            src="images/14%20chateau%20nuit.png"
-            alt="Château illuminé au bord d'un lac, dans une forêt de sapins sous un croissant de lune"
-            loading="lazy" />
-          <div class="g-overlay">
-            <span class="g-label">Le château du lac nocturne</span>
-            <span class="g-cat">Concept · Lieu</span>
-          </div>
-        </div>
-        <div class="g-item tall" data-category="concept characters">
-          <img
-            class="gallery-image"
-            src="images/09-personnage-gardien.png"
-            alt="Gardien en armure avec une cape de fourrure"
-            loading="lazy" />
-
-          <div class="g-overlay">
-            <span class="g-label">Le Gardien</span>
-            <span class="g-cat">Concept · Personnage</span>
-          </div>
-        </div>
-
-        <div class="g-item tall" data-category="concept characters">
-          <img
-            class="gallery-image"
-            src="images/10-personnage-arcaniste.png"
-            alt="Arcaniste tenant une sphère de lumière magique"
-            loading="lazy" />
-
-          <div class="g-overlay">
-            <span class="g-label">L’Arcaniste</span>
-            <span class="g-cat">Concept · Personnage</span>
-          </div>
-        </div>
-
-        <div class="g-item tall" data-category="concept characters">
-          <img
-            class="gallery-image"
-            src="images/11-personnage-eclaireuse.png"
-            alt="Éclaireuse visant avec son arc dans une forêt"
-            loading="lazy" />
-
-          <div class="g-overlay">
-            <span class="g-label">L’Éclaireuse</span>
-            <span class="g-cat">Concept · Personnage</span>
-          </div>
-        </div>
-        <div class="g-item" data-category="screenshots">
-          <img
-            class="gallery-image"
-            src="images/17_volcanic_kingdom.png"
-            alt="Un voyageur en cape face à une forteresse entourée de coulées de lave"
-            loading="lazy" />
-          <div class="g-overlay">
-            <span class="g-label">Le royaume volcanique</span>
-            <span class="g-cat">Capture d'écran · Lieu</span>
-          </div>
-        </div>
-        <div class="g-item wide" data-category="concept locations">
-          <img
-            class="gallery-image"
-            src="images/16_eclipse_sea_fortress.png"
-            alt="Forteresse sur des falaises battues par la mer, sous une éclipse"
-            loading="lazy" />
-          <div class="g-overlay">
-            <span class="g-label">Forteresse de l'Éclipse · Zone finale</span>
-            <span class="g-cat">Concept · Lieu</span>
-          </div>
-        </div>
-        <div class="g-item" data-category="screenshots locations">
-          <img
-            class="gallery-image"
-            src="images/24_gothic_harbor_fleet.png"
-            alt="Une flotte de navires aux voiles éclairées entre dans un port fortifié"
-            loading="lazy" />
-          <div class="g-overlay">
-            <span class="g-label">Le port des flottes</span>
-            <span class="g-cat">Capture d'écran · Lieu</span>
-          </div>
+      <div class="filter-bar">
+        <div class="filter-inner">
+          <button class="filter-btn active" data-filter="all">Tout</button>
+          <button class="filter-btn" data-filter="concept">Concept Art</button>
+          <button class="filter-btn" data-filter="screenshots">
+            Captures d'écran
+          </button>
+          <button class="filter-btn" data-filter="characters">
+            Personnages
+          </button>
+          <button class="filter-btn" data-filter="locations">Lieux</button>
         </div>
       </div>
-      <p class="filter-status" id="gallery-status" role="status"></p>
-    </section>
 
-    <!-- ARTBOOK -->
-    <section class="artbook section-dark">
-      <div class="artbook-inner">
-        <div class="tag">Exclusivité</div>
-        <h2>Artbook de Terraform</h2>
-        <p>
-          272 pages de concepts, croquis et contenus exclusifs des coulisses.
-          Disponible dans l'édition « Collector ».
-        </p>
-        <a href="Nous Contacter.html" class="btn">Découvrir l'édition</a>
-      </div>
-    </section>
+      <section class="gallery-grid">
+        <div class="g-grid">
+          <div class="g-item tall" data-category="concept locations">
+            <img
+              class="gallery-image"
+              src="images/05-foret-ancienne.webp"
+              alt="Forêt ancienne du monde de Terraform"
+              loading="lazy" />
 
-  </main> 
+            <div class="g-overlay">
+              <span class="g-label">Forêt ancienne</span>
+              <span class="g-cat">Concept · Lieu</span>
+            </div>
+          </div>
+
+          <!-- GRILLE DE GALERIE -->
+
+          <div class="g-item tall" data-category="concept locations">
+            <img
+              class="gallery-image"
+              src="images/14%20chateau%20nuit.webp"
+              alt="Château illuminé au bord d'un lac, dans une forêt de sapins sous un croissant de lune"
+              loading="lazy" />
+            <div class="g-overlay">
+              <span class="g-label">Le château du lac nocturne</span>
+              <span class="g-cat">Concept · Lieu</span>
+            </div>
+          </div>
+          <div class="g-item tall" data-category="concept characters">
+            <img
+              class="gallery-image"
+              src="images/09-personnage-gardien.webp"
+              alt="Gardien en armure avec une cape de fourrure"
+              loading="lazy" />
+
+            <div class="g-overlay">
+              <span class="g-label">Le Gardien</span>
+              <span class="g-cat">Concept · Personnage</span>
+            </div>
+          </div>
+
+          <div class="g-item tall" data-category="concept characters">
+            <img
+              class="gallery-image"
+              src="images/10-personnage-arcaniste.webp"
+              alt="Arcaniste tenant une sphère de lumière magique"
+              loading="lazy" />
+
+            <div class="g-overlay">
+              <span class="g-label">L’Arcaniste</span>
+              <span class="g-cat">Concept · Personnage</span>
+            </div>
+          </div>
+
+          <div class="g-item tall" data-category="concept characters">
+            <img
+              class="gallery-image"
+              src="images/11-personnage-eclaireuse.webp"
+              alt="Éclaireuse visant avec son arc dans une forêt"
+              loading="lazy" />
+
+            <div class="g-overlay">
+              <span class="g-label">L’Éclaireuse</span>
+              <span class="g-cat">Concept · Personnage</span>
+            </div>
+          </div>
+          <div class="g-item" data-category="screenshots">
+            <img
+              class="gallery-image"
+              src="images/17_volcanic_kingdom.webp"
+              alt="Un voyageur en cape face à une forteresse entourée de coulées de lave"
+              loading="lazy" />
+            <div class="g-overlay">
+              <span class="g-label">Le royaume volcanique</span>
+              <span class="g-cat">Capture d'écran · Lieu</span>
+            </div>
+          </div>
+          <div class="g-item wide" data-category="concept locations">
+            <img
+              class="gallery-image"
+              src="images/16_eclipse_sea_fortress.webp"
+              alt="Forteresse sur des falaises battues par la mer, sous une éclipse"
+              loading="lazy" />
+            <div class="g-overlay">
+              <span class="g-label">Forteresse de l'Éclipse · Zone finale</span>
+              <span class="g-cat">Concept · Lieu</span>
+            </div>
+          </div>
+          <div class="g-item" data-category="screenshots locations">
+            <img
+              class="gallery-image"
+              src="images/24_gothic_harbor_fleet.webp"
+              alt="Une flotte de navires aux voiles éclairées entre dans un port fortifié"
+              loading="lazy" />
+            <div class="g-overlay">
+              <span class="g-label">Le port des flottes</span>
+              <span class="g-cat">Capture d'écran · Lieu</span>
+            </div>
+          </div>
+        </div>
+        <p class="filter-status" id="gallery-status" role="status"></p>
+      </section>
+
+      <!-- ARTBOOK -->
+      <section class="artbook section-dark">
+        <div class="artbook-inner">
+          <div class="tag">Exclusivité</div>
+          <h2>Artbook de Terraform</h2>
+          <p>
+            272 pages de concepts, croquis et contenus exclusifs des coulisses.
+            Disponible dans l'édition « Collector ».
+          </p>
+          <a href="boutique.html" class="btn btn-primary"
+            >Découvrir l'édition</a
+          >
+        </div>
+      </section>
+    </main>
     <footer class="footer">
       <div class="container">
-        <p>&copy; 2026 Terraform. Tous droits réservés.</p>
+        <p>&copy; 2026 Ironveil Studios · Terraform. Tous droits réservés.</p>
         <ul class="social-links">
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">Twitter</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="Nous Contacter.html">Contact </a></li>
-          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="https://www.facebook.com/">Facebook</a></li>
+          <li><a href="https://x.com/">X (Twitter)</a></li>
+          <li><a href="https://www.instagram.com/">Instagram</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <a href="mentions-legales.html"
+              >Mentions légales et confidentialité</a
+            >
+          </li>
         </ul>
       </div>
     </footer>
