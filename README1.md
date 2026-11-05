@@ -6,7 +6,7 @@ Site vitrine du jeu **Terraform** (studio fictif Ironveil Studios) avec :
 - un **back-end** Node.js / Express 5 (dossier `BACKEND`) ;
 - une base de données **MySQL** (`Terraform_db`) ;
 - une **boutique alimentée par la base de données**, un **panier**, un **formulaire de contact** enregistré en base, et un système d'**inscription / connexion** (mots de passe hachés avec bcrypt, authentification par jeton JWT, rôle `admin` pour les routes d'écriture).
-
+--Code source : https://github.com/kirillzatylkin-creator/terraform-site
 ---
 
 ## 1. Prérequis
