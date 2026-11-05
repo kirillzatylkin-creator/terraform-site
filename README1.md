@@ -31,7 +31,7 @@ Get-Service *mysql*
 ## 2. Structure du projet
 
 ```
-Projet site 3/
+Projet site FINAL/
 ├── README1.md
 ├── .vscode/settings.json     (Live Server sur le port 5502)
 ├── palette.scss              (palette de couleurs de référence)
@@ -194,7 +194,7 @@ Après toute modification du `.env`, **arrêter puis relancer** le serveur : nod
 ### Back-end (terminal n°1)
 
 ```powershell
-cd "C:\Users\Kirill\Desktop\Projet site 3\BACKEND"
+cd BACKEND          # depuis la racine du projet (dossier qui contient FRONTEND et BACKEND)
 npm install
 npm run dev
 ```
